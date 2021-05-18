@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:gp/pages/SignIn/Components/Body.dart';
+import 'package:gp/pages/SignIn/Components/SignInBody.dart';
 
 
 
@@ -26,7 +26,7 @@ class _SignInState extends State<SignIn> {
         body: SingleChildScrollView(
 
           child: Center(
-              child: Body()
+              child: signInBody()
           ),
         ),
       ),

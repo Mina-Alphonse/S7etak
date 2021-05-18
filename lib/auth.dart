@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 // import 'package:mario_used_cars/ReferalData.dart';
 import 'userDataClass.dart';
 import 'database.dart';
@@ -42,8 +43,8 @@ class AuthService{
     try{
       AuthResult result = await _auth.createUserWithEmailAndPassword(email:email , password:password);
       FirebaseUser user = result.user;
-      UserDataClass referalClass = new UserDataClass(name:name,phone:phone,mail:email);
-      await DatabaseService(uid: user.uid).updateUserData(referalClass);
+      // UserDataClass referalClass = new UserDataClass(name:name,phone:phone,mail:email);
+      // await DatabaseService(uid: user.uid).updateUserData(referalClass);
       /*ReferalData referalData = new ReferalData(
         name: "Test Referral",
         phone: "7130000000",

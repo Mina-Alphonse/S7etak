@@ -6,8 +6,22 @@ import 'package:gp/GlobalComponents/custom_text_field.dart';
 import '../../Size_Config.dart';
 
 class Profile extends StatelessWidget {
+
+
+  // void function1(){}
+  // void function2(){}
+  // void function3(){}
+  // void function4(){}
+  // void function5(){}
+  // void function6(){}
+  // void function7(){}
+  //
   @override
   Widget build(BuildContext context) {
+    // List<Function> functionCallbacks = [
+    //   function1,
+    //   function2,
+    // ];
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -124,17 +138,13 @@ class Profile extends StatelessWidget {
                   height: getProptionateScreenHeight(40),
                 ),
                 CustomTextField(
-                  text: 'Personal information',
-                ),
+                    text: 'Personal information',
+                  ),
                 SizedBox(
                   height: getProptionateScreenHeight(40),
                 ),
-                CustomTextField(
-                  text: 'Logout',
-                ),
-                SizedBox(
-                  height: getProptionateScreenHeight(40),
-                ),
+                _renderWidget("Logout"),
+                //ListTile(title: Text("Tagroba"),onTap: (){print("clicked");},),
 
               ],
             ),
@@ -142,5 +152,15 @@ class Profile extends StatelessWidget {
         ),
       ),
     );
+  }
+  Widget _renderWidget(String title){
+    return Column(children: [
+      Padding(
+        padding:EdgeInsets.only(bottom: 40),
+        child: CustomTextField(
+          text: title,
+        ),
+      ),
+    ],);
   }
 }

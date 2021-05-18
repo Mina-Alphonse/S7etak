@@ -30,6 +30,7 @@ class CustomText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+     // width: MediaQuery.of(context).size.width,
       alignment: alignment,
       child: Text(
         text,

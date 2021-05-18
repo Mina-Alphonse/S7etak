@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gp/auth.dart';
 
 
 import '../../../Size_Config.dart';
@@ -14,8 +15,11 @@ class LoginFormWidget extends StatefulWidget {
 }
 
 class _LoginFormWidgetState extends State<LoginFormWidget> {
+  TextEditingController emailController;
+  TextEditingController passwordController;
+
   final _formKey = GlobalKey<FormState>();
-  String Email = 'Username or Email', Password = 'Password', password, email;
+  String password, email;
   final List<String> errors = [];
   @override
   Widget build(BuildContext context) {
@@ -49,7 +53,8 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
       height: getProptionateScreenHeight(50.0),
       child: TextFormField(
         obscureText: true,
-        onSaved: (newValue) => password = newValue,
+        controller: passwordController,
+        // onSaved: (newValue) => password = newValue,
         onChanged: (value) {
           if (value.isNotEmpty && errors.contains(kPassNullError)) {
             setState(() {
@@ -60,6 +65,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
               errors.remove(kShortPassError);
             });
           }
+          password = value;
           return null;
         },
         validator: (value) {
@@ -78,7 +84,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
         },
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
-          hintText: Password,
+          hintText: 'Password',
           suffixIcon: Icon(
             Icons.security,
             size: getProptionateScreenWidth(20),
@@ -96,7 +102,8 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
       height: getProptionateScreenHeight(50.0),
       child: TextFormField(
         keyboardType: TextInputType.emailAddress,
-        onSaved: (newValue) => email = newValue,
+        controller: emailController,
+        // onSaved: (newValue) => email = newValue,
         onChanged: (value) {
           if (value.isNotEmpty && errors.contains(kEmailNullError)) {
             setState(() {
@@ -108,6 +115,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
               errors.remove(kInvalidEmailError);
             });
           }
+          email = value;
         },
         validator: (value) {
           if (value.isEmpty && !errors.contains(kEmailNullError)) {
@@ -126,7 +134,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
         },
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
-          hintText: Email,
+          hintText:  'Username or Email',
           suffixIcon: Icon(
             Icons.person,
             size: getProptionateScreenWidth(20),
@@ -158,9 +166,20 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
       width: getProptionateScreenWidth(302),
       height: getProptionateScreenHeight(58),
       child: ElevatedButton(
-        onPressed: () {
-          // Respond to button press
-          Navigator.pushReplacementNamed(context, '/Home');
+        onPressed: () async{
+          try {
+            String tempEmail = "Fonsi@gmail.com";
+            String tempPassword = "123456";
+            print(email);
+            print("\n");
+            print(password);
+
+            await AuthService().signInWithMailAndPassword(
+               email ,password);
+            Navigator.pushReplacementNamed(context, '/Home');
+          }catch(error){
+            print(error);
+          }
         },
         style: TextButton.styleFrom(
           backgroundColor: kPrimaryColor,

@@ -83,7 +83,6 @@ class SliderPage extends StatelessWidget {
                         ),
                       ),
                       onPressed: () async {
-                        await AuthService().signInWithMailAndPassword("Fonsi@gmail.com", "123456");
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
                             builder: (BuildContext context) => SignIn()));
                       },
