@@ -1,6 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:gp/auth.dart';
-
 
 import '../../../Size_Config.dart';
 import '../../../constraints.dart';
@@ -21,6 +21,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
   final _formKey = GlobalKey<FormState>();
   String password, email;
   final List<String> errors = [];
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -32,8 +33,9 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
             height: getProptionateScreenHeight(5.0),
           ),
           passwordTextForm(),
-
-          SizedBox(height: getProptionateScreenHeight(35.0),),
+          SizedBox(
+            height: getProptionateScreenHeight(35.0),
+          ),
           loginButton(),
           SizedBox(
             height: getProptionateScreenHeight(15.0),
@@ -134,7 +136,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
         },
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
-          hintText:  'Username or Email',
+          hintText: 'Username or Email',
           suffixIcon: Icon(
             Icons.person,
             size: getProptionateScreenWidth(20),
@@ -166,7 +168,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
       width: getProptionateScreenWidth(302),
       height: getProptionateScreenHeight(58),
       child: ElevatedButton(
-        onPressed: () async{
+        onPressed: () async {
           try {
             String tempEmail = "Fonsi@gmail.com";
             String tempPassword = "123456";
@@ -174,10 +176,11 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
             print("\n");
             print(password);
 
-            await AuthService().signInWithMailAndPassword(
-               email ,password);
-            Navigator.pushReplacementNamed(context, '/Home');
-          }catch(error){
+            var result =
+                await AuthService().signInWithMailAndPassword(email, password);
+            if (result != null)
+              Navigator.pushReplacementNamed(context, '/Home');
+          } catch (error) {
             print(error);
           }
         },
