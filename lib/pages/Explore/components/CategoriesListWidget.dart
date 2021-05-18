@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:gp/GlobalComponents/BookButton.dart';
 import 'package:gp/Size_Config.dart';
 
 import 'package:gp/constraints.dart';
 import 'package:gp/pages/Explore/components/CardItem.dart';
-
-
 
 class CategoriesWidget extends StatefulWidget {
   final String header;
@@ -266,18 +263,22 @@ class _allListBuilderState extends State<allListBuilder> {
                                 })
                           ],
                         ),
-                        Container(
-                          width: getProptionateScreenWidth(200),
-                          child: Text(
-                            doctorList[index].shortDesc,
-                            style: TextStyle(
-                                fontSize: getProptionateScreenWidth(11),
-                                color: kPrimaryColor.withOpacity(0.8),
-                                fontFamily: mainFont),
+                        Padding(
+                          padding:
+                              EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                          child: Container(
+                            width: getProptionateScreenWidth(200),
+                            child: Text(
+                              doctorList[index].shortDesc,
+                              style: TextStyle(
+                                  fontSize: getProptionateScreenWidth(11),
+                                  color: kPrimaryColor.withOpacity(0.8),
+                                  fontFamily: mainFont),
+                            ),
                           ),
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             //1rate
                             // RatingBar.builder(
@@ -297,10 +298,24 @@ class _allListBuilderState extends State<allListBuilder> {
                             //   },
                             // ),
                             //2Button to book
-                            SizedBox(
-                              width: getProptionateScreenWidth(55),
-                            ),
-                            BookButton(text: 'Book'),
+                            // SizedBox(
+                            //   width: getProptionateScreenWidth(55),
+                            // ),
+                            Padding(
+                                padding: EdgeInsets.only(top: 5, bottom: 5),
+                                child: RaisedButton(
+                                  elevation: 3,
+                                  onPressed: () {},
+                                  child: Text(
+                                    "Book",
+                                    style: TextStyle(
+                                        color: kliteColor,
+                                        fontSize: getProptionateScreenWidth(14),
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: mainFont),
+                                  ),
+                                  color: kPrimaryColor,
+                                )),
                           ],
                         )
                       ],

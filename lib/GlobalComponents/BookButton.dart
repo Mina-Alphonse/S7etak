@@ -16,8 +16,9 @@ class BookButton extends StatelessWidget {
 
       margin: EdgeInsets.only(right: getProptionateScreenWidth(5)),
       padding: EdgeInsets.symmetric(horizontal: getProptionateScreenWidth(10)),
-      height:getProptionateScreenHeight(50) ,
+      // height:getProptionateScreenHeight(50) ,
       //width: getProptionateScreenWidth(115),
+      height: MediaQuery.of(context).size.height / 25,
       decoration: new BoxDecoration(
         color: kPrimaryColor,
         borderRadius:BorderRadius.circular(10),
