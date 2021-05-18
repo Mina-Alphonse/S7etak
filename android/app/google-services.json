@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "42044405939",
+    "project_id": "s7etak-691f9",
+    "storage_bucket": "s7etak-691f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42044405939:android:b45c1de12955dad39598c6",
+        "android_client_info": {
+          "package_name": "com.example.gp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "42044405939-nq3cr6bh9jgpp4aukmikebqa44ordlq4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcSoMPVODbEUI8ZGcjhQZGBsWj5DR0MgQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "42044405939-nq3cr6bh9jgpp4aukmikebqa44ordlq4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42044405939:android:d2d368534c321ac49598c6",
+        "android_client_info": {
+          "package_name": "com.shetak.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "42044405939-nq3cr6bh9jgpp4aukmikebqa44ordlq4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcSoMPVODbEUI8ZGcjhQZGBsWj5DR0MgQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "42044405939-nq3cr6bh9jgpp4aukmikebqa44ordlq4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
