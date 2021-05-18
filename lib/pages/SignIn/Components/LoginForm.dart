@@ -1,11 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:gp/auth.dart';
 
 import '../../../Size_Config.dart';
 import '../../../constraints.dart';
-import '../../../database.dart';
 
 class LoginFormWidget extends StatefulWidget {
   const LoginFormWidget({
@@ -172,13 +170,13 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
       child: ElevatedButton(
         onPressed: () async {
           try {
-            String tempEmail = "Fonsi@gmail.com";
+            String tempEmail = "fonsi@gmail.com";
             String tempPassword = "123456";
             print(email);
             print(password);
 
             FirebaseUser result =
-                await AuthService().signInWithMailAndPassword(email, password);
+                await AuthService().signInWithMailAndPassword(tempEmail, tempPassword);
             if (result != null){
               result.uid;
               Navigator.pushReplacementNamed(context, '/Home');}
