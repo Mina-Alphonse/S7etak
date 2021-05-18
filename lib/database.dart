@@ -8,15 +8,18 @@ class DatabaseService {
   final String uid;
   DatabaseService({this.uid});
   //Collection reference
-  final CollectionReference infoCollection = Firestore.instance.collection('Sales Team Members');
+  final CollectionReference infoCollection = Firestore.instance.collection('Patients Personal Data');
 
 
-  Future updateUserData (UserDataClass referalClass)async
+  Future updateUserData (UserDataClass userData)async
   {
     return await infoCollection.document(uid).setData({
-      'name' : referalClass.name,
-      'mail': referalClass.mail,
-      'phone' : referalClass.phone,
+      'name' : userData.name,
+      'mail': userData.mail,
+      'phone' : userData.phone,
+      'age': userData.age,
+      'gender': userData.gender,
+      'insuranceId':userData.insuranceId,
     });
   }
 

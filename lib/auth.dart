@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-// import 'package:mario_used_cars/ReferalData.dart';
-import 'userDataClass.dart';
 import 'database.dart';
+import 'userDataClass.dart';
 import 'user.dart';
 
 
@@ -39,10 +37,11 @@ class AuthService{
 
 
   //mail and password
-  Future registerWithMailAndPassword (String email,String password,String name,String phone)async {
+  Future registerWithMailAndPassword (String password,UserDataClass userDataClass)async {
     try{
-      AuthResult result = await _auth.createUserWithEmailAndPassword(email:email , password:password);
+      AuthResult result = await _auth.createUserWithEmailAndPassword(email: userDataClass.mail , password:password);
       FirebaseUser user = result.user;
+      await DatabaseService(uid: result.user.uid).updateUserData(userDataClass);
       // UserDataClass referalClass = new UserDataClass(name:name,phone:phone,mail:email);
       // await DatabaseService(uid: user.uid).updateUserData(referalClass);
       /*ReferalData referalData = new ReferalData(
@@ -70,7 +69,7 @@ class AuthService{
   }
 
 
-  Future signInWithMailAndPassword (String email,String password)async {
+  Future<FirebaseUser> signInWithMailAndPassword (String email,String password)async {
     try{
       AuthResult result = await _auth.signInWithEmailAndPassword(email:email , password:password);
       FirebaseUser user = result.user;

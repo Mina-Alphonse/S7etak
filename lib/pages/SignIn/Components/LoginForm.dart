@@ -1,9 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:gp/auth.dart';
 
 import '../../../Size_Config.dart';
 import '../../../constraints.dart';
+import '../../../database.dart';
 
 class LoginFormWidget extends StatefulWidget {
   const LoginFormWidget({
@@ -36,7 +38,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
           SizedBox(
             height: getProptionateScreenHeight(35.0),
           ),
-          loginButton(),
+          loginButton(context),
           SizedBox(
             height: getProptionateScreenHeight(15.0),
           ),
@@ -162,7 +164,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
     );
   }
 
-  Container loginButton() {
+  Container loginButton(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: getProptionateScreenWidth(10)),
       width: getProptionateScreenWidth(302),
@@ -173,13 +175,13 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
             String tempEmail = "Fonsi@gmail.com";
             String tempPassword = "123456";
             print(email);
-            print("\n");
             print(password);
 
-            var result =
+            FirebaseUser result =
                 await AuthService().signInWithMailAndPassword(email, password);
-            if (result != null)
-              Navigator.pushReplacementNamed(context, '/Home');
+            if (result != null){
+              result.uid;
+              Navigator.pushReplacementNamed(context, '/Home');}
           } catch (error) {
             print(error);
           }
