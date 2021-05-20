@@ -1,6 +1,9 @@
+// import 'dart:html';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gp/auth.dart';
+import 'package:gp/database.dart';
 
 import '../../../Size_Config.dart';
 import '../../../constraints.dart';
@@ -176,9 +179,12 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
             print(password);
 
             FirebaseUser result =
-                await AuthService().signInWithMailAndPassword(tempEmail, tempPassword);
+                await AuthService().signInWithMailAndPassword(email.trim(), password.trim());
             if (result != null){
-              result.uid;
+              //Grab user Data
+              String userID = result.uid;
+              print(userID);
+              // DatabaseService(uid: userID).infoCollection.document(userID).get();
               Navigator.pushReplacementNamed(context, '/Home');}
           } catch (error) {
             print(error);

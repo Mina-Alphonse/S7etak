@@ -2,6 +2,7 @@
 import 'package:gp/GlobalComponents/custom_horizontal_row.dart';
 import 'package:gp/GlobalComponents/custom_text.dart';
 import 'package:gp/GlobalComponents/custom_text_field.dart';
+import 'package:gp/auth.dart';
 
 import '../../Size_Config.dart';
 
@@ -144,8 +145,7 @@ class Profile extends StatelessWidget {
                   height: getProptionateScreenHeight(40),
                 ),
                 _renderWidget("Logout"),
-                //ListTile(title: Text("Tagroba"),onTap: (){print("clicked");},),
-
+                // ListTile(title: Text("Tagroba"), onTap: () {print("clicked");},),
               ],
             ),
           ),
