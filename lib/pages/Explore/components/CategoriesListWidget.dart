@@ -28,6 +28,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 6,
+
       child: Column(
         children: <Widget>[
           // ButtonsTabBar(
@@ -123,37 +124,41 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
           //     ),
           //   ],
           // ),
-          Row(
-            children: [
-              FlatButton(
-                  onPressed: () {
-                    setState(() {
-                      index = 0;
-                    });
-                  },
-                  child: Text("All")),
-              FlatButton(
-                  onPressed: () {
-                    setState(() {
-                      index = 1;
-                    });
-                  },
-                  child: Text("Doctor")),
-              FlatButton(
-                  onPressed: () {
-                    setState(() {
-                      index = 2;
-                    });
-                  },
-                  child: Text("Medical labs")),
-              FlatButton(
-                  onPressed: () {
-                    setState(() {
-                      index = 3;
-                    });
-                  },
-                  child: Text("Radiology Labs")),
-            ],
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+
+              children: [
+                FlatButton(
+                    onPressed: () {
+                      setState(() {
+                        index = 0;
+                      });
+                    },
+                    child: Text("All")),
+                FlatButton(
+                    onPressed: () {
+                      setState(() {
+                        index = 1;
+                      });
+                    },
+                    child: Text("Doctor")),
+                FlatButton(
+                    onPressed: () {
+                      setState(() {
+                        index = 2;
+                      });
+                    },
+                    child: Text("Medical labs")),
+                FlatButton(
+                    onPressed: () {
+                      setState(() {
+                        index = 3;
+                      });
+                    },
+                    child: Text("Radiology Labs")),
+              ],
+            ),
           ),
           _renderWidget()
         ],
@@ -209,7 +214,7 @@ class _allListBuilderState extends State<allListBuilder> {
                   //image
                   Container(
                     height: getProptionateScreenHeight(125),
-                    width: getProptionateScreenWidth(125),
+                    width: getProptionateScreenWidth(122),
                     decoration: BoxDecoration(
                       color: kliteColor,
                     ),
