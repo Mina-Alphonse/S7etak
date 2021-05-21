@@ -81,8 +81,8 @@ class Body extends StatelessWidget {
                 },
                 child: HomeContainers(
                   imgURL: 'assets/labs.jpg',
-                  text1: 'Results',
-                  text2: 'Labs',
+                  text1: 'Labs',
+                  text2: 'Results',
                   color: kliteColor,
                   txtColor: kPrimaryColor,
                 )

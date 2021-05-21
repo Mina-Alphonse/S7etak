@@ -77,7 +77,7 @@ class _HomeState extends State<Home> {
                     style: TextStyle(color: kliteColor),
                   ),
                   accountName: Text(
-                    "Tesint Name",
+                    "Testing Name",
                     style: TextStyle(
                         color: kliteColor,
                       fontWeight: FontWeight.bold,

@@ -164,8 +164,11 @@ class Profile extends StatelessWidget {
                   thickness: 0.3,
                 ),
                 CustomTextField(
-                  text: 'Personal information',
-                  onTap: (){},
+                  text: 'Log Out',
+                  onTap: () async  {
+                    await AuthService().signOut();
+                    Navigator.pushReplacementNamed(context, '/SignIn');
+                  },
                 ),
                 // ListTile(title: Text("Tagroba"), onTap: () {print("clicked");},),
               ],

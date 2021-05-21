@@ -103,7 +103,7 @@ class SliderPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CustomText(
-                        text: 'New to se7tk?',
+                        text: 'New to s7etk?',
                         color: Colors.white,
                         fontSize: getProptionateScreenWidth(20),
                         fontFamily: "Merriweather",
