@@ -55,7 +55,7 @@ class SliderPage extends StatelessWidget {
         child: Stack(
           children: [
             Carousel(
-              autoplayDuration: Duration(seconds: 3),
+              autoplayDuration: Duration(seconds: 5),
               showIndicator: false,
               boxFit: BoxFit.fitWidth,
               images: [

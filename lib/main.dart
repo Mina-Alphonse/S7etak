@@ -16,6 +16,7 @@ void main() {
   runApp(MaterialApp(
     initialRoute: '/',
     routes:{
+
       '/':(context)=>Welcome(),
       '/SignIn':(context)=>SignIn(),
       '/SignUp':(context)=>SignUp(),

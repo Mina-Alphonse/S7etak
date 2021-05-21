@@ -53,23 +53,28 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                   text: 'Appointments with doctors',
+
                 ),
-                SizedBox(
-                  height: getProptionateScreenHeight(40),
+                Divider(
+                  color: Colors.black,
+                  thickness: 0.3,
                 ),
+
                 CustomTextField(
                   text: 'Appointments with medical labs',
                 ),
-                SizedBox(
-                  height: getProptionateScreenHeight(40),
+                Divider(
+                  color: Colors.black,
+                  thickness: 0.3,
                 ),
+
                 CustomTextField(
                   text: 'Appointments with radiology labs',
                 ),
 
                 // History Section
                 SizedBox(
-                  height: getProptionateScreenHeight(50),
+                  height: getProptionateScreenHeight(30),
                 ),
                 CustomHorizontalRow(
                   text: 'History',
@@ -81,26 +86,30 @@ class Profile extends StatelessWidget {
                 CustomTextField(
                   text: 'Chronic diseases',
                 ),
-                SizedBox(
-                  height: getProptionateScreenHeight(40),
+                Divider(
+                  color: Colors.black,
+                  thickness: 0.3,
                 ),
                 CustomTextField(
                   text: 'Previous medical operations',
                 ),
-                SizedBox(
-                  height: getProptionateScreenHeight(40),
+                Divider(
+                  color: Colors.black,
+                  thickness: 0.3,
                 ),
                 CustomTextField(
                   text: 'Previous medical diagnoses',
                 ),
-                SizedBox(
-                  height: getProptionateScreenHeight(40),
+                Divider(
+                  color: Colors.black,
+                  thickness: 0.3,
                 ),
                 CustomTextField(
                   text: 'Medical labs results',
                 ),
-                SizedBox(
-                  height: getProptionateScreenHeight(40),
+                Divider(
+                  color: Colors.black,
+                  thickness: 0.3,
                 ),
                 CustomTextField(
                   text: 'Radiology labs results',
@@ -120,8 +129,9 @@ class Profile extends StatelessWidget {
                 CustomTextField(
                   text: 'New medicines',
                 ),
-                SizedBox(
-                  height: getProptionateScreenHeight(40),
+                Divider(
+                  color: Colors.black,
+                  thickness: 0.3,
                 ),
                 CustomTextField(
                   text: 'My medicines',
@@ -129,7 +139,7 @@ class Profile extends StatelessWidget {
 
                 // Personal Info Section
                 SizedBox(
-                  height: getProptionateScreenHeight(50),
+                  height: getProptionateScreenHeight(30),
                 ),
                 CustomHorizontalRow(
                   text: 'Personal Info',
@@ -141,8 +151,9 @@ class Profile extends StatelessWidget {
                 CustomTextField(
                     text: 'Personal information',
                   ),
-                SizedBox(
-                  height: getProptionateScreenHeight(40),
+                Divider(
+                  color: Colors.black,
+                  thickness: 0.3,
                 ),
                 _renderWidget("Logout"),
                 // ListTile(title: Text("Tagroba"), onTap: () {print("clicked");},),

@@ -14,19 +14,14 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        GestureDetector(
+        ListTile(
           onTap: onTap,
-          child: CustomText(
-            text: text,
-            alignment: Alignment.centerLeft,
-            fontSize: getProptionateScreenHeight(20),
+          title: Text(
+            text,
           ),
         ),
         SizedBox(height: getProptionateScreenWidth(10),),
-        Divider(
-          color: Colors.black,
-          thickness: 0.5,
-        ),
+
       ],
     );
   }

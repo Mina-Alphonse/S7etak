@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gp/constraints.dart';
 
 import '../Size_Config.dart';
 import 'custom_text.dart';
@@ -21,7 +22,7 @@ class CustomHorizontalRow extends StatelessWidget {
             flex: 3,
             child: CustomText(
               text: text,
-              color: Colors.blue[600],
+              color: kSecondaryColor,
               alignment: Alignment.center,
               fontSize: getProptionateScreenHeight(22),
             )),

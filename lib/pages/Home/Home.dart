@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gp/Size_Config.dart';
 import 'package:gp/pages/Home/Components/Body.dart';
 
 import '../../constraints.dart';
@@ -22,7 +24,34 @@ class _HomeState extends State<Home> {
     return Scaffold(
         backgroundColor: Colors.white,
          appBar: AppBar(
-            title: Text("S7etak"),
+           elevation: 5.0,
+
+          title: Text(
+              "S7etak",
+              style: TextStyle(
+                fontFamily: mainFont,
+                fontSize: getProptionateScreenWidth(30),
+                fontWeight: FontWeight.bold,
+              ),
+          ),
+          centerTitle: true,
+           backgroundColor: kPrimaryColor,// kSecondaryliteColor.withOpacity(0.6),
+           //toolbarHeight: getProptionateScreenHeight(60),
+
+           actions: [
+
+
+             GestureDetector(
+                 child: Icon(Icons.person,size: 30,),
+               onTap: (){
+                   Navigator.pushNamed(context, '/Profile');
+               },
+             ),
+             SizedBox(width: SizeConfig.screenWidth*0.05,
+             )
+           ],
+
+
          ),
         drawer: Drawer(
           child: Column(
