@@ -89,12 +89,12 @@ class Body extends StatelessWidget {
             ),
             GestureDetector(
                 onTap: (){
-                 // Navigator.pushNamed(context, '/Explore');
+                  Navigator.pushNamed(context, '/AppointmentsDoctors');
                 },
                 child: HomeContainers(
                   imgURL: 'assets/appointmnents.jpg',
                   text1: 'Scheduled',
-                  text2: 'Scheduled',
+                  text2: 'Appointments',
                   color: kSecondaryColor,
                   txtColor: kliteColor,
                 )

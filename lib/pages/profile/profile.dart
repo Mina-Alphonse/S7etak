@@ -53,7 +53,9 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                   text: 'Appointments with doctors',
-
+                  onTap: (){
+                    Navigator.pushNamed(context, '/AppointmentsDoctors');
+                  },
                 ),
                 Divider(
                   color: Colors.black,
@@ -62,6 +64,9 @@ class Profile extends StatelessWidget {
 
                 CustomTextField(
                   text: 'Appointments with medical labs',
+                  onTap: (){
+                    Navigator.pushNamed(context, '/AppointmentsMedicalLabs');
+                  },
                 ),
                 Divider(
                   color: Colors.black,
@@ -70,6 +75,9 @@ class Profile extends StatelessWidget {
 
                 CustomTextField(
                   text: 'Appointments with radiology labs',
+                  onTap: (){
+                    Navigator.pushNamed(context, '/AppointmentsRadiologyLabs');
+                  },
                 ),
 
                 // History Section
@@ -155,7 +163,10 @@ class Profile extends StatelessWidget {
                   color: Colors.black,
                   thickness: 0.3,
                 ),
-                _renderWidget("Logout"),
+                CustomTextField(
+                  text: 'Personal information',
+                  onTap: (){},
+                ),
                 // ListTile(title: Text("Tagroba"), onTap: () {print("clicked");},),
               ],
             ),
