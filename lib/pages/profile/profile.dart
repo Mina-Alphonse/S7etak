@@ -33,6 +33,9 @@ class Profile extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                SizedBox(
+                  height: getProptionateScreenHeight(10),
+                ),
                 CustomText(
                   // fontWeight: FontWeight.bold,
                   text: 'Profile',
@@ -49,7 +52,7 @@ class Profile extends StatelessWidget {
                   text: 'Appointments',
                 ),
                 SizedBox(
-                  height: getProptionateScreenHeight(40),
+                  height: getProptionateScreenHeight(10),
                 ),
                 CustomTextField(
                   text: 'Appointments with doctors',
@@ -89,10 +92,13 @@ class Profile extends StatelessWidget {
                 ),
 
                 SizedBox(
-                  height: getProptionateScreenHeight(40),
+                  height: getProptionateScreenHeight(10),
                 ),
                 CustomTextField(
                   text: 'Chronic diseases',
+                  onTap: (){
+                    Navigator.pushNamed(context, '/chronicDiseases');
+                  },
                 ),
                 Divider(
                   color: Colors.black,
@@ -100,6 +106,9 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                   text: 'Previous medical operations',
+                  onTap: (){
+                    Navigator.pushNamed(context, '/PreviousMedicalOperations');
+                  },
                 ),
                 Divider(
                   color: Colors.black,
@@ -107,6 +116,10 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                   text: 'Previous medical diagnoses',
+                  onTap: (){
+                    Navigator.pushNamed(context, '/PrevuiosMedicalDiagnoses');
+                  },
+
                 ),
                 Divider(
                   color: Colors.black,
@@ -125,14 +138,14 @@ class Profile extends StatelessWidget {
 
                 // Medicines Section
                 SizedBox(
-                  height: getProptionateScreenHeight(50),
+                  height: getProptionateScreenHeight(30),
                 ),
                 CustomHorizontalRow(
                   text: 'Medicines',
                 ),
 
                 SizedBox(
-                  height: getProptionateScreenHeight(40),
+                  height: getProptionateScreenHeight(10),
                 ),
                 CustomTextField(
                   text: 'New medicines',
@@ -154,7 +167,7 @@ class Profile extends StatelessWidget {
                 ),
 
                 SizedBox(
-                  height: getProptionateScreenHeight(40),
+                  height: getProptionateScreenHeight(10),
                 ),
                 CustomTextField(
                     text: 'Personal information',
@@ -167,9 +180,10 @@ class Profile extends StatelessWidget {
                   text: 'Log Out',
                   onTap: () async  {
                     await AuthService().signOut();
-                    Navigator.pushReplacementNamed(context, '/SignIn');
+                    Navigator.pushNamedAndRemoveUntil(context, '/SignIn', (route) => false);
                   },
                 ),
+                SizedBox(height: 30,)
                 // ListTile(title: Text("Tagroba"), onTap: () {print("clicked");},),
               ],
             ),

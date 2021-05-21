@@ -5,12 +5,13 @@ import 'package:gp/GlobalComponents/custom_text.dart';
 import 'package:gp/GlobalComponents/custom_text_field.dart';
 import 'package:gp/auth.dart';
 import 'package:gp/constraints.dart';
+import 'package:gp/pages/profile/components/ChronicDiseaseCard.dart';
 
 import '../../../Size_Config.dart';
 import 'AppointmentsCard.dart';
 
 
-class AppointmentsDoctors extends StatelessWidget {
+class chronicDiseases extends StatelessWidget {
 
 
   @override
@@ -31,7 +32,7 @@ class AppointmentsDoctors extends StatelessWidget {
         backgroundColor: kliteColor,
         centerTitle: true,
         title: Text(
-          'Appointments',
+          'Chronic Diseases',
           style: TextStyle(
             color: kPrimaryColor,
             fontWeight: FontWeight.bold,
@@ -50,11 +51,11 @@ class AppointmentsDoctors extends StatelessWidget {
                     itemCount: 1,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return AppointmentsCard(
-                        fullDate: 'April 01, 2021 18:55',
-                        name: 'Dr. Youssef El-Shimy',
-                        title: 'Consaltant of Dermatology and Andrology',
-                        titleDate: 'April , 2021',
+                      return ChronicDiseaseCard(
+                        name: 'Diabetes',
+                        description: ' is a disease in which your blood glucose,'
+                            ' or blood sugar, levels are too high.'
+                            ' Glucose comes from the foods you eat.',
                       );
                     }),
               ),

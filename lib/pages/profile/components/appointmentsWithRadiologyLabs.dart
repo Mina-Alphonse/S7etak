@@ -41,18 +41,25 @@ class AppointmentsRadiologyLabs extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child:Column(
-          children: [
-            SizedBox(height: 12,),
-            Container(
-              child:  ListView.builder(
-                  itemCount: 1,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return AppointmentsCard();
-                  }),
-            ),
-          ],
+        child:SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 12,),
+              Container(
+                child:  ListView.builder(
+                    itemCount: 1,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return AppointmentsCard(
+                        fullDate: 'April 01, 2021 18:55',
+                        name: 'Alpha Scan Lab',
+                        title: 'Specified in radiology scans',
+                        titleDate: 'April , 2021',
+                      );
+                    }),
+              ),
+            ],
+          ),
         ),
       ),
     );

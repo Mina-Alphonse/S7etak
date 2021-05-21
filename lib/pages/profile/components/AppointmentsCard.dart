@@ -6,9 +6,9 @@ import '../../../constraints.dart';
 
 class AppointmentsCard extends StatelessWidget {
   const AppointmentsCard({
-    Key key,
+    Key key, this.fullDate, this.name, this.title, this.titleDate,
   }) : super(key: key);
-
+final String fullDate,name,title,titleDate;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,7 +34,7 @@ class AppointmentsCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'April 01, 2021 18:55',
+                      fullDate,
                       style: TextStyle(
                           color: kSecondaryColor,
                           fontSize: 13,
@@ -51,7 +51,7 @@ class AppointmentsCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Dr. Youssef El-Shimy',
+                          name,
                           style: TextStyle(
                             color: kPrimaryColor,
                             fontSize: 15,
@@ -62,7 +62,7 @@ class AppointmentsCard extends StatelessWidget {
 
                         ),
                         Text(
-                          'Consaltant of Dermatology and Andrology',
+                          title,
                           style: TextStyle(
                               color: kPrimaryColor.withOpacity(0.7),
                               fontSize: 8,
@@ -108,7 +108,7 @@ class AppointmentsCard extends StatelessWidget {
             height: getProptionateScreenHeight(50),
             alignment: Alignment.center,
             child: Text(
-              'April , 2021',
+              titleDate,
               style: TextStyle(
                 color: kPrimaryColor,
                 fontSize: getProptionateScreenHeight(30),
