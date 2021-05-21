@@ -54,35 +54,58 @@ class _HomeState extends State<Home> {
 
          ),
         drawer: Drawer(
-          child: Column(
-            children: [
-              UserAccountsDrawerHeader(
-                // height: MediaQuery.of(context).size.height / 3,
-                accountEmail: Text(
-                  "Testing Mail",
-                  style: TextStyle(color: kPrimaryLiteColor),
+
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                 kPrimaryColor,
+                  kPrimaryColor.withOpacity(0.5),
+                  kPrimaryColor.withOpacity(0.3),
+                  kliteColor.withOpacity(0.3)
+                ]
+              )
+            ),
+            child: Column(
+              children: [
+                UserAccountsDrawerHeader(
+                  // height: MediaQuery.of(context).size.height / 3,
+                  accountEmail: Text(
+                    "Testing Mail",
+                    style: TextStyle(color: kliteColor),
+                  ),
+                  accountName: Text(
+                    "Tesint Name",
+                    style: TextStyle(
+                        color: kliteColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25
+
+                    ),
+                  ),
+                  decoration: BoxDecoration(color: kPrimaryColor),
                 ),
-                accountName: Text(
-                  "Tesint Name",
-                  style: TextStyle(color: kPrimaryLiteColor),
-                ),
-                decoration: BoxDecoration(color: kliteColor),
-              ),
-              ListView.builder(
-                  itemCount: asami.length,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      trailing: Icon(Icons.icecream,color: kPrimaryLiteColor,),
-                      title: Text(
-                        asami[index],
-                        style: TextStyle(color: kPrimaryLiteColor),
-                      ),
-                      onTap: () {},
-                    );
-                  })
-            ],
+                ListView.builder(
+                    itemCount: asami.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+
+                        trailing: Icon(Icons.icecream,color: kPrimaryColor,),
+                        title: Text(
+                          asami[index],
+                          style: TextStyle(color: kPrimaryColor),
+                        ),
+                        onTap: () {},
+                      );
+                    })
+              ],
+
+            ),
           ),
+
         ),
         body: SafeArea(
           child: SingleChildScrollView(child: Body()),

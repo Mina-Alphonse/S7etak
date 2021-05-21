@@ -126,38 +126,42 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
           // ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Row(
+            child: Container(
+              color: kliteColor,
+              child: Row(
+                children: [
+                  FlatButton(
+                      onPressed: () {
+                        setState(() {
+                          index = 0;
 
-              children: [
-                FlatButton(
-                    onPressed: () {
-                      setState(() {
-                        index = 0;
-                      });
-                    },
-                    child: Text("All")),
-                FlatButton(
-                    onPressed: () {
-                      setState(() {
-                        index = 1;
-                      });
-                    },
-                    child: Text("Doctor")),
-                FlatButton(
-                    onPressed: () {
-                      setState(() {
-                        index = 2;
-                      });
-                    },
-                    child: Text("Medical labs")),
-                FlatButton(
-                    onPressed: () {
-                      setState(() {
-                        index = 3;
-                      });
-                    },
-                    child: Text("Radiology Labs")),
-              ],
+                        });
+                      },
+
+                      child: Text("All")),
+                  FlatButton(
+                      onPressed: () {
+                        setState(() {
+                          index = 1;
+                        });
+                      },
+                      child: Text("Doctor")),
+                  FlatButton(
+                      onPressed: () {
+                        setState(() {
+                          index = 2;
+                        });
+                      },
+                      child: Text("Medical labs")),
+                  FlatButton(
+                      onPressed: () {
+                        setState(() {
+                          index = 3;
+                        });
+                      },
+                      child: Text("Radiology Labs")),
+                ],
+              ),
             ),
           ),
           _renderWidget()
