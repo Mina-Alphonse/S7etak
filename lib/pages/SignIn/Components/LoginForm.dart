@@ -173,19 +173,19 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
       child: ElevatedButton(
         onPressed: () async {
           try {
-            // String tempEmail = "fonsi@gmail.com";
-            // String tempPassword = "123456";
-            // print(email);
-            // print(password);
-            //
-            // FirebaseUser result =
-            //     await AuthService().signInWithMailAndPassword(email.trim(), password.trim());
-            // if (result != null){
-            //   //Grab user Data
-            //   String userID = result.uid;
-            //   print(userID);
-              // DatabaseService(uid: userID).infoCollection.document(userID).get();
-              Navigator.pushReplacementNamed(context, '/Home');//}
+            String tempEmail = "fonsi@gmail.com";
+            String tempPassword = "123456";
+            print(email);
+            print(password);
+
+            FirebaseUser result =
+                await AuthService().signInWithMailAndPassword(email.trim(), password.trim());
+            if (result != null){
+              //Grab user Data
+              String userID = result.uid;
+              print(userID);
+              DatabaseService(uid: userID).infoCollection.document(userID).get();
+              Navigator.pushReplacementNamed(context, '/Home');}
           } catch (error) {
             print(error);
           }
