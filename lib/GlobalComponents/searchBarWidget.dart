@@ -30,7 +30,7 @@ class _SearchbarWidgetState extends State<SearchbarWidget> {
         decoration: InputDecoration(
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
-          hintText: "Search for your service",
+          hintText: "Search",
           prefixIcon: Icon(Icons.search),
           suffixIcon: GestureDetector(
               onTap: () {
