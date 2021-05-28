@@ -8,6 +8,7 @@ import 'package:gp/pages/Home/Home.dart';
 
 import 'package:gp/pages/SignIn/SignIn.dart';
 import 'package:gp/pages/SignUp/SignUp.dart';
+import 'package:gp/pages/profile/components/MedicinesListWidget.dart';
 import 'package:gp/pages/profile/components/appointmentsWithMedicalLabs.dart';
 import 'package:gp/pages/profile/components/appointmentsWithRadiologyLabs.dart';
 import 'package:gp/pages/profile/components/chronicDiseases.dart';
@@ -40,6 +41,8 @@ void main() {
       '/PrevuiosMedicalDiagnoses':(context)=>PrevuiosMedicalDiagnoses(),
       '/PreviousMedicalOperations':(context)=>PreviousMedicalOperations(),
       '/cardDetails':(context)=>cardDetails(),
+      '/MedicineList':(context)=>MedicineList(),
+
 
     },
   ));

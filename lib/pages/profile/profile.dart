@@ -149,14 +149,11 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                   text: 'New medicines',
+                  onTap: (){
+                    Navigator.pushNamed(context, '/MedicineList');
+                  },
                 ),
-                Divider(
-                  color: Colors.black,
-                  thickness: 0.3,
-                ),
-                CustomTextField(
-                  text: 'My medicines',
-                ),
+
 
                 // Personal Info Section
                 SizedBox(

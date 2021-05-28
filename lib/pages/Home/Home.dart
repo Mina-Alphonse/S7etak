@@ -10,12 +10,15 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-List<String> asami = [
-  "fonsi 1",
-  "fonsi 2",
-  "fonsi 3",
-  "fonsi 4",
-  "fonsi 5",
+List<String> DrawerOptions = [
+
+  "Appointments",
+  "Medical Lab Results",
+  "Radiology Lab Results",
+  "Medicine",
+
+  "Personal information",
+
 ];
 
 class _HomeState extends State<Home> {
@@ -61,9 +64,8 @@ class _HomeState extends State<Home> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                 kPrimaryColor,
-                  kPrimaryColor.withOpacity(0.5),
-                  kPrimaryColor.withOpacity(0.3),
+                 kliteColor,
+
                   kliteColor.withOpacity(0.3)
                 ]
               )
@@ -88,14 +90,14 @@ class _HomeState extends State<Home> {
                   decoration: BoxDecoration(color: kPrimaryColor),
                 ),
                 ListView.builder(
-                    itemCount: asami.length,
+                    itemCount: DrawerOptions.length,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return ListTile(
 
                         trailing: Icon(Icons.icecream,color: kPrimaryColor,),
                         title: Text(
-                          asami[index],
+                          DrawerOptions[index],
                           style: TextStyle(color: kPrimaryColor),
                         ),
                         onTap: () {},
