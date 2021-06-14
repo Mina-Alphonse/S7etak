@@ -1,5 +1,3 @@
-import 'package:gp/stakeholdersClases/Doctors.dart';
-
 class Patients{
 
  String mail;
@@ -9,7 +7,7 @@ class Patients{
  String insuranceCompany;
  String insuranceId;
  bool isInsured;
- String chronicDisease;
+ List<dynamic> chronicDisease;
  String tests;
  String patientId;
  String age;

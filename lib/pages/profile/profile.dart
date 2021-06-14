@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gp/DataComponents/patientModel.dart';
 import 'package:gp/GlobalComponents/custom_horizontal_row.dart';
 import 'package:gp/GlobalComponents/custom_text.dart';
 import 'package:gp/GlobalComponents/custom_text_field.dart';
@@ -171,6 +172,9 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                     text: 'Personal information',
+                    onTap:(){
+                      Navigator.pushNamed(context, '/PatientModel');
+                    },
                   ),
                 Divider(
                   color: Colors.black,
@@ -178,13 +182,13 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                   text: 'Log Out',
-                  onTap: () async  {
+                  onTap: () async
+                  {
                     await AuthService().signOut();
                     Navigator.pushNamedAndRemoveUntil(context, '/SignIn', (route) => false);
                   },
                 ),
                 SizedBox(height: 30,)
-                // ListTile(title: Text("Tagroba"), onTap: () {print("clicked");},),
               ],
             ),
           ),

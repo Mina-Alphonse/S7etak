@@ -1,4 +1,7 @@
+
 import 'package:flutter/material.dart';
+import 'package:gp/DataComponents/patientModel.dart';
+import 'package:gp/DataComponents/pharmacyCard.dart';
 
 import 'package:gp/pages/Explore/Explore.dart';
 import 'package:gp/pages/Explore/components/CardDetails.dart';
@@ -40,6 +43,7 @@ void main() {
       '/PrevuiosMedicalDiagnoses':(context)=>PrevuiosMedicalDiagnoses(),
       '/PreviousMedicalOperations':(context)=>PreviousMedicalOperations(),
       '/cardDetails':(context)=>cardDetails(),
+      // '/PatientModel':(context) => PatientModel(),
 
     },
   ));

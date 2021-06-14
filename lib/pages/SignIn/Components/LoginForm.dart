@@ -8,6 +8,8 @@ import 'package:gp/database.dart';
 import '../../../Size_Config.dart';
 import '../../../constraints.dart';
 
+FirebaseUser result;
+
 class LoginFormWidget extends StatefulWidget {
   const LoginFormWidget({
     Key key,
@@ -178,7 +180,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
             print(email);
             print(password);
 
-            FirebaseUser result =
+            result =
                 await AuthService().signInWithMailAndPassword(email.trim(), password.trim());
             if (result != null){
               //Grab user Data

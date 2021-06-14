@@ -45,7 +45,7 @@ class _HomeState extends State<Home> {
              GestureDetector(
                  child: Icon(Icons.person,size: 30,),
                onTap: (){
-                   Navigator.pushNamed(context, '/Profile');
+                   Navigator.pushNamed(context, '/Profile',);
                },
              ),
              SizedBox(width: SizeConfig.screenWidth*0.05,

@@ -18,8 +18,6 @@ class CustomTextField extends StatelessWidget {
             text,
           ),
         ),
-        //SizedBox(height: getProptionateScreenWidth(10),),
-
       ],
     );
   }

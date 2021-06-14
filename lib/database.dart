@@ -1,20 +1,30 @@
+import 'package:gp/stakeholdersClases/InsuranceCompany.dart';
 import 'package:gp/stakeholdersClases/Labs.dart';
 import 'package:gp/stakeholdersClases/Patients.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:gp/stakeholdersClases/Pharmacies.dart';
 
 class DatabaseService {
 
-
+  //Data IDs
   final String uid;
+  final String insuranceCompanyId;
 
-  DatabaseService({this.uid});
+  DatabaseService({this.uid, this.insuranceCompanyId});
 
   //Collection reference
-  final CollectionReference infoCollection = Firestore.instance.collection('Patients');
-
+  final CollectionReference infoCollection = Firestore.instance.collection('Patients Personal Data');
   final CollectionReference labsCollection = Firestore.instance.collection('Labs');
-  List<Lab> finalLabs = List<Lab>();
+  final CollectionReference pharmaciesCollection = Firestore.instance.collection('Pharmacies');
+  final CollectionReference insuranceCompanyCollection = Firestore.instance.collection('Insurance Company');
+  // final CollectionReference medicalPlacesCollection = Firestore.instance.collection('Insurance Comapny').document().collection('Medical Places');
 
+  //Data Retrieval Lists
+  List<Lab> finalLabs = List<Lab>();
+  List<InsuranceCompany> finalInsuranceCompany = List<InsuranceCompany>();
+  List<Pharmacies> finalPharmacies = List<Pharmacies>();
+
+  //Labs Data Retrieval
   Stream<List<Lab>> get labsData{
     return labsCollection.snapshots().
     map(_labsDataFromSnapshot);
@@ -32,6 +42,68 @@ class DatabaseService {
     }).toList();
     return finalLabs;
   }
+
+  //Pharmacies Data Retrieval
+  Stream<List<Pharmacies>> get pharmaciesData
+  {
+    return pharmaciesCollection.snapshots().
+    map(_pharmacyDataFromSnapshot);
+  }
+
+  List<Pharmacies> _pharmacyDataFromSnapshot(QuerySnapshot snapshot)
+  {
+    finalPharmacies.clear();
+    finalPharmacies = snapshot.documents.map((pharmacy) {
+      return Pharmacies(
+        name: pharmacy.data['name'],
+        address: pharmacy.data['address'],
+      );
+    }).toList();
+    return finalPharmacies;
+  }
+
+  //Patient Data Retrieval
+  Stream<Patients> get patientData{
+    return infoCollection.document(uid).snapshots().
+    map(_patientDataFromSnapshot);
+  }
+
+  Patients _patientDataFromSnapshot(DocumentSnapshot snapshot){
+    return Patients(
+      patientId: uid,
+      name: snapshot.data['name'],
+      phone: snapshot.data['phone'],
+      mail: snapshot.data['mail'],
+      address: snapshot.data['address'],
+      age: snapshot.data['age'],
+      chronicDisease: snapshot.data['chronicDisease'],
+      gender: snapshot.data['gender'],
+      insuranceCompany: snapshot.data['insuranceCompany'],
+      insuranceId: snapshot.data['insuranceId'],
+      isInsured: snapshot.data['inInsured'],
+      // tests: snapshot.data['tests'],
+    );
+  }
+
+
+  //Insurance Company Data Retrieval
+  Stream<List<InsuranceCompany>> get insuranceCompanyData{
+    return insuranceCompanyCollection.snapshots().
+    map(_insuranceCompanyDataFromSnapshot);
+  }
+  List<InsuranceCompany> _insuranceCompanyDataFromSnapshot(QuerySnapshot snapshot)
+  {
+    finalInsuranceCompany.clear();
+    finalInsuranceCompany = snapshot.documents.map((company) {
+      return InsuranceCompany(
+        name: company.data['name'],
+        address: company.data['address'],
+        companyPhoneNumber: company.data['phone'],
+      );
+    });
+    return finalInsuranceCompany;
+  }
+
 
   Future updatePatientData (Patients patient)async
   {
@@ -55,21 +127,6 @@ class DatabaseService {
       'mail': patient.mail,
       'phone' : patient.phone,
     });
-  }
-
-
-  //Get User Stream
-  Stream<Patients> get patientData{
-    return infoCollection.document(uid).snapshots().map(_patientDataFromSnapshot);
-  }
-
-  Patients _patientDataFromSnapshot(DocumentSnapshot snapshot){
-    return Patients(
-      patientId: uid,
-      name: snapshot.data['name'],
-      phone: snapshot.data['phone'],
-      mail: snapshot.data['mail'],
-    );
   }
 
   ///Referal Data Starts Here
