@@ -1,11 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:gp/Database.dart';
 import 'package:gp/Size_Config.dart';
 import 'package:gp/constraints.dart';
 import 'package:gp/pages/sliderPage/slider_page.dart';
-import 'SignIn/SignIn.dart';
 
 
 

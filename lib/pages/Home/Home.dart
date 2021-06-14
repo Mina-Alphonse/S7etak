@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gp/Size_Config.dart';
+import 'package:gp/auth.dart';
 import 'package:gp/pages/Home/Components/Body.dart';
 
 import '../../constraints.dart';
@@ -11,11 +12,11 @@ class Home extends StatefulWidget {
 }
 
 List<String> asami = [
-  "fonsi 1",
-  "fonsi 2",
-  "fonsi 3",
-  "fonsi 4",
-  "fonsi 5",
+  "Appointments",
+  "Medical History",
+  "Personal Info",
+  "Log out",
+  "",
 ];
 
 class _HomeState extends State<Home> {
@@ -73,11 +74,11 @@ class _HomeState extends State<Home> {
                 UserAccountsDrawerHeader(
                   // height: MediaQuery.of(context).size.height / 3,
                   accountEmail: Text(
-                    "Testing Mail",
+                    "Fonsi@gmail.com",
                     style: TextStyle(color: kliteColor),
                   ),
                   accountName: Text(
-                    "Testing Name",
+                    "Mina Alphonse",
                     style: TextStyle(
                         color: kliteColor,
                       fontWeight: FontWeight.bold,

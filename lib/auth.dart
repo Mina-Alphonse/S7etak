@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:gp/stakeholdersClases/Patients.dart';
 import 'database.dart';
 import 'userDataClass.dart';
 import 'user.dart';
@@ -37,11 +38,11 @@ class AuthService{
 
 
   //mail and password
-  Future registerWithMailAndPassword (String password,UserDataClass userDataClass)async {
+  Future registerWithMailAndPassword (String password,Patients patients)async {
     try{
-      AuthResult result = await _auth.createUserWithEmailAndPassword(email: userDataClass.mail , password:password);
+      AuthResult result = await _auth.createUserWithEmailAndPassword(email: patients.mail , password:password);
       FirebaseUser user = result.user;
-      await DatabaseService(uid: result.user.uid).updateUserData(userDataClass);
+      await DatabaseService(uid: result.user.uid).updatePatientData(patients);
       // UserDataClass referalClass = new UserDataClass(name:name,phone:phone,mail:email);
       // await DatabaseService(uid: user.uid).updateUserData(referalClass);
       /*ReferalData referalData = new ReferalData(

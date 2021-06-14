@@ -4,6 +4,8 @@ import 'package:gp/Size_Config.dart';
 
 import 'package:gp/constraints.dart';
 import 'package:gp/pages/Explore/components/CardItem.dart';
+import 'package:gp/stakeholdersClases/Labs.dart';
+import 'package:provider/provider.dart';
 
 class CategoriesWidget extends StatefulWidget {
   final String header;
@@ -31,99 +33,6 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
 
       child: Column(
         children: <Widget>[
-          // ButtonsTabBar(
-          //
-          //   backgroundColor: kPrimaryColor,
-          //   unselectedBackgroundColor: kliteColor,
-          //   unselectedLabelStyle: TextStyle(
-          //       color: kPrimaryColor,
-          //     fontFamily: mainFont,
-          //   ),
-          //   borderWidth: 1,
-          //   unselectedBorderColor: kPrimaryColor,
-          //   labelStyle:TextStyle(
-          //     fontFamily: mainFont,
-          //       fontSize: 15,
-          //
-          //       color: Colors.white,
-          //       fontWeight: FontWeight.bold
-          //
-          //   ),
-          //   radius: 10,
-          //   height: 50,
-          //   contentPadding: EdgeInsets.symmetric(horizontal: 8),
-          //
-          //   tabs: [
-          //     Tab(
-          //       text: categoriesdata[0].name,
-          //         // child: GestureDetector(
-          //         //     child: Text(categoriesdata[0].name,),
-          //         //     onTap:(){
-          //         //       setState(() {
-          //         //
-          //         //         modelCategory.change(categoriesdata[0].id);
-          //         //
-          //         //         print(Model.SelectedCategory);
-          //         //       });
-          //         //     }
-          //         // )
-          //     ),
-          //     Tab(
-          //       text: categoriesdata[1].name,
-          //         // child: GestureDetector(
-          //         //   child: Text(categoriesdata[1].name,),
-          //         // onTap:(){
-          //         //   setState(() {
-          //         //     modelCategory.change(categoriesdata[1].id);
-          //         //
-          //         //     print(Model.SelectedCategory);
-          //         //   });
-          //         // }
-          //         // )
-          //     ),
-          //     Tab(
-          //         text: categoriesdata[2].name,
-          //         // child: GestureDetector(
-          //         //     onTap:(){
-          //         //       setState(() {
-          //         //         SelectedCategory= categoriesdata[2].id;
-          //         //       });
-          //         //     }
-          //         // )
-          //     ),
-          //     Tab(
-          //         text: categoriesdata[3].name
-          //         ,
-          //         // child: GestureDetector(
-          //         //     onTap:(){
-          //         //       setState(() {
-          //         //         SelectedCategory= categoriesdata[3].id;
-          //         //       });
-          //         //     }
-          //         // )
-          //     ),
-          //     Tab(
-          //         text: categoriesdata[4].name,
-          //         // child: GestureDetector(
-          //         //     onTap:(){
-          //         //       setState(() {
-          //         //         SelectedCategory= categoriesdata[4].id;
-          //         //       });
-          //         //     }
-          //         // )
-          //     ),
-          //     Tab(
-          //       text: categoriesdata[5].name,
-          //         // child: GestureDetector(
-          //         //     onTap:(){
-          //         //       setState(() {
-          //         //         SelectedCategory= categoriesdata[5].id;
-          //         //       });
-          //         //     }
-          //         // )
-          //     ),
-          //   ],
-          // ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Container(
@@ -207,6 +116,9 @@ class _allListBuilderState extends State<allListBuilder> {
   Icon savedIcon = Icon(Icons.bookmark_border);
 
   Widget build(BuildContext context) {
+
+    List<Lab> labsLsit = Provider.of<List<Lab>>(context);
+
     return Center(
       child: ListView.builder(
         itemCount: doctorList.length,
@@ -232,7 +144,8 @@ class _allListBuilderState extends State<allListBuilder> {
                       ),
                     ),
                   ),
-                  //decription
+
+                  // Description
                   Container(
                     padding: EdgeInsets.all(4),
                     child: Column(
@@ -244,7 +157,7 @@ class _allListBuilderState extends State<allListBuilder> {
                             Container(
                               width: getProptionateScreenWidth(150),
                               child: Text(
-                                doctorList[index].name,
+                                labsLsit[0].name,
                                 style: TextStyle(
                                     fontSize: getProptionateScreenWidth(15),
                                     fontWeight: FontWeight.bold,
@@ -252,7 +165,6 @@ class _allListBuilderState extends State<allListBuilder> {
                                     fontFamily: mainFont),
                               ),
                             ),
-                            //SizedBox(width: getProptionateScreenWidth(17),),
                             //icon
                             IconButton(
                                 iconSize: 30,

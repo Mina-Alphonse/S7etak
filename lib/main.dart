@@ -25,7 +25,7 @@ void main() {
     initialRoute: '/',
     routes:{
 
-      '/':(context)=>Welcome(),
+      '/':(context)=>Welcome(), //Welcome screen
       '/SignIn':(context)=>SignIn(),
       '/SignUp':(context)=>SignUp(),
 

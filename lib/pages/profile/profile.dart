@@ -1,4 +1,4 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:gp/GlobalComponents/custom_horizontal_row.dart';
 import 'package:gp/GlobalComponents/custom_text.dart';
 import 'package:gp/GlobalComponents/custom_text_field.dart';

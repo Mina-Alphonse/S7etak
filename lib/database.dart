@@ -1,47 +1,73 @@
-import 'package:gp/user.dart';
+import 'package:gp/stakeholdersClases/Labs.dart';
+import 'package:gp/stakeholdersClases/Patients.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'userDataClass.dart';
 
 class DatabaseService {
 
 
   final String uid;
+
   DatabaseService({this.uid});
+
   //Collection reference
-  final CollectionReference infoCollection = Firestore.instance.collection('Patients Personal Data');
+  final CollectionReference infoCollection = Firestore.instance.collection('Patients');
 
+  final CollectionReference labsCollection = Firestore.instance.collection('Labs');
+  List<Lab> finalLabs = List<Lab>();
 
-  Future updateUserData (UserDataClass userData)async
+  Stream<List<Lab>> get labsData{
+    return labsCollection.snapshots().
+    map(_labsDataFromSnapshot);
+  }
+  List<Lab> _labsDataFromSnapshot(QuerySnapshot snapshot)
+  {
+    finalLabs.clear();
+    finalLabs = snapshot.documents.map((lab) {
+      return Lab(
+        name: lab.data['name']?? '',
+        phone: lab.data['phone'] ?? '' ,
+        dates: lab.data['dates'] ?? '',
+        address: lab.data['address'] ?? '',
+        );
+    }).toList();
+    return finalLabs;
+  }
+
+  Future updatePatientData (Patients patient)async
   {
     return await infoCollection.document(uid).setData({
-      'name' : userData.name,
-      'mail': userData.mail,
-      'phone' : userData.phone,
-      'age': userData.age,
-      'gender': userData.gender,
-      'insuranceId':userData.insuranceId,
+      'name' : patient.name,
+      'mail': patient.mail,
+      'phone' : patient.phone,
+      'age': patient.age,
+      'gender': patient.gender,
+      'insuranceId':patient.insuranceId,
+      'insuranceCompany': patient.insuranceCompany,
+      'isInsured':patient.isInsured,
     });
   }
 
-  Future updateUserDataFromSettings (UserData userData)async
+
+  Future updatePatientDataFromSettings (Patients patient)async
   {
     return await infoCollection.document(uid).setData({
-      'name' : userData.name,
-      'mail': userData.mail,
-      'phone' : userData.number,
+      'name' : patient.name,
+      'mail': patient.mail,
+      'phone' : patient.phone,
     });
   }
+
 
   //Get User Stream
-  Stream<UserData> get userData{
-    return infoCollection.document(uid).snapshots().map(_userDataFromSnapshot);
+  Stream<Patients> get patientData{
+    return infoCollection.document(uid).snapshots().map(_patientDataFromSnapshot);
   }
 
-  UserData _userDataFromSnapshot(DocumentSnapshot snapshot){
-    return UserData(
-      uid: uid,
+  Patients _patientDataFromSnapshot(DocumentSnapshot snapshot){
+    return Patients(
+      patientId: uid,
       name: snapshot.data['name'],
-      number: snapshot.data['phone'],
+      phone: snapshot.data['phone'],
       mail: snapshot.data['mail'],
     );
   }
