@@ -1,11 +1,13 @@
+import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import 'package:gp/Size_Config.dart';
 
 import 'package:gp/constraints.dart';
 import 'package:gp/pages/Explore/components/CardItem.dart';
-import 'package:gp/stakeholdersClases/Labs.dart';
-import 'package:provider/provider.dart';
+
+import '../../../categorieslistdata.dart';
 
 class CategoriesWidget extends StatefulWidget {
   final String header;
@@ -33,46 +35,74 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
 
       child: Column(
         children: <Widget>[
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Container(
-              color: kliteColor,
-              child: Row(
-                children: [
-                  FlatButton(
-                      onPressed: () {
-                        setState(() {
-                          index = 0;
+          Container(
+            padding: EdgeInsets.all(3),
+            decoration: BoxDecoration(
 
-                        });
-                      },
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.3),
+                  spreadRadius: 1,
+                  blurRadius: 1,
+                  offset: Offset(0, 1), // changes position of shadow
+                ),
+              ],
+            ),
+            child: ButtonsTabBar(
 
-                      child: Text("All")),
-                  FlatButton(
-                      onPressed: () {
-                        setState(() {
-                          index = 1;
-                        });
-                      },
-                      child: Text("Doctor")),
-                  FlatButton(
-                      onPressed: () {
-                        setState(() {
-                          index = 2;
-                        });
-                      },
-                      child: Text("Medical labs")),
-                  FlatButton(
-                      onPressed: () {
-                        setState(() {
-                          index = 3;
-                        });
-                      },
-                      child: Text("Radiology Labs")),
-                ],
+              backgroundColor: kPrimaryColor,
+              unselectedBackgroundColor: kliteColor,
+              unselectedLabelStyle: TextStyle(
+                  color: kPrimaryColor,
+                fontFamily: mainFont,
               ),
+             // borderWidth: 1,
+              //unselectedBorderColor: kPrimaryColor,
+              labelStyle:TextStyle(
+                fontFamily: mainFont,
+                  fontSize: 15,
+
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold
+
+              ),
+              radius: 10,
+              //height: 50,
+              contentPadding: EdgeInsets.symmetric(horizontal: 8),
+
+              tabs: [
+                Tab(
+                  text: categoriesdata[0].name,
+
+
+                ),
+                Tab(
+                  text: categoriesdata[1].name,
+
+                ),
+                Tab(
+                    text: categoriesdata[2].name,
+
+                ),
+                Tab(
+                    text: categoriesdata[3].name
+                    ,
+
+                ),
+                Tab(
+                    text: categoriesdata[4].name,
+
+                ),
+                Tab(
+                  text: categoriesdata[5].name,
+
+                ),
+              ],
             ),
           ),
+          SizedBox(height: 5,),
           _renderWidget()
         ],
       ),
@@ -116,9 +146,6 @@ class _allListBuilderState extends State<allListBuilder> {
   Icon savedIcon = Icon(Icons.bookmark_border);
 
   Widget build(BuildContext context) {
-
-    List<Lab> labsLsit = Provider.of<List<Lab>>(context);
-
     return Center(
       child: ListView.builder(
         itemCount: doctorList.length,
@@ -144,8 +171,7 @@ class _allListBuilderState extends State<allListBuilder> {
                       ),
                     ),
                   ),
-
-                  // Description
+                  //decription
                   Container(
                     padding: EdgeInsets.all(4),
                     child: Column(
@@ -157,7 +183,7 @@ class _allListBuilderState extends State<allListBuilder> {
                             Container(
                               width: getProptionateScreenWidth(150),
                               child: Text(
-                                labsLsit[0].name,
+                                doctorList[index].name,
                                 style: TextStyle(
                                     fontSize: getProptionateScreenWidth(15),
                                     fontWeight: FontWeight.bold,
@@ -165,6 +191,7 @@ class _allListBuilderState extends State<allListBuilder> {
                                     fontFamily: mainFont),
                               ),
                             ),
+                            //SizedBox(width: getProptionateScreenWidth(17),),
                             //icon
                             IconButton(
                                 iconSize: 30,
@@ -201,32 +228,28 @@ class _allListBuilderState extends State<allListBuilder> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            //1rate
-                            // RatingBar.builder(
-                            //   itemSize: 15,
-                            //   initialRating: 4,
-                            //   minRating: 1,
-                            //   direction: Axis.horizontal,
-                            //   allowHalfRating: true,
-                            //   itemCount: 5,
-                            //   itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-                            //   itemBuilder: (context, _) => Icon(
-                            //     Icons.star,
-                            //     color: Colors.amber,
-                            //   ),
-                            //   onRatingUpdate: (rating) {
-                            //     print(rating);
-                            //   },
-                            // ),
-                            //2Button to book
-                            // SizedBox(
-                            //   width: getProptionateScreenWidth(55),
-                            // ),
+                            Container(
+                              width:100,
+                              child: FlutterRatingBar(
+
+                                itemSize: 20,
+                                initialRating: 3,
+                                fillColor: Colors.amber,
+                                borderColor: Colors.amber.withAlpha(250),
+                                allowHalfRating: true,
+                                onRatingUpdate: (rating) {
+                                  print(rating);
+                                },
+                              ),
+                            ),
+                            SizedBox(width: 5,),
                             Padding(
                                 padding: EdgeInsets.only(top: 5, bottom: 5),
                                 child: RaisedButton(
                                   elevation: 3,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, '/cardDetails');
+                                  },
                                   child: Text(
                                     "Book",
                                     style: TextStyle(
