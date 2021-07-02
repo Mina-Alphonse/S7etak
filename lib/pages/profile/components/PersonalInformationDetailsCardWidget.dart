@@ -68,6 +68,11 @@ class PersonalInformationDetailsCardWidget extends StatelessWidget {
                   thickness: 0.5,
                   color: Colors.black.withOpacity(0.5),
                 ),
+                personalinforows(text:'Fonsi',text2: 'Insurance Company',),
+                Divider(
+                  thickness: 0.5,
+                  color: Colors.black.withOpacity(0.5),
+                ),
                 personalinforows(text:'fonsi@gmail.com',text2: 'Email',),
                 Divider(
                   thickness: 0.5,
