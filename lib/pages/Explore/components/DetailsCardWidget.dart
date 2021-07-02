@@ -194,7 +194,15 @@ class DetailesCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: FlatButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime.now(),
+                          lastDate: DateTime(2022),
+
+                      );
+                    },
                     child: Text(
                       "Book",
                       style: TextStyle(
