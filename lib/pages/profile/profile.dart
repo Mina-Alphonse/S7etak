@@ -178,7 +178,7 @@ class Profile extends StatelessWidget {
                 CustomTextField(
                     text: 'Personal information',
                     onTap:(){
-                      Navigator.pushNamed(context, '/PatientModel');
+                      Navigator.pushNamed(context, '/PersonalInformationCardDetails');
                     },
                   ),
                 Divider(

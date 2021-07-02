@@ -5,6 +5,7 @@ import 'package:gp/DataComponents/pharmacyCard.dart';
 
 import 'package:gp/pages/Explore/Explore.dart';
 import 'package:gp/pages/Explore/components/CardDetails.dart';
+import 'package:gp/pages/Home/Components/MeasureHeartRhythm.dart';
 import 'package:gp/pages/Home/Home.dart';
 
 
@@ -13,6 +14,7 @@ import 'package:gp/pages/SignIn/SignIn.dart';
 import 'package:gp/pages/SignUp/SignUp.dart';
 import 'package:gp/pages/profile/components/MedicalLabsResults.dart';
 import 'package:gp/pages/profile/components/MedicinesListWidget.dart';
+import 'package:gp/pages/profile/components/PersonalInformationCardDetails.dart';
 import 'package:gp/pages/profile/components/RadiologyLabsResults.dart';
 import 'package:gp/pages/profile/components/appointmentsWithMedicalLabs.dart';
 import 'package:gp/pages/profile/components/appointmentsWithRadiologyLabs.dart';
@@ -53,6 +55,8 @@ void main() {
       '/RadiologyLabsResults':(context)=>RadiologyLabsResults(),
 
       '/blankPdf':(context)=>blankPdf(),
+      '/PersonalInformationCardDetails':(context)=>PersonalInformationCardDetails(),
+      '/MeasureHeartRhythm':(context)=>MeasureHeartRhythm(),
 
 
 

@@ -27,7 +27,7 @@ List<String> DrawerOptionslinks = [
   "/RadiologyLabsResults",
   "/MedicineList",
 
-  "Personal information",
+  "/PersonalInformationCardDetails",
 ];
 
 List<String> asami = [

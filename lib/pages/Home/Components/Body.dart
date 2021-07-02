@@ -38,18 +38,18 @@ class Body extends StatelessWidget {
                   txtColor: kliteColor,
                 )
             ),
-            GestureDetector(
-                onTap: (){
-                  //Navigator.pushNamed(context, '/Explore');
-                },
-                child: HomeContainers(
-                  imgURL: 'assets/stats.jpg',
-                  text1: 'Statistics',
-                  text2: 'For Health',
-                  color: kliteColor,
-                  txtColor: kPrimaryColor,
-                )
-            ),
+            // GestureDetector(
+            //     onTap: (){
+            //       //Navigator.pushNamed(context, '/Explore');
+            //     },
+            //     child: HomeContainers(
+            //       imgURL: 'assets/stats.jpg',
+            //       text1: 'Statistics',
+            //       text2: 'For Health',
+            //       color: kliteColor,
+            //       txtColor: kPrimaryColor,
+            //     )
+            // ),
             GestureDetector(
                 onTap: (){
                   Navigator.pushNamed(context, '/MedicineList');
@@ -64,7 +64,7 @@ class Body extends StatelessWidget {
             ),
             GestureDetector(
                 onTap: (){
-                 // Navigator.pushNamed(context, '/Explore');
+                  Navigator.pushNamed(context, '/MeasureHeartRhythm');
                 },
                 child: HomeContainers(
                   imgURL: 'assets/beat.jpg',
