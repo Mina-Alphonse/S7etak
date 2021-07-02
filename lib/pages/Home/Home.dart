@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gp/Size_Config.dart';
+import 'package:gp/auth.dart';
 import 'package:gp/pages/Home/Components/Body.dart';
 
 import '../../constraints.dart';
@@ -18,6 +19,23 @@ List<String> DrawerOptions = [
   "Medicine",
 
   "Personal information",
+];
+List<String> DrawerOptionslinks = [
+
+  "/Profile",
+  "/MedicalLabsResults",
+  "/RadiologyLabsResults",
+  "/MedicineList",
+
+  "Personal information",
+];
+
+List<String> asami = [
+  "Appointments",
+  "Medical History",
+  "Personal Info",
+  "Log out",
+  "",
 
 ];
 
@@ -47,7 +65,7 @@ class _HomeState extends State<Home> {
              GestureDetector(
                  child: Icon(Icons.person,size: 30,),
                onTap: (){
-                   Navigator.pushNamed(context, '/Profile');
+                   Navigator.pushNamed(context, '/Profile',);
                },
              ),
              SizedBox(width: SizeConfig.screenWidth*0.05,
@@ -75,11 +93,11 @@ class _HomeState extends State<Home> {
                 UserAccountsDrawerHeader(
                   // height: MediaQuery.of(context).size.height / 3,
                   accountEmail: Text(
-                    "Testing Mail",
+                    "Fonsi@gmail.com",
                     style: TextStyle(color: kliteColor),
                   ),
                   accountName: Text(
-                    "Testing Name",
+                    "Mina Alphonse",
                     style: TextStyle(
                         color: kliteColor,
                       fontWeight: FontWeight.bold,
@@ -100,7 +118,9 @@ class _HomeState extends State<Home> {
                           DrawerOptions[index],
                           style: TextStyle(color: kPrimaryColor),
                         ),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(context, DrawerOptionslinks[index]);
+                        },
                       );
                     })
               ],

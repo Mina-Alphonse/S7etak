@@ -5,11 +5,11 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gp/GlobalComponents/copyRight.dart';
 import 'package:gp/GlobalComponents/logoandslogen.dart';
+import 'package:gp/stakeholdersClases/Patients.dart';
 
 import '../../Size_Config.dart';
 import '../../auth.dart';
 import '../../constraints.dart';
-import '../../userDataClass.dart';
 import 'Components/GenderTextForm.dart';
 
 class SignUp extends StatefulWidget {
@@ -346,7 +346,7 @@ class _SignUpState extends State<SignUp> {
           print(password);
           print(confirmPassword);
           try {
-            UserDataClass userData = UserDataClass(
+            Patients patientData = Patients(
               mail: email,
               age: age,
               name: fullName,
@@ -355,7 +355,7 @@ class _SignUpState extends State<SignUp> {
               phone: phone,
             );
             var result = await AuthService()
-                .registerWithMailAndPassword(password, userData);
+                .registerWithMailAndPassword(password, patientData);
             if (result != null) print("successful sign up");
           } catch (error) {
             print(error);

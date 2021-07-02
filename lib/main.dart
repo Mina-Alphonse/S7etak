@@ -1,4 +1,7 @@
+
 import 'package:flutter/material.dart';
+import 'package:gp/DataComponents/patientModel.dart';
+import 'package:gp/DataComponents/pharmacyCard.dart';
 
 import 'package:gp/pages/Explore/Explore.dart';
 import 'package:gp/pages/Explore/components/CardDetails.dart';
@@ -8,9 +11,12 @@ import 'package:gp/pages/Home/Home.dart';
 
 import 'package:gp/pages/SignIn/SignIn.dart';
 import 'package:gp/pages/SignUp/SignUp.dart';
+import 'package:gp/pages/profile/components/MedicalLabsResults.dart';
 import 'package:gp/pages/profile/components/MedicinesListWidget.dart';
+import 'package:gp/pages/profile/components/RadiologyLabsResults.dart';
 import 'package:gp/pages/profile/components/appointmentsWithMedicalLabs.dart';
 import 'package:gp/pages/profile/components/appointmentsWithRadiologyLabs.dart';
+import 'package:gp/pages/profile/components/blankPdf.dart';
 import 'package:gp/pages/profile/components/chronicDiseases.dart';
 import 'package:gp/pages/profile/profile.dart';
 
@@ -27,7 +33,7 @@ void main() {
     initialRoute: '/',
     routes:{
 
-      '/':(context)=>Welcome(),
+      '/':(context)=>Welcome(), //Welcome screen
       '/SignIn':(context)=>SignIn(),
       '/SignUp':(context)=>SignUp(),
 
@@ -41,7 +47,17 @@ void main() {
       '/PrevuiosMedicalDiagnoses':(context)=>PrevuiosMedicalDiagnoses(),
       '/PreviousMedicalOperations':(context)=>PreviousMedicalOperations(),
       '/cardDetails':(context)=>cardDetails(),
+
       '/MedicineList':(context)=>MedicineList(),
+      '/MedicalLabsResults':(context)=>MedicalLabsResults(),
+      '/RadiologyLabsResults':(context)=>RadiologyLabsResults(),
+
+      '/blankPdf':(context)=>blankPdf(),
+
+
+
+
+      // '/PatientModel':(context) => PatientModel(),
 
 
     },

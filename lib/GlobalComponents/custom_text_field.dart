@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gp/Size_Config.dart';
 
-import 'custom_text.dart';
 
 class CustomTextField extends StatelessWidget {
   final Function onTap;
@@ -20,8 +18,6 @@ class CustomTextField extends StatelessWidget {
             text,
           ),
         ),
-        //SizedBox(height: getProptionateScreenWidth(10),),
-
       ],
     );
   }

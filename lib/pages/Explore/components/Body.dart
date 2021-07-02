@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
+import 'package:gp/database.dart';
+import 'package:gp/stakeholdersClases/Labs.dart';
 
-import 'package:gp/categorieslistdata.dart';
+import 'package:provider/provider.dart';
 
-import '../../../Size_Config.dart';
-import 'CardItem.dart';
 import 'CategoriesListWidget.dart';
 
 class Body extends StatefulWidget {
@@ -22,31 +22,25 @@ class _BodyState extends State<Body> {
 
   build(BuildContext context) {
 
-    return Column(
+    return StreamProvider<List<Lab>>.value(
+      value: DatabaseService().labsData,
+      child: Column(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: TabBarView(
+                children: [
+                  CategoriesWidget("Explore"),
+                  CategoriesWidget("Recommended"),
+                  CategoriesWidget("Saved"),
 
-      children: [
-        // SizedBox(height: 2,),
-        // Container(
-        //     margin: EdgeInsets.symmetric(horizontal: 20),
-        //     height: getProptionateScreenHeight(102 ),
-        //     child: CategoriesWidget()
-        // ),
-        // SizedBox(height: 10,),
-        Expanded(
-
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: TabBarView(
-              children: [
-                CategoriesWidget("Explore"),
-                CategoriesWidget("Recommended"),
-                CategoriesWidget("Saved"),
-
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

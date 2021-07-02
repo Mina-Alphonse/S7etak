@@ -52,7 +52,7 @@ class Body extends StatelessWidget {
             ),
             GestureDetector(
                 onTap: (){
-                 // Navigator.pushNamed(context, '/Explore');
+                  Navigator.pushNamed(context, '/MedicineList');
                 },
                 child: HomeContainers(
                   imgURL: 'assets/med.jpg',
@@ -77,7 +77,7 @@ class Body extends StatelessWidget {
 
             GestureDetector(
                 onTap: (){
-                  //Navigator.pushNamed(context, '/Explore');
+                  Navigator.pushNamed(context, '/MedicalLabsResults');
                 },
                 child: HomeContainers(
                   imgURL: 'assets/labs.jpg',

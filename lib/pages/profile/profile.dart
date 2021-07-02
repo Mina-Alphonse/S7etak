@@ -1,4 +1,5 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:gp/DataComponents/patientModel.dart';
 import 'package:gp/GlobalComponents/custom_horizontal_row.dart';
 import 'package:gp/GlobalComponents/custom_text.dart';
 import 'package:gp/GlobalComponents/custom_text_field.dart';
@@ -127,6 +128,9 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                   text: 'Medical labs results',
+                  onTap: (){
+                    Navigator.pushNamed(context, '/MedicalLabsResults');
+                  },
                 ),
                 Divider(
                   color: Colors.black,
@@ -134,6 +138,9 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                   text: 'Radiology labs results',
+                  onTap: (){
+                    Navigator.pushNamed(context, '/RadiologyLabsResults');
+                  },
                 ),
 
                 // Medicines Section
@@ -152,6 +159,8 @@ class Profile extends StatelessWidget {
                   onTap: (){
                     Navigator.pushNamed(context, '/MedicineList');
                   },
+
+
                 ),
 
 
@@ -168,6 +177,9 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                     text: 'Personal information',
+                    onTap:(){
+                      Navigator.pushNamed(context, '/PatientModel');
+                    },
                   ),
                 Divider(
                   color: Colors.black,
@@ -175,13 +187,13 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                   text: 'Log Out',
-                  onTap: () async  {
+                  onTap: () async
+                  {
                     await AuthService().signOut();
                     Navigator.pushNamedAndRemoveUntil(context, '/SignIn', (route) => false);
                   },
                 ),
                 SizedBox(height: 30,)
-                // ListTile(title: Text("Tagroba"), onTap: () {print("clicked");},),
               ],
             ),
           ),
