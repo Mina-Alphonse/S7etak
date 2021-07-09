@@ -1,20 +1,20 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gp/GlobalComponents/titlesInMainApp.dart';
-import 'package:gp/Size_Config.dart';
 import 'package:gp/constraints.dart';
-import 'package:gp/pages/Explore/components/categorieslist.dart';
+import 'package:gp/pages/Explore/Explore.dart';
 
-import 'package:gp/pages/Home/Components/HomeFeatures.dart';
 import 'package:gp/pages/Home/Components/HomeContainers.dart';
-
-import '../../../GlobalComponents/searchBarWidget.dart';
-import 'OptionsinHome.dart';
+import 'package:gp/stakeholdersClases/Hospitals.dart';
+import 'package:gp/stakeholdersClases/InsuranceCompany.dart';
 
 class Body extends StatelessWidget {
+  final InsuranceCompany insuranceCompany;
+  final List<Hospitals> hospitalsList;
   const Body({
     Key key,
+    this.hospitalsList,
+    this.insuranceCompany,
   }) : super(key: key);
 
   @override
@@ -28,7 +28,12 @@ class Body extends StatelessWidget {
             SizedBox(height: 10,),
             GestureDetector(
                 onTap: (){
-                  Navigator.pushNamed(context, '/Explore');
+                  // Navigator.pushNamed(context, '/Explore');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Explore(insuranceCompany: insuranceCompany,
+                      hospitalsList: hospitalsList,)),
+                  );
                 },
                 child: HomeContainers(
                   imgURL: 'assets/Searchbanner.jpg',

@@ -7,8 +7,8 @@ import '../../../Size_Config.dart';
 import '../../../constraints.dart';
 import 'LoginForm.dart';
 
-class signInBody extends StatelessWidget {
-  const signInBody({
+class SignInBody extends StatelessWidget {
+  const SignInBody({
     Key key,
   }) : super(key: key);
 

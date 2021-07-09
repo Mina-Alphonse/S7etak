@@ -29,7 +29,7 @@ class _WelcomeState extends State<Welcome> {
 
     );
 
-    SizeConfig().init(context);
+    SizeConfig.init(context);
     return Scaffold(
 
       backgroundColor:kPrimaryColor,

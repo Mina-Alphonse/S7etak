@@ -1,10 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:gp/pages/Explore/components/CategoriesButton.dart';
-
-import '../../../Size_Config.dart';
-import '../../../constraints.dart';
-
 class CategoriesBar extends StatefulWidget {
   const CategoriesBar({
     Key key,

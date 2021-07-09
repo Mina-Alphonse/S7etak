@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:gp/database.dart';
+import 'package:gp/stakeholdersClases/Hospitals.dart';
+import 'package:gp/stakeholdersClases/InsuranceCompany.dart';
 import 'package:gp/stakeholdersClases/Labs.dart';
 
 import 'package:provider/provider.dart';
@@ -8,8 +10,10 @@ import 'package:provider/provider.dart';
 import 'CategoriesListWidget.dart';
 
 class Body extends StatefulWidget {
+  final InsuranceCompany insuranceCompany;
+  final List<Hospitals> hospitalsList;
   const Body({
-    Key key,
+    Key key,this.insuranceCompany, this.hospitalsList
   }) : super(key: key);
 
   @override
@@ -31,9 +35,9 @@ class _BodyState extends State<Body> {
               padding: const EdgeInsets.all(12.0),
               child: TabBarView(
                 children: [
-                  CategoriesWidget("Explore"),
-                  CategoriesWidget("Recommended"),
-                  CategoriesWidget("Saved"),
+                  CategoriesWidget("Explore",widget.insuranceCompany,widget.hospitalsList),
+                  CategoriesWidget("Recommended",widget.insuranceCompany,widget.hospitalsList),
+                  CategoriesWidget("Saved",widget.insuranceCompany,widget.hospitalsList),
 
                 ],
               ),

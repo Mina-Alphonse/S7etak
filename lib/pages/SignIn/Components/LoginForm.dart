@@ -1,10 +1,9 @@
-// import 'dart:html';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gp/DataComponents/AllDatabaseModel.dart';
 import 'package:gp/auth.dart';
 import 'package:gp/database.dart';
-
 import '../../../Size_Config.dart';
 import '../../../constraints.dart';
 
@@ -175,19 +174,27 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
       child: ElevatedButton(
         onPressed: () async {
           try {
-            String tempEmail = "fonsi@gmail.com";
-            String tempPassword = "123456";
+            // String tempEmail = "fonsi12@gmail.com";
+            // String tempPassword = "123456";
             print(email);
             print(password);
 
-            result =
-                await AuthService().signInWithMailAndPassword(email.trim(), password.trim());
-            if (result != null){
+            result = await AuthService()
+                .signInWithMailAndPassword(email.trim(), password.trim());
+            if (result != null) {
               //Grab user Data
               String userID = result.uid;
               print(userID);
-              DatabaseService(uid: userID).infoCollection.document(userID).get();
-              Navigator.pushReplacementNamed(context, '/Home');}
+              DatabaseService(uid: userID)
+                  .infoCollection
+                  .document(userID)
+                  .get();
+              // Navigator.pushReplacementNamed(context, '/Home');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AllDBModel(uid: result.uid)),
+              );
+            }
           } catch (error) {
             print(error);
           }

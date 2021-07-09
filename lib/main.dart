@@ -1,8 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:gp/DataComponents/patientModel.dart';
-import 'package:gp/DataComponents/pharmacyCard.dart';
-
 import 'package:gp/pages/Explore/Explore.dart';
 import 'package:gp/pages/Explore/components/CardDetails.dart';
 import 'package:gp/pages/Home/Home.dart';
@@ -42,7 +39,7 @@ void main() {
       '/chronicDiseases':(context)=>chronicDiseases(),
       '/PrevuiosMedicalDiagnoses':(context)=>PrevuiosMedicalDiagnoses(),
       '/PreviousMedicalOperations':(context)=>PreviousMedicalOperations(),
-      '/cardDetails':(context)=>cardDetails(),
+      '/cardDetails':(context)=>CardDetails(),
       // '/PatientModel':(context) => PatientModel(),
 
     },

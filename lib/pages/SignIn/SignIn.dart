@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gp/database.dart';
 
 import 'package:gp/pages/SignIn/Components/SignInBody.dart';
+import 'package:gp/stakeholdersClases/Patients.dart';
+import 'package:provider/provider.dart';
 
 
 
@@ -19,14 +22,17 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.grey[300],
-        body: SingleChildScrollView(
+    SizeConfig.init(context);
+    return StreamProvider<Patients>.value(
+      value: DatabaseService().patientData,
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: Colors.grey[300],
+          body: SingleChildScrollView(
 
-          child: Center(
-              child: signInBody()
+            child: Center(
+                child: SignInBody()
+            ),
           ),
         ),
       ),

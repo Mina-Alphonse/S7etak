@@ -1,22 +1,21 @@
-import 'package:flutter/material.dart';
-class categoriesListData{
+class CategoriesListData{
   final int id;
   final String name;
 
-  categoriesListData(this.id, this.name);
+  CategoriesListData(this.id, this.name);
 }
-categoriesListData all=new categoriesListData(0,"All");
+CategoriesListData all=new CategoriesListData(0,"All");
 
-categoriesListData Doctor=new categoriesListData(1,"Doctor");
+CategoriesListData doctor=new CategoriesListData(1,"Doctor");
 
-categoriesListData MEdicalLabs=new categoriesListData(2,"Medical labs");
+CategoriesListData medicalLabs=new CategoriesListData(2,"Medical labs");
 
-categoriesListData RadiologyLabs=new categoriesListData(3,"Radiology labs");
+CategoriesListData radiologyLabs=new CategoriesListData(3,"Radiology labs");
 
-categoriesListData Pharmacies=new categoriesListData(4,"Pharmacies");
+CategoriesListData pharmacies=new CategoriesListData(4,"Pharmacies");
 
-categoriesListData Hospitales=new categoriesListData(5,"Hospitales");
+CategoriesListData hospitales=new CategoriesListData(5,"Hospitales");
 
-final categoriesdata=[
-  all,Doctor,MEdicalLabs,RadiologyLabs,Pharmacies,Hospitales
+final categoriesData=[
+  all,doctor,medicalLabs,radiologyLabs,pharmacies,hospitales
 ];

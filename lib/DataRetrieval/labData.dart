@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gp/pages/LoadingPage.dart';
 import 'package:gp/stakeholdersClases/Labs.dart';
 import 'package:provider/provider.dart';
 
@@ -20,6 +19,7 @@ class _LabDataState extends State<LabData> {
         print(labs[0].name);
       }
 
-    return LoadingPage();
+    return Container(child: Text('run'),);
+    // return LoadingPage();
   }
 }

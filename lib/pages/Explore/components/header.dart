@@ -2,13 +2,17 @@
 import 'package:flutter/material.dart';
 import 'package:gp/GlobalComponents/searchBarWidget.dart';
 import 'package:gp/pages/Explore/components/Body.dart';
+import 'package:gp/stakeholdersClases/Hospitals.dart';
+import 'package:gp/stakeholdersClases/InsuranceCompany.dart';
 
 import '../../../Size_Config.dart';
 import '../../../constraints.dart';
 
 class Header extends StatelessWidget {
+  final InsuranceCompany insuranceCompany;
+  final List<Hospitals> hospitalsList;
   const Header({
-    Key key,
+    Key key,this.insuranceCompany,this.hospitalsList
   }) : super(key: key);
 
   @override
@@ -87,7 +91,9 @@ class Header extends StatelessWidget {
             ),
 
           ),
-          body: Body(),
+          body: Body(insuranceCompany: this.insuranceCompany,
+          hospitalsList: this.hospitalsList,
+          ),
         ),
       ),
 

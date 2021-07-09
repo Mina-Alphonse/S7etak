@@ -6,14 +6,19 @@ import 'package:gp/Size_Config.dart';
 
 import 'package:gp/constraints.dart';
 import 'package:gp/pages/Explore/components/CardItem.dart';
+import 'package:gp/pages/Explore/components/DoctorsCards.dart';
+import 'package:gp/stakeholdersClases/Hospitals.dart';
+import 'package:gp/stakeholdersClases/InsuranceCompany.dart';
 
 import '../../../categorieslistdata.dart';
 
 class CategoriesWidget extends StatefulWidget {
   final String header;
+  final InsuranceCompany insuranceCompany;
+  final List<Hospitals> hospitalsList;
 
   CategoriesWidget(
-    this.header,
+    this.header,this.insuranceCompany,this.hospitalsList,
   );
 
   @override
@@ -31,14 +36,12 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 6,
-
+      length: 2,
       child: Column(
         children: <Widget>[
           Container(
             padding: EdgeInsets.all(3),
             decoration: BoxDecoration(
-
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
@@ -74,52 +77,53 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
 
               tabs: [
                 Tab(
-                  text: categoriesdata[0].name,
+                  text: categoriesData[0].name,
 
 
                 ),
                 Tab(
-                  text: categoriesdata[1].name,
+                  text: categoriesData[1].name,
 
                 ),
                 Tab(
-                    text: categoriesdata[2].name,
+                    text: categoriesData[2].name,
 
                 ),
                 Tab(
-                    text: categoriesdata[3].name
+                    text: categoriesData[3].name
                     ,
 
                 ),
                 Tab(
-                    text: categoriesdata[4].name,
+                    text: categoriesData[4].name,
 
                 ),
                 Tab(
-                  text: categoriesdata[5].name,
+                  text: categoriesData[5].name,
 
                 ),
               ],
             ),
           ),
           SizedBox(height: 5,),
-          _renderWidget()
+          _renderWidget(widget.insuranceCompany,widget.hospitalsList)
         ],
       ),
     );
   }
 
-  Widget _renderWidget() {
+  Widget _renderWidget(InsuranceCompany insuranceCompany,
+  List<Hospitals> hospitalsList) {
     if (index == 0)
       return Expanded(
         child: TabBarView(
           children: <Widget>[
-            allListBuilder(),
-            allListBuilder(),
-            allListBuilder(),
-            allListBuilder(),
-            allListBuilder(),
-            allListBuilder(),
+            AllListBuilder(hospitalsList: hospitalsList,insuranceCompany: insuranceCompany,),
+            AllListBuilder(hospitalsList: hospitalsList,insuranceCompany: insuranceCompany,),
+            // allListBuilder(),
+            // allListBuilder(),
+            // allListBuilder(),
+            // allListBuilder(),
           ],
         ),
       );
@@ -132,23 +136,28 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
   }
 }
 
-class allListBuilder extends StatefulWidget {
-  const allListBuilder({
-    Key key,
+class AllListBuilder extends StatefulWidget {
+  final InsuranceCompany insuranceCompany;
+  final List<Hospitals> hospitalsList;
+  const AllListBuilder({
+    Key key,this.insuranceCompany,this.hospitalsList
   }) : super(key: key);
 
   @override
-  _allListBuilderState createState() => _allListBuilderState();
+  _AllListBuilderState createState() => _AllListBuilderState();
 }
 
-class _allListBuilderState extends State<allListBuilder> {
-  @override
+class _AllListBuilderState extends State<AllListBuilder> {
+
   Icon savedIcon = Icon(Icons.bookmark_border);
 
+
+
+  @override
   Widget build(BuildContext context) {
     return Center(
       child: ListView.builder(
-        itemCount: doctorList.length,
+        itemCount: widget.hospitalsList.length,
         itemBuilder: (context, index) {
           return Card(
             child: Container(
@@ -165,13 +174,14 @@ class _allListBuilderState extends State<allListBuilder> {
                       padding: const EdgeInsets.all(3.0),
                       child: FittedBox(
                         child: Image.asset(
-                          doctorList[index].imgURL,
+                          doctorList[0].imgURL,
                           fit: BoxFit.fill,
                         ),
                       ),
                     ),
                   ),
-                  //decription
+
+                  //Hospital Name
                   Container(
                     padding: EdgeInsets.all(4),
                     child: Column(
@@ -183,7 +193,7 @@ class _allListBuilderState extends State<allListBuilder> {
                             Container(
                               width: getProptionateScreenWidth(150),
                               child: Text(
-                                doctorList[index].name,
+                              widget.hospitalsList[index].hospitalName,
                                 style: TextStyle(
                                     fontSize: getProptionateScreenWidth(15),
                                     fontWeight: FontWeight.bold,
@@ -191,8 +201,6 @@ class _allListBuilderState extends State<allListBuilder> {
                                     fontFamily: mainFont),
                               ),
                             ),
-                            //SizedBox(width: getProptionateScreenWidth(17),),
-                            //icon
                             IconButton(
                                 iconSize: 30,
                                 icon: savedIcon,
@@ -211,17 +219,33 @@ class _allListBuilderState extends State<allListBuilder> {
                                 })
                           ],
                         ),
+
+                        //Hospital address and phone Number
                         Padding(
                           padding:
                               EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                           child: Container(
                             width: getProptionateScreenWidth(200),
-                            child: Text(
-                              doctorList[index].shortDesc,
-                              style: TextStyle(
-                                  fontSize: getProptionateScreenWidth(11),
-                                  color: kPrimaryColor.withOpacity(0.8),
-                                  fontFamily: mainFont),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  widget.hospitalsList[index].address,
+                                  style: TextStyle(
+                                      fontSize: getProptionateScreenWidth(11),
+                                      color: kPrimaryColor.withOpacity(0.8),
+                                      fontFamily: mainFont),
+                                ),
+                                SizedBox(height: 15,),
+                                Text(
+                                  widget.hospitalsList[index].phone,
+                                  style: TextStyle(
+                                      fontSize: getProptionateScreenWidth(11),
+                                      color: kPrimaryColor.withOpacity(0.8),
+                                      fontFamily: mainFont),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -248,10 +272,14 @@ class _allListBuilderState extends State<allListBuilder> {
                                 child: RaisedButton(
                                   elevation: 3,
                                   onPressed: () {
-                                    Navigator.pushNamed(context, '/cardDetails');
-                                  },
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => DoctorsCards(doctorsList:
+                                        widget.hospitalsList[index].doctors,)),
+                                    );
+                                    },
                                   child: Text(
-                                    "Book",
+                                    "Explore",
                                     style: TextStyle(
                                         color: kliteColor,
                                         fontSize: getProptionateScreenWidth(14),

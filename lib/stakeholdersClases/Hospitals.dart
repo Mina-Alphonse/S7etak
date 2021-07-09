@@ -6,7 +6,7 @@ class Hospitals
   String address;
   String phone;
   String location;
-  Doctors doctors;
+  List<Doctors> doctors;
 
   Hospitals({
     this.hospitalName,

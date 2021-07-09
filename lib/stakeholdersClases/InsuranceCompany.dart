@@ -3,11 +3,12 @@ import 'package:gp/stakeholdersClases/MedicalPlaces.dart';
 
 class InsuranceCompany
 {
-  CompanyPackages packages;
+  List<CompanyPackages> packages;
   String name;
   String address;
   String companyPhoneNumber;
-  MedicalPlaces places;
+  List<MedicalPlaces> places;
+  String companyID;
 
 InsuranceCompany({
   this.name,
@@ -16,4 +17,10 @@ InsuranceCompany({
   this.places,
   this.packages,
 });
+
+void setDocId(String id)
+{
+  this.companyID = id;
+}
+
 }

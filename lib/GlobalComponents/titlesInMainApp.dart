@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../Size_Config.dart';
 import '../constraints.dart';
 
-class titlesInMainApp extends StatelessWidget {
-  const titlesInMainApp({
+class TitlesInMainApp extends StatelessWidget {
+  const TitlesInMainApp({
     Key key,this.text,
   }) : super(key: key);
   final String text;

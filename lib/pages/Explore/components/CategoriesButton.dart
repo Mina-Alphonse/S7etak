@@ -16,18 +16,16 @@ class CategoriesButtonWidget extends StatefulWidget {
 
 class _CategoriesButtonWidgetState extends State<CategoriesButtonWidget> {
 
+  Color textColor = kPrimaryColor, backColor = kliteColor;
 
 
   @override
-  Color textcolor=kPrimaryColor,backColor=kliteColor;
-
-
   Widget build(BuildContext context) {
     return GestureDetector(
 
       onTap: (){
         setState(() {
-          textcolor=Colors.white;
+          textColor=Colors.white;
           backColor=kPrimaryColor;
         });
       },
@@ -41,14 +39,14 @@ class _CategoriesButtonWidgetState extends State<CategoriesButtonWidget> {
         decoration: new BoxDecoration(
           color: backColor,
           borderRadius:BorderRadius.circular(10),
-          border: Border.all(width: 1.0, color:textcolor),
+          border: Border.all(width: 1.0, color:textColor),
 
         ),
         child: Center(
           child: Text(
             widget.text,
             style: TextStyle(
-                color:textcolor,
+                color:textColor,
                 fontSize: getProptionateScreenWidth(14),
                 fontWeight: FontWeight.bold,
                 fontFamily: mainFont

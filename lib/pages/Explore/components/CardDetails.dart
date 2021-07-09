@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../constraints.dart';
 import 'DetailsCardWidget.dart';
 
-class cardDetails extends StatelessWidget {
+class CardDetails extends StatelessWidget {
 
 
   @override
