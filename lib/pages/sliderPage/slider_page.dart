@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:gp/GlobalComponents/custom_text.dart';
 import 'package:gp/Size_Config.dart';
-import 'package:gp/auth.dart';
 import 'package:gp/constraints.dart';
 import 'package:gp/pages/SignIn/SignIn.dart';
 import 'package:gp/pages/SignUp/SignUp.dart';
