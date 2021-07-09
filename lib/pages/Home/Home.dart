@@ -21,7 +21,7 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-List<String> DrawerOptions = [
+List<String> drawerOptions = [
 
   "Appointments",
   "Medical Lab Results",
@@ -30,7 +30,7 @@ List<String> DrawerOptions = [
 
   "Personal information",
 ];
-List<String> DrawerOptionslinks = [
+List<String> drawerOptionsLinks = [
 
   "/Profile",
   "/MedicalLabsResults",
@@ -151,7 +151,7 @@ class _HomeState extends State<Home> {
                     decoration: BoxDecoration(color: kPrimaryColor),
                   ),
                   ListView.builder(
-                      itemCount: DrawerOptions.length,
+                      itemCount: drawerOptions.length,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         return ListTile(
@@ -160,11 +160,11 @@ class _HomeState extends State<Home> {
                             color: kPrimaryColor,
                           ),
                           title: Text(
-                            DrawerOptions[index],
+                            drawerOptions[index],
                             style: TextStyle(color: kPrimaryColor),
                           ),
                           onTap: () {
-                            Navigator.pushNamed(context, DrawerOptionslinks[index]);
+                            Navigator.pushNamed(context, drawerOptionsLinks[index]);
 
                           },
                         );

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../Size_Config.dart';
 import '../constraints.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 
 class LabResultsCard extends StatelessWidget {

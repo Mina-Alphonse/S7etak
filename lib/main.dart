@@ -42,16 +42,16 @@ void main() {
       '/AppointmentsDoctors':(context)=>AppointmentsDoctors(),
       '/AppointmentsRadiologyLabs':(context)=>AppointmentsRadiologyLabs(),
       '/AppointmentsMedicalLabs':(context)=>AppointmentsMedicalLabs(),
-      '/chronicDiseases':(context)=>chronicDiseases(),
-      '/PrevuiosMedicalDiagnoses':(context)=>PrevuiosMedicalDiagnoses(),
+      '/chronicDiseases':(context)=>ChronicDiseases(),
+      '/PrevuiosMedicalDiagnoses':(context)=>PreviousMedicalDiagnoses(),
       '/PreviousMedicalOperations':(context)=>PreviousMedicalOperations(),
-      '/cardDetails':(context)=>cardDetails(),
+      // '/cardDetails':(context)=> cardDetails(),
 
       '/MedicineList':(context)=>MedicineList(),
       '/MedicalLabsResults':(context)=>MedicalLabsResults(),
       '/RadiologyLabsResults':(context)=>RadiologyLabsResults(),
 
-      '/blankPdf':(context)=>blankPdf(),
+      '/blankPdf':(context)=>BlankPdf(),
       '/PersonalInformationCardDetails':(context)=>PersonalInformationCardDetails(),
       '/MeasureHeartRhythm':(context)=>MeasureHeartRhythm(),
 

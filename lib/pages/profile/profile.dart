@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gp/DataComponents/patientModel.dart';
 import 'package:gp/GlobalComponents/custom_horizontal_row.dart';
 import 'package:gp/GlobalComponents/custom_text.dart';
 import 'package:gp/GlobalComponents/custom_text_field.dart';
@@ -201,14 +200,14 @@ class Profile extends StatelessWidget {
       ),
     );
   }
-  Widget _renderWidget(String title){
-    return Column(children: [
-      Padding(
-        padding:EdgeInsets.only(bottom: 40),
-        child: CustomTextField(
-          text: title,
-        ),
-      ),
-    ],);
-  }
+  // Widget _renderWidget(String title){
+  //   return Column(children: [
+  //     Padding(
+  //       padding:EdgeInsets.only(bottom: 40),
+  //       child: CustomTextField(
+  //         text: title,
+  //       ),
+  //     ),
+  //   ],);
+  // }
 }

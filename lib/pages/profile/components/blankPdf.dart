@@ -1,20 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
-import 'package:gp/GlobalComponents/LabResultsCard.dart';
-import 'package:gp/GlobalComponents/custom_horizontal_row.dart';
-import 'package:gp/GlobalComponents/custom_text.dart';
-import 'package:gp/GlobalComponents/custom_text_field.dart';
-import 'package:gp/auth.dart';
 import 'package:gp/constraints.dart';
-import 'package:gp/pages/profile/components/ChronicDiseaseCard.dart';
-import 'package:gp/pages/profile/components/PreviousHistoryCard.dart';
 
 import '../../../Size_Config.dart';
-import 'AppointmentsCard.dart';
 
 
-class blankPdf extends StatelessWidget {
+class BlankPdf extends StatelessWidget {
 
 
   @override
