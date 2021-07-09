@@ -128,6 +128,9 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                   text: 'Medical labs results',
+                  onTap: (){
+                    Navigator.pushNamed(context, '/MedicalLabsResults');
+                  },
                 ),
                 Divider(
                   color: Colors.black,
@@ -135,6 +138,9 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                   text: 'Radiology labs results',
+                  onTap: (){
+                    Navigator.pushNamed(context, '/RadiologyLabsResults');
+                  },
                 ),
 
                 // Medicines Section
@@ -150,14 +156,13 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                   text: 'New medicines',
+                  onTap: (){
+                    Navigator.pushNamed(context, '/MedicineList');
+                  },
+
+
                 ),
-                Divider(
-                  color: Colors.black,
-                  thickness: 0.3,
-                ),
-                CustomTextField(
-                  text: 'My medicines',
-                ),
+
 
                 // Personal Info Section
                 SizedBox(
@@ -173,7 +178,7 @@ class Profile extends StatelessWidget {
                 CustomTextField(
                     text: 'Personal information',
                     onTap:(){
-                      Navigator.pushNamed(context, '/PatientModel');
+                      Navigator.pushNamed(context, '/PersonalInformationCardDetails');
                     },
                   ),
                 Divider(

@@ -21,6 +21,25 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
+List<String> DrawerOptions = [
+
+  "Appointments",
+  "Medical Lab Results",
+  "Radiology Lab Results",
+  "Medicine",
+
+  "Personal information",
+];
+List<String> DrawerOptionslinks = [
+
+  "/Profile",
+  "/MedicalLabsResults",
+  "/RadiologyLabsResults",
+  "/MedicineList",
+
+  "/PersonalInformationCardDetails",
+];
+
 List<String> asami = [
   "Appointments",
   "Medical History",
@@ -132,7 +151,7 @@ class _HomeState extends State<Home> {
                     decoration: BoxDecoration(color: kPrimaryColor),
                   ),
                   ListView.builder(
-                      itemCount: asami.length,
+                      itemCount: DrawerOptions.length,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         return ListTile(
@@ -141,10 +160,13 @@ class _HomeState extends State<Home> {
                             color: kPrimaryColor,
                           ),
                           title: Text(
-                            asami[index],
+                            DrawerOptions[index],
                             style: TextStyle(color: kPrimaryColor),
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushNamed(context, DrawerOptionslinks[index]);
+
+                          },
                         );
                       })
                 ],
@@ -160,5 +182,7 @@ class _HomeState extends State<Home> {
           ));
     } else
       return LoadingPage();
+    // body: SafeArea(
+    //     child: SingleChildScrollView(child: Body()),
   }
 }
