@@ -6,10 +6,10 @@ import '../../../Size_Config.dart';
 
 
 
-class personalinforows extends StatelessWidget {
+class PersonalInfoRows extends StatelessWidget {
   @required
   final String text,text2;
-  personalinforows({this.text, this.text2});
+  PersonalInfoRows({this.text, this.text2});
   @override
   Widget build(BuildContext context) {
     return Padding(

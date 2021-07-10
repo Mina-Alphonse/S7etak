@@ -9,9 +9,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gp/stakeholdersClases/Pharmacies.dart';
 import 'package:gp/stakeholdersClases/labResults.dart';
 
-import 'pages/profile/components/chronicDiseases.dart';
-import 'pages/profile/components/chronicDiseases.dart';
-
 class DatabaseService {
   //Data IDs
   final String uid;

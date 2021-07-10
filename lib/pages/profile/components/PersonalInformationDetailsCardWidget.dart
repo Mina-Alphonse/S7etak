@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:gp/GlobalComponents/BookButton.dart';
 import 'package:gp/GlobalComponents/custom_horizontal_row.dart';
 import 'package:gp/pages/profile/components/personalinforows.dart';
 
-import '../../../Size_Config.dart';
 import '../../../constraints.dart';
 import '../../../stakeholdersClases/Patients.dart';
 
 class PersonalInformationDetailsCardWidget extends StatefulWidget {
-  Patients patient;
+  final Patients patient;
 
   PersonalInformationDetailsCardWidget({this.patient});
 
@@ -64,7 +62,7 @@ class _PersonalInformationDetailsCardWidgetState
                 SizedBox(
                   height: 10,
                 ),
-                personalinforows(
+                PersonalInfoRows(
                   text: widget.patient.phone,
                   text2: 'ID',
                 ),
@@ -72,7 +70,7 @@ class _PersonalInformationDetailsCardWidgetState
                   thickness: 0.5,
                   color: Colors.black.withOpacity(0.5),
                 ),
-                personalinforows(
+                PersonalInfoRows(
                   text: widget.patient.name,
                   text2: 'User name',
                 ),
@@ -80,7 +78,7 @@ class _PersonalInformationDetailsCardWidgetState
                   thickness: 0.5,
                   color: Colors.black.withOpacity(0.5),
                 ),
-                personalinforows(
+                PersonalInfoRows(
                   text: widget.patient.insuranceCompany,
                   text2: 'Ins. Com.',
                 ),
@@ -88,7 +86,7 @@ class _PersonalInformationDetailsCardWidgetState
                   thickness: 0.5,
                   color: Colors.black.withOpacity(0.5),
                 ),
-                personalinforows(
+                PersonalInfoRows(
                   text: widget.patient.mail ?? "",
                   text2: 'Email',
                 ),
@@ -96,7 +94,7 @@ class _PersonalInformationDetailsCardWidgetState
                   thickness: 0.5,
                   color: Colors.black.withOpacity(0.5),
                 ),
-                personalinforows(
+                PersonalInfoRows(
                   text: widget.patient.phone,
                   text2: 'Phone no.',
                 ),
@@ -104,7 +102,7 @@ class _PersonalInformationDetailsCardWidgetState
                   thickness: 0.5,
                   color: Colors.black.withOpacity(0.5),
                 ),
-                personalinforows(
+                PersonalInfoRows(
                   text: widget.patient.age,
                   text2: 'Age',
                 ),
@@ -112,7 +110,7 @@ class _PersonalInformationDetailsCardWidgetState
                   thickness: 0.5,
                   color: Colors.black.withOpacity(0.5),
                 ),
-                personalinforows(
+                PersonalInfoRows(
                   text: widget.patient.gender ?? "",
                   text2: 'Gender',
                 ),
@@ -137,7 +135,7 @@ class _PersonalInformationDetailsCardWidgetState
                     itemCount: widget.patient.chronicDisease.length,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return personalinforows(
+                      return PersonalInfoRows(
                         text: widget.patient.chronicDisease[index],
                         text2: "Disease",
                       );

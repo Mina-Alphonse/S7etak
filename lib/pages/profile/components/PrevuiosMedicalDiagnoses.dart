@@ -6,7 +6,7 @@ import 'package:gp/pages/profile/components/PreviousHistoryCard.dart';
 import '../../../stakeholdersClases/Patients.dart';
 
 class PreviousMedicalDiagnoses extends StatelessWidget {
-  Patients patient;
+  final Patients patient;
 
   PreviousMedicalDiagnoses({this.patient});
 

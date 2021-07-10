@@ -18,17 +18,17 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  String Email = 'Email',
-      Password = 'Password',
+  String mail = 'Email',
+      _password = 'Password',
       password,
       email,
-      FullName = 'Full Name',
+      _fullName = 'Full Name',
       fullName;
   String confirmPassword,
-      ConfirmPassword = "Re-type your password",
+      _confirmPassword = "Re-type your password",
       id,
-      ID = "ID";
-  String age, Age = 'Age', Phone = 'Phone', phone, gender, Gender = 'Gender';
+      _id = "ID";
+  String age, _age = 'Age', _phone = 'Phone', phone, gender;
 
   TextEditingController phoneController;
 
@@ -163,7 +163,7 @@ class _SignUpState extends State<SignUp> {
         },
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
-          hintText: Phone,
+          hintText: _phone,
           suffixIcon: Icon(
             Icons.phone,
             size: getProptionateScreenWidth(20),
@@ -201,7 +201,7 @@ class _SignUpState extends State<SignUp> {
         },
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
-          hintText: Age,
+          hintText: _age,
           suffixIcon: Icon(
             Icons.calendar_today,
             size: getProptionateScreenWidth(20),
@@ -239,7 +239,7 @@ class _SignUpState extends State<SignUp> {
         },
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
-          hintText: ID,
+          hintText: _id,
           suffixIcon: Icon(
             Icons.card_membership_outlined,
             size: getProptionateScreenWidth(20),
@@ -280,7 +280,7 @@ class _SignUpState extends State<SignUp> {
         },
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
-          hintText: ConfirmPassword,
+          hintText: _confirmPassword,
           suffixIcon: Icon(
             Icons.security,
             size: getProptionateScreenWidth(20),
@@ -318,7 +318,7 @@ class _SignUpState extends State<SignUp> {
         },
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
-          hintText: FullName,
+          hintText: _fullName,
           suffixIcon: Icon(
             Icons.perm_identity,
             size: getProptionateScreenWidth(20),
@@ -412,7 +412,7 @@ class _SignUpState extends State<SignUp> {
         },
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
-          hintText: Password,
+          hintText: _password,
           suffixIcon: Icon(
             Icons.security,
             size: getProptionateScreenWidth(20),
@@ -461,7 +461,7 @@ class _SignUpState extends State<SignUp> {
         },
         decoration: InputDecoration(
           border: UnderlineInputBorder(),
-          hintText: Email,
+          hintText: mail,
           suffixIcon: Icon(
             Icons.email,
             size: getProptionateScreenWidth(20),
