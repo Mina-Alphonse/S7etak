@@ -11,6 +11,7 @@ import 'package:gp/stakeholdersClases/Labs.dart';
 import 'package:gp/stakeholdersClases/Patients.dart';
 import 'package:gp/stakeholdersClases/Pharmacies.dart';
 
+import '../../auth.dart';
 import '../../constraints.dart';
 import '../../stakeholdersClases/Doctors.dart';
 import '../profile/profile.dart';
@@ -25,26 +26,8 @@ class Home extends StatefulWidget {
 }
 
 List<String> drawerOptions = [
-  "Appointments",
-  "Medical Lab Results",
-  "Radiology Lab Results",
-  "Medicine",
   "Personal information",
-];
-List<String> drawerOptionsLinks = [
-  "/Profile",
-  "/MedicalLabsResults",
-  "/RadiologyLabsResults",
-  "/MedicineList",
-  "/PersonalInformationCardDetails",
-];
-
-List<String> asami = [
-  "Appointments",
-  "Medical History",
-  "Personal Info",
   "Log out",
-  "",
 ];
 
 class _HomeState extends State<Home> {
@@ -141,11 +124,11 @@ class _HomeState extends State<Home> {
                   UserAccountsDrawerHeader(
                     // height: MediaQuery.of(context).size.height / 3,
                     accountEmail: Text(
-                      "Fonsi@gmail.com",
+                      user.mail,
                       style: TextStyle(color: kliteColor),
                     ),
                     accountName: Text(
-                      "Mina Alphonse",
+                      user.name,
                       style: TextStyle(
                           color: kliteColor,
                           fontWeight: FontWeight.bold,
@@ -153,25 +136,42 @@ class _HomeState extends State<Home> {
                     ),
                     decoration: BoxDecoration(color: kPrimaryColor),
                   ),
-                  ListView.builder(
-                      itemCount: drawerOptions.length,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          trailing: Icon(
-                            Icons.icecream,
-                            color: kPrimaryColor,
-                          ),
-                          title: Text(
-                            drawerOptions[index],
-                            style: TextStyle(color: kPrimaryColor),
-                          ),
-                          onTap: () {
-                            Navigator.pushNamed(
-                                context, drawerOptionsLinks[index]);
-                          },
-                        );
-                      })
+                  ListTile(
+                    trailing: Icon(
+                      Icons.account_circle_rounded,
+                      color: kPrimaryColor,
+                    ),
+                    title: Text(
+                      drawerOptions[0],
+                      style: TextStyle(color: kPrimaryColor),
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Profile(
+                                    patient: user,
+                                    labs: labs,
+                                    doctors: doctors,
+                                    labResults: labResults,
+                                  )));
+                    },
+                  ),
+                  ListTile(
+                    trailing: Icon(
+                      Icons.logout,
+                      color: kPrimaryColor,
+                    ),
+                    title: Text(
+                      drawerOptions[1],
+                      style: TextStyle(color: kPrimaryColor),
+                    ),
+                    onTap: () async {
+                      await AuthService().signOut();
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, '/SignIn', (route) => false);
+                    },
+                  )
                 ],
               ),
             ),
