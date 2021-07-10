@@ -68,6 +68,7 @@ class DatabaseService {
       return Pharmacies(
         name: pharmacy.data['name'],
         address: pharmacy.data['address'],
+        phone: pharmacy.data['phone'],
       );
     }).toList();
     return finalPharmacies;

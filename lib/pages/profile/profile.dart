@@ -87,11 +87,6 @@ class Profile extends StatelessWidget {
                     // Navigator.pushNamed(context, '/AppointmentsMedicalLabs');
                   },
                 ),
-                Divider(
-                  color: Colors.black,
-                  thickness: 0.3,
-                ),
-
                 // CustomTextField(
                 //   text: 'Appointments with radiology labs',
                 //   onTap: () {

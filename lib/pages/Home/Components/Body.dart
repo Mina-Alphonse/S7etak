@@ -5,11 +5,13 @@ import 'package:gp/constraints.dart';
 import 'package:gp/pages/Explore/Explore.dart';
 
 import 'package:gp/pages/Home/Components/HomeContainers.dart';
+import 'package:gp/pages/profile/components/MedicalLabsResults.dart';
 import 'package:gp/stakeholdersClases/Doctors.dart';
 import 'package:gp/stakeholdersClases/Hospitals.dart';
 import 'package:gp/stakeholdersClases/InsuranceCompany.dart';
 import 'package:gp/stakeholdersClases/Labs.dart';
 import 'package:gp/stakeholdersClases/Pharmacies.dart';
+import 'package:gp/stakeholdersClases/labResults.dart';
 
 class Body extends StatelessWidget {
   final InsuranceCompany insuranceCompany;
@@ -17,6 +19,7 @@ class Body extends StatelessWidget {
   final List<Lab> labsList;
   final List<Pharmacies> pharmaciesList;
   final List<Doctors> doctorsList;
+  final List<LabResults> labResultsList;
   const Body({
     Key key,
     this.doctorsList,
@@ -24,6 +27,7 @@ class Body extends StatelessWidget {
     this.labsList,
     this.hospitalsList,
     this.insuranceCompany,
+    this.labResultsList,
   }) : super(key: key);
 
   @override
@@ -76,23 +80,30 @@ class Body extends StatelessWidget {
                   txtColor: kliteColor,
                 )
             ),
-            GestureDetector(
-                onTap: (){
-                  Navigator.pushNamed(context, '/MeasureHeartRhythm');
-                },
-                child: HomeContainers(
-                  imgURL: 'assets/beat.jpg',
-                  text1: 'Measure',
-                  text2: 'Heart rhythm',
-                  color: kPrimaryColor,
-                  txtColor: kliteColor,
-                )
-            ),
+            // GestureDetector(
+            //     onTap: (){
+            //       Navigator.pushNamed(context, '/MeasureHeartRhythm');
+            //     },
+            //     child: HomeContainers(
+            //       imgURL: 'assets/beat.jpg',
+            //       text1: 'Measure',
+            //       text2: 'Heart rhythm',
+            //       color: kPrimaryColor,
+            //       txtColor: kliteColor,
+            //     )
+            // ),
 
             GestureDetector(
                 onTap: (){
-                  Navigator.pushNamed(context, '/MedicalLabsResults');
-                },
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                    builder: (context) => MedicalLabsResults(
+                    labResults: this.labResultsList,
+                    )));
+                    // Navigator.pushNamed(context, '/MedicalLabsResults');
+                  },
+
                 child: HomeContainers(
                   imgURL: 'assets/labs.jpg',
                   text1: 'Labs',

@@ -36,8 +36,6 @@ class _DoctorsCardsState extends State<DoctorsCards> {
       ),
       centerTitle: true,
       backgroundColor: kPrimaryColor,
-      // kSecondaryliteColor.withOpacity(0.6),
-      //toolbarHeight: getProptionateScreenHeight(60),
 
       actions: [
         GestureDetector(
