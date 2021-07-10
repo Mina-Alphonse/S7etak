@@ -30,6 +30,7 @@ class _SignUpState extends State<SignUp> {
       _id = "ID";
   String age, _age = 'Age', _phone = 'Phone', phone, gender;
 
+  String insuranceCompany;
   TextEditingController phoneController;
 
   final List<String> errors = [];
@@ -95,12 +96,16 @@ class _SignUpState extends State<SignUp> {
         SizedBox(
           height: getProptionateScreenHeight(5.0),
         ),
+        insuranceIdTextForm(),
+        SizedBox(
+          height: getProptionateScreenHeight(5.0),
+        ),
         ageTextForm(),
         SizedBox(
           height: getProptionateScreenHeight(20.0),
         ),
 
-        GenderFormWidget(),
+        GenderFormWidget(setGender: setGender,),
 
         phoneNumberTextForm(),
         SizedBox(
@@ -251,6 +256,44 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
+  Container insuranceIdTextForm() {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: getProptionateScreenWidth(40)),
+      height: getProptionateScreenHeight(50.0),
+      child: TextFormField(
+        // keyboardType: TextInputType.number,
+        // onSaved: (newValue) => id = newValue,
+        onChanged: (value) {
+          if (value.isNotEmpty && errors.contains(kIDNullError)) {
+            setState(() {
+              errors.remove(kIDNullError);
+            });
+          }
+          insuranceCompany = value;
+        },
+        validator: (value) {
+          if (value.isEmpty && !errors.contains(kIDNullError)) {
+            setState(() {
+              errors.add(kIDNullError);
+            });
+            return "";
+          }
+          return null;
+        },
+        decoration: InputDecoration(
+          border: UnderlineInputBorder(),
+          hintText: "Insurance Company Name",
+          suffixIcon: Icon(
+            Icons.insert_drive_file,
+            size: getProptionateScreenWidth(20),
+          ),
+          hintStyle: TextStyle(
+              color: kSecondaryColor, fontSize: getProptionateScreenWidth(15)),
+        ),
+      ),
+    );
+  }
+
   Container retypePasswordTextForm() {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: getProptionateScreenWidth(40)),
@@ -351,6 +394,7 @@ class _SignUpState extends State<SignUp> {
               age: age,
               name: fullName,
               insuranceId: id,
+              insuranceCompany: insuranceCompany,
               gender: "male",
               phone: phone,
             );
@@ -538,7 +582,7 @@ class _SignUpState extends State<SignUp> {
                   width: getProptionateScreenHeight(25.0),
                 ),
                 SizedBox(
-                  width: getProptionateScreenWidth(40),
+                  width: getProptionateScreenWidth(25),
                 ),
                 Text(
                   'Sign Up with Facebook',
@@ -592,5 +636,9 @@ class _SignUpState extends State<SignUp> {
         ),
       ],
     );
+  }
+
+  void setGender(String genderFromRadioButton) {
+    gender = genderFromRadioButton;
   }
 }

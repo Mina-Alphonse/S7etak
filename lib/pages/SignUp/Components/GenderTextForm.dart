@@ -7,10 +7,14 @@ import '../../../Size_Config.dart';
 import '../../../constraints.dart';
 
 enum Gender { Male, Female }
+
 class GenderFormWidget extends StatefulWidget {
+
+  final Function setGender;
   const GenderFormWidget({
-    Key key,
+    Key key,this.setGender
   }) : super(key: key);
+
 
   @override
   _GenderFormWidgetState createState() => _GenderFormWidgetState();
@@ -18,9 +22,9 @@ class GenderFormWidget extends StatefulWidget {
 
 class _GenderFormWidgetState extends State<GenderFormWidget> {
   Gender gender = Gender.Male;
+
   @override
   Widget build(BuildContext context) {
-
     return Container(
       margin: EdgeInsets.symmetric(horizontal: getProptionateScreenWidth(40)),
       //height: getProptionateScreenHeight(50.0),
@@ -30,49 +34,41 @@ class _GenderFormWidgetState extends State<GenderFormWidget> {
           Text(
             'Gender',
             style: TextStyle(
-                color: kSecondaryColor,
-                fontSize: getProptionateScreenWidth(15),
-
+              color: kSecondaryColor,
+              fontSize: getProptionateScreenWidth(15),
             ),
             textAlign: TextAlign.left,
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Row(
-
             children: [
               Expanded(
-
                 child: ListTile(
-
                   title: const Text(
-                      'Female',
+                    'Female',
                     style: TextStyle(
                       color: kPrimaryColor,
                       fontSize: 13,
                     ),
                   ),
-
                   leading: Radio<Gender>(
                     value: Gender.Female,
                     groupValue: gender,
-
                     onChanged: (Gender value) {
                       setState(() {
+                        widget.setGender("Female");
                         gender = value;
                       });
                     },
                   ),
-
-
-
                 ),
               ),
               Expanded(
-
                 child: ListTile(
-
                   title: const Text(
-                      'Male',
+                    'Male',
                     style: TextStyle(
                       color: kPrimaryColor,
                       fontSize: 13,
@@ -81,22 +77,16 @@ class _GenderFormWidgetState extends State<GenderFormWidget> {
                   leading: Radio<Gender>(
                     value: Gender.Male,
                     groupValue: gender,
-
                     onChanged: (Gender value) {
                       setState(() {
+                        widget.setGender("Male");
                         gender = value;
                       });
                     },
                   ),
-
-
-
                 ),
               ),
-
-
             ],
-
           ),
         ],
       ),

@@ -56,12 +56,13 @@ class _HomeState extends State<Home> {
         }
       });
       hospitals.forEach((hospital) {
-        userCompany.places.forEach((place) {
-          if (place.placeType == 'Hospital' &&
-              place.name == hospital.hospitalName) {
-            userHospitals.add(hospital);
-          }
-        });
+        if (userCompany != null && userCompany.places != null)
+          userCompany.places.forEach((place) {
+            if (place.placeType == 'Hospital' &&
+                place.name == hospital.hospitalName) {
+              userHospitals.add(hospital);
+            }
+          });
       });
       print(userHospitals);
 
@@ -69,7 +70,6 @@ class _HomeState extends State<Home> {
           backgroundColor: Colors.white,
           appBar: AppBar(
             elevation: 5.0,
-
             title: Text(
               "S7etak",
               style: TextStyle(
