@@ -5,6 +5,7 @@ import 'package:gp/constraints.dart';
 import 'package:gp/pages/Explore/Explore.dart';
 
 import 'package:gp/pages/Home/Components/HomeContainers.dart';
+import 'package:gp/stakeholdersClases/Doctors.dart';
 import 'package:gp/stakeholdersClases/Hospitals.dart';
 import 'package:gp/stakeholdersClases/InsuranceCompany.dart';
 import 'package:gp/stakeholdersClases/Labs.dart';
@@ -15,8 +16,10 @@ class Body extends StatelessWidget {
   final List<Hospitals> hospitalsList;
   final List<Lab> labsList;
   final List<Pharmacies> pharmaciesList;
+  final List<Doctors> doctorsList;
   const Body({
     Key key,
+    this.doctorsList,
     this.pharmaciesList,
     this.labsList,
     this.hospitalsList,
@@ -38,7 +41,7 @@ class Body extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Explore(insuranceCompany: insuranceCompany,
-                      hospitalsList: hospitalsList,pharmaciesList: pharmaciesList,labsList: labsList,)),
+                      hospitalsList: hospitalsList,pharmaciesList: pharmaciesList,labsList: labsList,doctorsList: this.doctorsList,)),
                   );
                 },
                 child: HomeContainers(

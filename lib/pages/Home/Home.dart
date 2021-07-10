@@ -57,8 +57,8 @@ class _HomeState extends State<Home> {
     Patients user = Provider.of<Patients>(context);
     List<Hospitals> hospitals = Provider.of<List<Hospitals>>(context);
     List<LabResults> labResults = Provider.of<List<LabResults>>(context);
-    List<Doctors> doctors = Provider.of<List<Doctors>>(context);
-
+    List<Doctors> allDoctors = Provider.of<List<Doctors>>(context);
+    List<Doctors> doctors = List<Doctors>();
     if (labs != null &&
         pharmacies != null &&
         companies != null &&
@@ -66,6 +66,17 @@ class _HomeState extends State<Home> {
         hospitals != null) {
       InsuranceCompany userCompany;
       List<Hospitals> userHospitals = List<Hospitals>();
+
+      hospitals.forEach((hospital) {
+        hospital.doctors.forEach((doctor){
+          allDoctors.forEach((actual) {
+            if(actual.doctorId == doctor)
+              {
+                doctors.add(actual);
+              }
+          });
+        });
+      });
 
       companies.forEach((company) {
         if (company.name == user.insuranceCompany) {
@@ -181,6 +192,7 @@ class _HomeState extends State<Home> {
               hospitalsList: hospitals,
                   pharmaciesList: pharmacies,
                   labsList: labs,
+                  doctorsList: doctors,
             )),
           ));
     } else

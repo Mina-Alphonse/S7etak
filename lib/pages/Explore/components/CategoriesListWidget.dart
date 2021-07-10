@@ -7,6 +7,7 @@ import 'package:gp/Size_Config.dart';
 import 'package:gp/constraints.dart';
 import 'package:gp/pages/Explore/components/CardItem.dart';
 import 'package:gp/pages/Explore/components/DoctorsCards.dart';
+import 'package:gp/stakeholdersClases/Doctors.dart';
 import 'package:gp/stakeholdersClases/Hospitals.dart';
 import 'package:gp/stakeholdersClases/InsuranceCompany.dart';
 import 'package:gp/stakeholdersClases/Labs.dart';
@@ -20,9 +21,10 @@ class CategoriesWidget extends StatefulWidget {
   final List<Hospitals> hospitalsList;
   final List<Lab> labsList;
   final List<Pharmacies> pharmaciesList;
+  final List<Doctors> doctorsList;
 
   CategoriesWidget(
-    this.header,this.insuranceCompany,this.hospitalsList,this.pharmaciesList,this.labsList
+    this.header,this.insuranceCompany,this.hospitalsList,this.pharmaciesList,this.labsList,this.doctorsList
   );
 
   @override
@@ -82,8 +84,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
               tabs: [
                 Tab(
                   text: categoriesData[0].name,
-
-
+                  // child: Container(),
                 ),
                 Tab(
                   text: categoriesData[1].name,
@@ -110,20 +111,20 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
             ),
           ),
           SizedBox(height: 5,),
-          _renderWidget(widget.insuranceCompany,widget.hospitalsList,widget.labsList,widget.pharmaciesList)
+          _renderWidget(widget.insuranceCompany,widget.hospitalsList,widget.labsList,widget.pharmaciesList,widget.doctorsList)
         ],
       ),
     );
   }
 
   Widget _renderWidget(InsuranceCompany insuranceCompany,
-  List<Hospitals> hospitalsList, List<Lab> labsList, List<Pharmacies> pharmaciesList) {
+  List<Hospitals> hospitalsList, List<Lab> labsList, List<Pharmacies> pharmaciesList,List<Doctors> doctorsList) {
     if (index == 0)
       return Expanded(
         child: TabBarView(
           children: <Widget>[
-            AllListBuilder(hospitalsList: hospitalsList,insuranceCompany: insuranceCompany,),
-            AllListBuilder(hospitalsList: hospitalsList,insuranceCompany: insuranceCompany,),
+            AllListBuilder(hospitalsList: hospitalsList,insuranceCompany: insuranceCompany,labsList: labsList,pharmaciesList: pharmaciesList,doctorsList: doctorsList,),
+            AllListBuilder(hospitalsList: hospitalsList,insuranceCompany: insuranceCompany,labsList: labsList,pharmaciesList: pharmaciesList,doctorsList: doctorsList,),
             // allListBuilder(),
             // allListBuilder(),
             // allListBuilder(),
@@ -145,8 +146,9 @@ class AllListBuilder extends StatefulWidget {
   final List<Hospitals> hospitalsList;
   final List<Lab> labsList;
   final List<Pharmacies> pharmaciesList;
+  final List<Doctors> doctorsList;
   const AllListBuilder({
-    Key key,this.insuranceCompany,this.hospitalsList,this.labsList,this.pharmaciesList
+    Key key,this.insuranceCompany,this.hospitalsList,this.labsList,this.pharmaciesList,this.doctorsList
   }) : super(key: key);
 
   @override

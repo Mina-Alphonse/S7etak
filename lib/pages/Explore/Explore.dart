@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gp/pages/Explore/components/header.dart';
+import 'package:gp/stakeholdersClases/Doctors.dart';
 import 'package:gp/stakeholdersClases/Hospitals.dart';
 import 'package:gp/stakeholdersClases/InsuranceCompany.dart';
 import 'package:gp/stakeholdersClases/Labs.dart';
@@ -12,8 +13,9 @@ class Explore extends StatefulWidget {
   final List<Hospitals> hospitalsList;
   final List<Lab> labsList;
   final List<Pharmacies> pharmaciesList;
+  final List<Doctors> doctorsList;
 
-  Explore({this.insuranceCompany,this.hospitalsList,this.pharmaciesList,this.labsList});
+  Explore({this.insuranceCompany,this.hospitalsList,this.pharmaciesList,this.labsList,this.doctorsList});
   @override
   _ExploreState createState() => _ExploreState();
 }
@@ -27,7 +29,7 @@ class _ExploreState extends State<Explore> {
     return Scaffold(
 
       body: SafeArea(
-          child: Header(insuranceCompany: widget.insuranceCompany, hospitalsList: widget.hospitalsList,labsList: widget.labsList,pharmaciesList: widget.pharmaciesList,)
+          child: Header(doctorsList: widget.doctorsList, insuranceCompany: widget.insuranceCompany, hospitalsList: widget.hospitalsList,labsList: widget.labsList,pharmaciesList: widget.pharmaciesList,)
       ),
     );
   }

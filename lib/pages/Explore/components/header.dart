@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:gp/GlobalComponents/searchBarWidget.dart';
 import 'package:gp/pages/Explore/components/Body.dart';
+import 'package:gp/stakeholdersClases/Doctors.dart';
 import 'package:gp/stakeholdersClases/Hospitals.dart';
 import 'package:gp/stakeholdersClases/InsuranceCompany.dart';
 import 'package:gp/stakeholdersClases/Labs.dart';
@@ -15,9 +16,10 @@ class Header extends StatelessWidget {
   final List<Hospitals> hospitalsList;
   final List<Lab> labsList;
   final List<Pharmacies> pharmaciesList;
+  final List<Doctors> doctorsList;
 
   const Header({
-    Key key,this.labsList,this.pharmaciesList,this.insuranceCompany,this.hospitalsList
+    Key key,this.labsList,this.pharmaciesList,this.insuranceCompany,this.hospitalsList,this.doctorsList
   }) : super(key: key);
 
   @override
@@ -97,7 +99,7 @@ class Header extends StatelessWidget {
 
           ),
           body: Body(insuranceCompany: this.insuranceCompany,
-          hospitalsList: this.hospitalsList,labsList: this.labsList,pharmaciesList: this.pharmaciesList,
+          hospitalsList: this.hospitalsList,labsList: this.labsList,pharmaciesList: this.pharmaciesList,doctorsList: this.doctorsList,
           ),
         ),
       ),
