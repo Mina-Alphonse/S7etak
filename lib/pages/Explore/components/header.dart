@@ -4,6 +4,8 @@ import 'package:gp/GlobalComponents/searchBarWidget.dart';
 import 'package:gp/pages/Explore/components/Body.dart';
 import 'package:gp/stakeholdersClases/Hospitals.dart';
 import 'package:gp/stakeholdersClases/InsuranceCompany.dart';
+import 'package:gp/stakeholdersClases/Labs.dart';
+import 'package:gp/stakeholdersClases/Pharmacies.dart';
 
 import '../../../Size_Config.dart';
 import '../../../constraints.dart';
@@ -11,8 +13,11 @@ import '../../../constraints.dart';
 class Header extends StatelessWidget {
   final InsuranceCompany insuranceCompany;
   final List<Hospitals> hospitalsList;
+  final List<Lab> labsList;
+  final List<Pharmacies> pharmaciesList;
+
   const Header({
-    Key key,this.insuranceCompany,this.hospitalsList
+    Key key,this.labsList,this.pharmaciesList,this.insuranceCompany,this.hospitalsList
   }) : super(key: key);
 
   @override
@@ -92,7 +97,7 @@ class Header extends StatelessWidget {
 
           ),
           body: Body(insuranceCompany: this.insuranceCompany,
-          hospitalsList: this.hospitalsList,
+          hospitalsList: this.hospitalsList,labsList: this.labsList,pharmaciesList: this.pharmaciesList,
           ),
         ),
       ),

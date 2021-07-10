@@ -9,6 +9,8 @@ import 'package:gp/pages/Explore/components/CardItem.dart';
 import 'package:gp/pages/Explore/components/DoctorsCards.dart';
 import 'package:gp/stakeholdersClases/Hospitals.dart';
 import 'package:gp/stakeholdersClases/InsuranceCompany.dart';
+import 'package:gp/stakeholdersClases/Labs.dart';
+import 'package:gp/stakeholdersClases/Pharmacies.dart';
 
 import '../../../categorieslistdata.dart';
 
@@ -16,9 +18,11 @@ class CategoriesWidget extends StatefulWidget {
   final String header;
   final InsuranceCompany insuranceCompany;
   final List<Hospitals> hospitalsList;
+  final List<Lab> labsList;
+  final List<Pharmacies> pharmaciesList;
 
   CategoriesWidget(
-    this.header,this.insuranceCompany,this.hospitalsList,
+    this.header,this.insuranceCompany,this.hospitalsList,this.pharmaciesList,this.labsList
   );
 
   @override
@@ -106,14 +110,14 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
             ),
           ),
           SizedBox(height: 5,),
-          _renderWidget(widget.insuranceCompany,widget.hospitalsList)
+          _renderWidget(widget.insuranceCompany,widget.hospitalsList,widget.labsList,widget.pharmaciesList)
         ],
       ),
     );
   }
 
   Widget _renderWidget(InsuranceCompany insuranceCompany,
-  List<Hospitals> hospitalsList) {
+  List<Hospitals> hospitalsList, List<Lab> labsList, List<Pharmacies> pharmaciesList) {
     if (index == 0)
       return Expanded(
         child: TabBarView(
@@ -139,8 +143,10 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
 class AllListBuilder extends StatefulWidget {
   final InsuranceCompany insuranceCompany;
   final List<Hospitals> hospitalsList;
+  final List<Lab> labsList;
+  final List<Pharmacies> pharmaciesList;
   const AllListBuilder({
-    Key key,this.insuranceCompany,this.hospitalsList
+    Key key,this.insuranceCompany,this.hospitalsList,this.labsList,this.pharmaciesList
   }) : super(key: key);
 
   @override
@@ -150,8 +156,6 @@ class AllListBuilder extends StatefulWidget {
 class _AllListBuilderState extends State<AllListBuilder> {
 
   Icon savedIcon = Icon(Icons.bookmark_border);
-
-
 
   @override
   Widget build(BuildContext context) {

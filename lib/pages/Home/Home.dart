@@ -95,8 +95,6 @@ class _HomeState extends State<Home> {
             ),
             centerTitle: true,
             backgroundColor: kPrimaryColor,
-            // kSecondaryliteColor.withOpacity(0.6),
-            //toolbarHeight: getProptionateScreenHeight(60),
 
             actions: [
               GestureDetector(
@@ -177,7 +175,9 @@ class _HomeState extends State<Home> {
             child: SingleChildScrollView(
                 child: Body(
               insuranceCompany: userCompany,
-              hospitalsList: userHospitals,
+              hospitalsList: hospitals,
+                  pharmaciesList: pharmacies,
+                  labsList: labs,
             )),
           ));
     } else
