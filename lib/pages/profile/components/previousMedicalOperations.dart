@@ -47,8 +47,8 @@ class PreviousMedicalOperations extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return PreviousHistoryCard(
                         name: 'Name of operation',
-                        date: 'April 01, 2021',
-                        title2: 'Dr. Mohamed Elmasry',
+                        // date: 'April 01, 2021',
+                        // title2: 'Dr. Mohamed Elmasry',
 
                       );
                     }),

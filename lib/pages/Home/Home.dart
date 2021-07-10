@@ -12,6 +12,7 @@ import 'package:gp/stakeholdersClases/Patients.dart';
 import 'package:gp/stakeholdersClases/Pharmacies.dart';
 
 import '../../constraints.dart';
+import '../../stakeholdersClases/Doctors.dart';
 import '../profile/profile.dart';
 
 class Home extends StatefulWidget {
@@ -56,6 +57,7 @@ class _HomeState extends State<Home> {
     Patients user = Provider.of<Patients>(context);
     List<Hospitals> hospitals = Provider.of<List<Hospitals>>(context);
     List<LabResults> labResults = Provider.of<List<LabResults>>(context);
+    List<Doctors> doctors = Provider.of<List<Doctors>>(context);
 
     if (labs != null &&
         pharmacies != null &&
@@ -111,7 +113,8 @@ class _HomeState extends State<Home> {
                           builder: (context) => Profile(
                                 patient: user,
                                 labs: labs,
-                                doctors: [],
+                                doctors: doctors,
+                                labResults: labResults,
                               )));
                 },
               ),

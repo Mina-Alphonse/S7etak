@@ -1,16 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gp/GlobalComponents/LabResultsCard.dart';
-import 'package:gp/GlobalComponents/custom_horizontal_row.dart';
-import 'package:gp/GlobalComponents/custom_text.dart';
-import 'package:gp/GlobalComponents/custom_text_field.dart';
-import 'package:gp/auth.dart';
 import 'package:gp/constraints.dart';
-import 'package:gp/pages/profile/components/ChronicDiseaseCard.dart';
-import 'package:gp/pages/profile/components/PreviousHistoryCard.dart';
-
-import '../../../Size_Config.dart';
-import 'AppointmentsCard.dart';
 
 
 class RadiologyLabsResults extends StatelessWidget {
@@ -55,8 +46,8 @@ class RadiologyLabsResults extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return LabResultsCard(
                         name: 'Name of Lab',
-                        date: 'April 01, 2021',
-                        title2: 'Name of Test',
+                        // date: 'April 01, 2021',
+                        // title2: 'Name of Test',
 
                       );
                     }),

@@ -9,6 +9,8 @@ import 'package:gp/stakeholdersClases/Pharmacies.dart';
 import 'package:gp/stakeholdersClases/labResults.dart';
 import 'package:provider/provider.dart';
 
+import '../stakeholdersClases/Doctors.dart';
+
 class AllDBModel extends StatefulWidget {
   final String uid;
 
@@ -31,11 +33,14 @@ class _AllDBModelState extends State<AllDBModel> {
             value: DatabaseService().pharmaciesData,
             child: StreamProvider<List<Lab>>.value(
               value: DatabaseService().labsData,
-              child: StreamProvider<List<LabResults>>.value(
-                  value: DatabaseService().labResultsData,
-                  child: Home(
-                    uid: widget.uid,
-                  )),
+              child: StreamProvider<List<Doctors>>.value(
+                value: DatabaseService().doctorsData,
+                child: StreamProvider<List<LabResults>>.value(
+                    value: DatabaseService().labResultsData,
+                    child: Home(
+                      uid: widget.uid,
+                    )),
+              ),
             ),
           ),
         ),

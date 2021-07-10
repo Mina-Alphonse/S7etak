@@ -65,7 +65,7 @@ class _PersonalInformationDetailsCardWidgetState
                   height: 10,
                 ),
                 personalinforows(
-                  text:  widget.patient.phone,
+                  text: widget.patient.phone,
                   text2: 'ID',
                 ),
                 Divider(
@@ -113,7 +113,7 @@ class _PersonalInformationDetailsCardWidgetState
                   color: Colors.black.withOpacity(0.5),
                 ),
                 personalinforows(
-                  text: widget.patient.gender ?? "" ,
+                  text: widget.patient.gender ?? "",
                   text2: 'Gender',
                 ),
                 SizedBox(
@@ -133,10 +133,19 @@ class _PersonalInformationDetailsCardWidgetState
                 //   thickness: 0.5,
                 //   color: Colors.black.withOpacity(0.5),
                 // ),
-                personalinforows(
-                  text: 'No',
-                  text2: 'Diabetic',
-                ),
+                ListView.builder(
+                    itemCount: widget.patient.chronicDisease.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return personalinforows(
+                        text: widget.patient.chronicDisease[index],
+                        text2: "Disease",
+                      );
+                    })
+                // personalinforows(
+                //   text: 'No',
+                //   text2: 'Diabetic',
+                // ),
               ],
             ),
           ),
