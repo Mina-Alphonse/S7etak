@@ -9,7 +9,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gp/stakeholdersClases/Pharmacies.dart';
 import 'package:gp/stakeholdersClases/labResults.dart';
 
-
 class DatabaseService {
   //Data IDs
   final String uid;
@@ -91,6 +90,7 @@ class DatabaseService {
       address: snapshot.data['address'],
       age: snapshot.data['age'],
       chronicDisease: getChronicDiseases(snapshot.data['chronicDisease']),
+      diagnoses: getDiagnoses(snapshot.data['diagnosis']),
       gender: snapshot.data['gender'],
       insuranceCompany: snapshot.data['insuranceCompany'],
       insuranceId: snapshot.data['insuranceId'],
@@ -106,6 +106,15 @@ class DatabaseService {
       chronicDiseaseList.add(d);
     });
     return chronicDiseaseList;
+  }
+
+  List<String> getDiagnoses(dynamic docs) {
+    List<String> diagnosisDiseaseList = List<String>();
+    docs.forEach((document) {
+      String d = document;
+      diagnosisDiseaseList.add(d);
+    });
+    return diagnosisDiseaseList;
   }
 
   //Insurance Company Data Retrieval
@@ -167,6 +176,7 @@ class DatabaseService {
       return LabResults(
         patientEmail: document.data["email"],
         url: document.data["resultFile"],
+        name: document.data["name"] ?? "",
       );
     }).toList();
     return finalLabResults;
@@ -210,6 +220,28 @@ class DatabaseService {
   }
 
   List<Doctors> doctorsList;
+
+  Stream<List<Doctors>> get doctorsData {
+    return doctorsCollection.snapshots().map(_doctorDataFromSnapshot);
+  }
+
+  List<Doctors> _doctorDataFromSnapshot(QuerySnapshot snapshot) {
+    List<Doctors> doctors = [];
+    doctors = snapshot.documents.map((document) {
+      return Doctors(
+        name: document["name"] ?? " ",
+        title: document["title"] ?? " ",
+        specialty: document["specialty"] ?? "",
+        phone: document["phone"] ?? "",
+        dates: document["dates"] ?? "",
+        doctorId: document.documentID,
+      );
+    }).toList();
+    return doctors;
+  }
+
+
+
 
   Stream<List<Doctors>> get hospitalDoctorsData {
     return doctorsCollection.snapshots().map(_hospitalDoctorDataFromSnapshot);

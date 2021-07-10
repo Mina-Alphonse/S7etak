@@ -6,7 +6,7 @@ import 'package:gp/pages/profile/components/ChronicDiseaseCard.dart';
 import '../../../stakeholdersClases/Patients.dart';
 
 class ChronicDiseases extends StatelessWidget {
-  Patients patients;
+  final Patients patients;
 
   ChronicDiseases({this.patients});
 

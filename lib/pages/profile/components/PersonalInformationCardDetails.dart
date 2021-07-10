@@ -6,7 +6,7 @@ import '../../../stakeholdersClases/Patients.dart';
 import 'PersonalInformationDetailsCardWidget.dart';
 
 class PersonalInformationCardDetails extends StatelessWidget {
-  Patients patient;
+  final Patients patient;
 
   PersonalInformationCardDetails({this.patient});
 

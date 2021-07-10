@@ -3,12 +3,15 @@ import 'package:gp/GlobalComponents/custom_horizontal_row.dart';
 import 'package:gp/GlobalComponents/custom_text.dart';
 import 'package:gp/GlobalComponents/custom_text_field.dart';
 import 'package:gp/auth.dart';
+import 'package:gp/stakeholdersClases/labResults.dart';
 
 import '../../Size_Config.dart';
 import '../../stakeholdersClases/Doctors.dart';
 import '../../stakeholdersClases/Labs.dart';
 import '../../stakeholdersClases/Patients.dart';
+import 'components/MedicalLabsResults.dart';
 import 'components/PersonalInformationCardDetails.dart';
+import 'components/PrevuiosMedicalDiagnoses.dart';
 import 'components/appointmentsWithDoctors.dart';
 import 'components/appointmentsWithMedicalLabs.dart';
 import 'components/chronicDiseases.dart';
@@ -17,8 +20,9 @@ class Profile extends StatelessWidget {
   final Patients patient;
   final List<Lab> labs;
   final List<Doctors> doctors;
+  final List<LabResults> labResults;
 
-  Profile({this.patient, this.labs, this.doctors});
+  Profile({this.patient, this.labs, this.doctors, this.labResults});
 
   @override
   Widget build(BuildContext context) {
@@ -70,23 +74,23 @@ class Profile extends StatelessWidget {
                   thickness: 0.3,
                 ),
 
-                // CustomTextField(
-                //   text: 'Appointments with medical doctors',
-                //   onTap: () {
-                //     AppointmentsMedicalDoctors();
-                //     Navigator.push(
-                //         context,
-                //         MaterialPageRoute(
-                //             builder: (context) => AppointmentsMedicalDoctors(
-                //                   doctors: doctors,
-                //                 )));
-                //     // Navigator.pushNamed(context, '/AppointmentsMedicalLabs');
-                //   },
-                // ),
-                // Divider(
-                //   color: Colors.black,
-                //   thickness: 0.3,
-                // ),
+                CustomTextField(
+                  text: 'Appointments with medical doctors',
+                  onTap: () {
+                    AppointmentsMedicalDoctors();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AppointmentsMedicalDoctors(
+                                  doctors: doctors,
+                                )));
+                    // Navigator.pushNamed(context, '/AppointmentsMedicalLabs');
+                  },
+                ),
+                Divider(
+                  color: Colors.black,
+                  thickness: 0.3,
+                ),
 
                 // CustomTextField(
                 //   text: 'Appointments with radiology labs',
@@ -95,10 +99,10 @@ class Profile extends StatelessWidget {
                 //   },
                 // ),
                 //
-                // // History Section
-                // SizedBox(
-                //   height: getProptionateScreenHeight(30),
-                // ),
+                // History Section
+                SizedBox(
+                  height: getProptionateScreenHeight(30),
+                ),
 
                 CustomHorizontalRow(
                   text: 'History',
@@ -135,7 +139,13 @@ class Profile extends StatelessWidget {
                 CustomTextField(
                   text: 'Previous medical diagnoses',
                   onTap: () {
-                    Navigator.pushNamed(context, '/PrevuiosMedicalDiagnoses');
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PreviousMedicalDiagnoses(
+                                  patient: patient,
+                                )));
+                    // Navigator.pushNamed(context, '/PrevuiosMedicalDiagnoses');
                   },
                 ),
                 Divider(
@@ -143,21 +153,27 @@ class Profile extends StatelessWidget {
                   thickness: 0.3,
                 ),
                 CustomTextField(
-                  text: 'Medical labs results',
+                  text: 'Medical labs and Radiology  results',
                   onTap: () {
-                    Navigator.pushNamed(context, '/MedicalLabsResults');
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MedicalLabsResults(
+                                  labResults: labResults,
+                                )));
+                    // Navigator.pushNamed(context, '/MedicalLabsResults');
                   },
                 ),
-                Divider(
-                  color: Colors.black,
-                  thickness: 0.3,
-                ),
-                CustomTextField(
-                  text: 'Radiology labs results',
-                  onTap: () {
-                    Navigator.pushNamed(context, '/RadiologyLabsResults');
-                  },
-                ),
+                // Divider(
+                //   color: Colors.black,
+                //   thickness: 0.3,
+                // ),
+                // CustomTextField(
+                //   text: 'Radiology labs results',
+                //   onTap: () {
+                //     Navigator.pushNamed(context, '/RadiologyLabsResults');
+                //   },
+                // ),
 
                 // Medicines Section
                 SizedBox(
