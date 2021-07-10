@@ -5,24 +5,23 @@ import 'package:gp/GlobalComponents/custom_text_field.dart';
 import 'package:gp/auth.dart';
 
 import '../../Size_Config.dart';
+import '../../stakeholdersClases/Doctors.dart';
+import '../../stakeholdersClases/Labs.dart';
+import '../../stakeholdersClases/Patients.dart';
+import 'components/PersonalInformationCardDetails.dart';
+import 'components/appointmentsWithDoctors.dart';
+import 'components/appointmentsWithMedicalLabs.dart';
+import 'components/chronicDiseases.dart';
 
 class Profile extends StatelessWidget {
+  final Patients patient;
+  final List<Lab> labs;
+  final List<Doctors> doctors;
 
+  Profile({this.patient, this.labs, this.doctors});
 
-  // void function1(){}
-  // void function2(){}
-  // void function3(){}
-  // void function4(){}
-  // void function5(){}
-  // void function6(){}
-  // void function7(){}
-  //
   @override
   Widget build(BuildContext context) {
-    // List<Function> functionCallbacks = [
-    //   function1,
-    //   function2,
-    // ];
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -55,9 +54,15 @@ class Profile extends StatelessWidget {
                   height: getProptionateScreenHeight(10),
                 ),
                 CustomTextField(
-                  text: 'Appointments with doctors',
-                  onTap: (){
-                    Navigator.pushNamed(context, '/AppointmentsDoctors');
+                  text: 'Appointments with labs and Radiology',
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AppointmentsLabsFinal(
+                                  labs: labs,
+                                )));
+                    // Navigator.pushNamed(context, '/AppointmentsDoctors');
                   },
                 ),
                 Divider(
@@ -65,28 +70,36 @@ class Profile extends StatelessWidget {
                   thickness: 0.3,
                 ),
 
-                CustomTextField(
-                  text: 'Appointments with medical labs',
-                  onTap: (){
-                    Navigator.pushNamed(context, '/AppointmentsMedicalLabs');
-                  },
-                ),
-                Divider(
-                  color: Colors.black,
-                  thickness: 0.3,
-                ),
+                // CustomTextField(
+                //   text: 'Appointments with medical doctors',
+                //   onTap: () {
+                //     AppointmentsMedicalDoctors();
+                //     Navigator.push(
+                //         context,
+                //         MaterialPageRoute(
+                //             builder: (context) => AppointmentsMedicalDoctors(
+                //                   doctors: doctors,
+                //                 )));
+                //     // Navigator.pushNamed(context, '/AppointmentsMedicalLabs');
+                //   },
+                // ),
+                // Divider(
+                //   color: Colors.black,
+                //   thickness: 0.3,
+                // ),
 
-                CustomTextField(
-                  text: 'Appointments with radiology labs',
-                  onTap: (){
-                    Navigator.pushNamed(context, '/AppointmentsRadiologyLabs');
-                  },
-                ),
+                // CustomTextField(
+                //   text: 'Appointments with radiology labs',
+                //   onTap: () {
+                //     Navigator.pushNamed(context, '/AppointmentsRadiologyLabs');
+                //   },
+                // ),
+                //
+                // // History Section
+                // SizedBox(
+                //   height: getProptionateScreenHeight(30),
+                // ),
 
-                // History Section
-                SizedBox(
-                  height: getProptionateScreenHeight(30),
-                ),
                 CustomHorizontalRow(
                   text: 'History',
                 ),
@@ -96,8 +109,13 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                   text: 'Chronic diseases',
-                  onTap: (){
-                    Navigator.pushNamed(context, '/chronicDiseases');
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ChronicDiseases(
+                                  patients: patient,
+                                )));
                   },
                 ),
                 Divider(
@@ -106,7 +124,7 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                   text: 'Previous medical operations',
-                  onTap: (){
+                  onTap: () {
                     Navigator.pushNamed(context, '/PreviousMedicalOperations');
                   },
                 ),
@@ -116,10 +134,9 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                   text: 'Previous medical diagnoses',
-                  onTap: (){
+                  onTap: () {
                     Navigator.pushNamed(context, '/PrevuiosMedicalDiagnoses');
                   },
-
                 ),
                 Divider(
                   color: Colors.black,
@@ -127,7 +144,7 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                   text: 'Medical labs results',
-                  onTap: (){
+                  onTap: () {
                     Navigator.pushNamed(context, '/MedicalLabsResults');
                   },
                 ),
@@ -137,7 +154,7 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                   text: 'Radiology labs results',
-                  onTap: (){
+                  onTap: () {
                     Navigator.pushNamed(context, '/RadiologyLabsResults');
                   },
                 ),
@@ -155,13 +172,10 @@ class Profile extends StatelessWidget {
                 ),
                 CustomTextField(
                   text: 'New medicines',
-                  onTap: (){
+                  onTap: () {
                     Navigator.pushNamed(context, '/MedicineList');
                   },
-
-
                 ),
-
 
                 // Personal Info Section
                 SizedBox(
@@ -175,24 +189,32 @@ class Profile extends StatelessWidget {
                   height: getProptionateScreenHeight(10),
                 ),
                 CustomTextField(
-                    text: 'Personal information',
-                    onTap:(){
-                      Navigator.pushNamed(context, '/PersonalInformationCardDetails');
-                    },
-                  ),
+                  text: 'Personal information',
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                PersonalInformationCardDetails(
+                                  patient: patient,
+                                )));
+                  },
+                ),
                 Divider(
                   color: Colors.black,
                   thickness: 0.3,
                 ),
                 CustomTextField(
                   text: 'Log Out',
-                  onTap: () async
-                  {
+                  onTap: () async {
                     await AuthService().signOut();
-                    Navigator.pushNamedAndRemoveUntil(context, '/SignIn', (route) => false);
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/SignIn', (route) => false);
                   },
                 ),
-                SizedBox(height: 30,)
+                SizedBox(
+                  height: 30,
+                )
               ],
             ),
           ),
@@ -200,14 +222,14 @@ class Profile extends StatelessWidget {
       ),
     );
   }
-  // Widget _renderWidget(String title){
-  //   return Column(children: [
-  //     Padding(
-  //       padding:EdgeInsets.only(bottom: 40),
-  //       child: CustomTextField(
-  //         text: title,
-  //       ),
-  //     ),
-  //   ],);
-  // }
+// Widget _renderWidget(String title){
+//   return Column(children: [
+//     Padding(
+//       padding:EdgeInsets.only(bottom: 40),
+//       child: CustomTextField(
+//         text: title,
+//       ),
+//     ),
+//   ],);
+// }
 }

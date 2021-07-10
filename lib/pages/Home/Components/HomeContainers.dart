@@ -33,18 +33,13 @@ final Color color,txtColor;
                 image:  AssetImage(imgURL,),
                 alignment: Alignment.center,
               ),
-              foregroundDecoration:BoxDecoration(
-                //color: kPrimaryColor.withOpacity(0.3),
-                gradient: LinearGradient(
-                  colors: [
-                    color.withOpacity(0),
-                    color.withOpacity(0.7),
-                    color.withOpacity(1)
-                  ],
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                ),
-              ) ,
+              // foregroundDecoration:BoxDecoration(
+              //   //color: kPrimaryColor.withOpacity(0.3),
+              //   gradient: LinearGradient(
+              //     begin: Alignment.centerLeft,
+              //     end: Alignment.centerRight,
+              //   ),
+              // ) ,
             ),
 
             Positioned(

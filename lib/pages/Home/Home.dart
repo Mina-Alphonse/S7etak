@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gp/Size_Config.dart';
 import 'package:gp/pages/Home/Components/Body.dart';
 import 'package:gp/pages/LoadingPage.dart';
+import 'package:gp/stakeholdersClases/labResults.dart';
 import 'package:provider/provider.dart';
 import 'package:gp/stakeholdersClases/Hospitals.dart';
 import 'package:gp/stakeholdersClases/InsuranceCompany.dart';
@@ -11,6 +12,7 @@ import 'package:gp/stakeholdersClases/Patients.dart';
 import 'package:gp/stakeholdersClases/Pharmacies.dart';
 
 import '../../constraints.dart';
+import '../profile/profile.dart';
 
 class Home extends StatefulWidget {
   final String uid;
@@ -22,21 +24,17 @@ class Home extends StatefulWidget {
 }
 
 List<String> drawerOptions = [
-
   "Appointments",
   "Medical Lab Results",
   "Radiology Lab Results",
   "Medicine",
-
   "Personal information",
 ];
 List<String> drawerOptionsLinks = [
-
   "/Profile",
   "/MedicalLabsResults",
   "/RadiologyLabsResults",
   "/MedicineList",
-
   "/PersonalInformationCardDetails",
 ];
 
@@ -51,21 +49,19 @@ List<String> asami = [
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-
-
     List<Lab> labs = Provider.of<List<Lab>>(context);
     List<Pharmacies> pharmacies = Provider.of<List<Pharmacies>>(context);
     List<InsuranceCompany> companies =
         Provider.of<List<InsuranceCompany>>(context);
     Patients user = Provider.of<Patients>(context);
     List<Hospitals> hospitals = Provider.of<List<Hospitals>>(context);
+    List<LabResults> labResults = Provider.of<List<LabResults>>(context);
 
     if (labs != null &&
         pharmacies != null &&
         companies != null &&
         user != null &&
         hospitals != null) {
-
       InsuranceCompany userCompany;
       List<Hospitals> userHospitals = List<Hospitals>();
 
@@ -76,14 +72,13 @@ class _HomeState extends State<Home> {
       });
       hospitals.forEach((hospital) {
         userCompany.places.forEach((place) {
-          if(place.placeType == 'Hospital' && place.name == hospital.hospitalName)
-            {
-             userHospitals.add(hospital);
-            }
+          if (place.placeType == 'Hospital' &&
+              place.name == hospital.hospitalName) {
+            userHospitals.add(hospital);
+          }
         });
       });
       print(userHospitals);
-
 
       return Scaffold(
           backgroundColor: Colors.white,
@@ -110,10 +105,14 @@ class _HomeState extends State<Home> {
                   size: 30,
                 ),
                 onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    '/Profile',
-                  );
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Profile(
+                                patient: user,
+                                labs: labs,
+                                doctors: [],
+                              )));
                 },
               ),
               SizedBox(
@@ -123,16 +122,17 @@ class _HomeState extends State<Home> {
           ),
           drawer: Drawer(
             child: Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                    kPrimaryColor,
-                    kPrimaryColor.withOpacity(0.5),
-                    kPrimaryColor.withOpacity(0.3),
-                    kliteColor.withOpacity(0.3)
-                  ])),
+              // decoration: BoxDecoration(
+              //     gradient: LinearGradient(
+              //         begin: Alignment.topCenter,
+              //         end: Alignment.bottomCenter,
+              //         colors: <Color> [
+              //       kPrimaryColor,
+              //       kPrimaryColor.withOpacity(0.5),
+              //       kPrimaryColor.withOpacity(0.3),
+              //       kliteColor.withOpacity(0.3)
+              //     ],
+              //     )),
               child: Column(
                 children: [
                   UserAccountsDrawerHeader(
@@ -164,8 +164,8 @@ class _HomeState extends State<Home> {
                             style: TextStyle(color: kPrimaryColor),
                           ),
                           onTap: () {
-                            Navigator.pushNamed(context, drawerOptionsLinks[index]);
-
+                            Navigator.pushNamed(
+                                context, drawerOptionsLinks[index]);
                           },
                         );
                       })
@@ -177,7 +177,7 @@ class _HomeState extends State<Home> {
             child: SingleChildScrollView(
                 child: Body(
               insuranceCompany: userCompany,
-                  hospitalsList: userHospitals,
+              hospitalsList: userHospitals,
             )),
           ));
     } else

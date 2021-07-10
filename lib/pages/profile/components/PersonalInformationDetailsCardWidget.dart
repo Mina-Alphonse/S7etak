@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:gp/GlobalComponents/BookButton.dart';
 import 'package:gp/GlobalComponents/custom_horizontal_row.dart';
@@ -7,12 +5,20 @@ import 'package:gp/pages/profile/components/personalinforows.dart';
 
 import '../../../Size_Config.dart';
 import '../../../constraints.dart';
+import '../../../stakeholdersClases/Patients.dart';
 
-class PersonalInformationDetailsCardWidget extends StatelessWidget {
-  const PersonalInformationDetailsCardWidget({
-    Key key,
-  }) : super(key: key);
+class PersonalInformationDetailsCardWidget extends StatefulWidget {
+  Patients patient;
 
+  PersonalInformationDetailsCardWidget({this.patient});
+
+  @override
+  _PersonalInformationDetailsCardWidgetState createState() =>
+      _PersonalInformationDetailsCardWidgetState();
+}
+
+class _PersonalInformationDetailsCardWidgetState
+    extends State<PersonalInformationDetailsCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,8 +27,7 @@ class PersonalInformationDetailsCardWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
-        boxShadow:  [
-
+        boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.6),
             spreadRadius: 1,
@@ -34,77 +39,107 @@ class PersonalInformationDetailsCardWidget extends StatelessWidget {
       // height: getProptionateScreenHeight(150),
 
       child: Column(
-
         children: [
           //
           Container(
-            margin:  EdgeInsets.symmetric(horizontal: 5,vertical: 10),
+            margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  'Patient\'s name',
+                  widget.patient.name,
                   style: TextStyle(
                       color: kSecondaryColor,
                       fontSize: 20,
                       fontFamily: mainFont,
-                      fontWeight: FontWeight.bold
-                  ),
+                      fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: 20,
                 ),
-
-                CustomHorizontalRow(text: 'ID info',),
-                SizedBox(height: 10,),
-                personalinforows(text:'221615xxxxxxx',text2: 'ID',),
+                CustomHorizontalRow(
+                  text: 'ID info',
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                personalinforows(
+                  text:  widget.patient.phone,
+                  text2: 'ID',
+                ),
                 Divider(
                   thickness: 0.5,
                   color: Colors.black.withOpacity(0.5),
                 ),
-                personalinforows(text:'Fonsi',text2: 'User name',),
+                personalinforows(
+                  text: widget.patient.name,
+                  text2: 'User name',
+                ),
                 Divider(
                   thickness: 0.5,
                   color: Colors.black.withOpacity(0.5),
                 ),
-                personalinforows(text:'Fonsi',text2: 'Insurance Company',),
+                personalinforows(
+                  text: widget.patient.insuranceCompany,
+                  text2: 'Ins. Com.',
+                ),
                 Divider(
                   thickness: 0.5,
                   color: Colors.black.withOpacity(0.5),
                 ),
-                personalinforows(text:'fonsi@gmail.com',text2: 'Email',),
+                personalinforows(
+                  text: widget.patient.mail ?? "",
+                  text2: 'Email',
+                ),
                 Divider(
                   thickness: 0.5,
                   color: Colors.black.withOpacity(0.5),
                 ),
-                personalinforows(text:'0109xxxxxxx',text2: 'Phone no.',),
+                personalinforows(
+                  text: widget.patient.phone,
+                  text2: 'Phone no.',
+                ),
                 Divider(
                   thickness: 0.5,
                   color: Colors.black.withOpacity(0.5),
                 ),
-                personalinforows(text:'23',text2: 'Age',),
+                personalinforows(
+                  text: widget.patient.age,
+                  text2: 'Age',
+                ),
                 Divider(
                   thickness: 0.5,
                   color: Colors.black.withOpacity(0.5),
                 ),
-                personalinforows(text:'male',text2: 'Gender',),
-                SizedBox(height: 10,),
-                CustomHorizontalRow(text: 'Medical info',),
-                SizedBox(height: 10,),
-                personalinforows(text:'120-80',text2: 'blood pressure rate',),
-                Divider(
-                  thickness: 0.5,
-                  color: Colors.black.withOpacity(0.5),
+                personalinforows(
+                  text: widget.patient.gender ?? "" ,
+                  text2: 'Gender',
                 ),
-                personalinforows(text:'No',text2: 'Diabetic',),
-
-
+                SizedBox(
+                  height: 10,
+                ),
+                CustomHorizontalRow(
+                  text: 'Medical info',
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                // personalinforows(
+                //   text: widget.patient.,
+                //   text2: 'blood pressure rate',
+                // ),
+                // Divider(
+                //   thickness: 0.5,
+                //   color: Colors.black.withOpacity(0.5),
+                // ),
+                personalinforows(
+                  text: 'No',
+                  text2: 'Diabetic',
+                ),
               ],
             ),
           ),
-
-
         ],
       ),
     );

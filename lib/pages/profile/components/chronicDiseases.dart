@@ -3,24 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:gp/constraints.dart';
 import 'package:gp/pages/profile/components/ChronicDiseaseCard.dart';
 
-
+import '../../../stakeholdersClases/Patients.dart';
 
 class ChronicDiseases extends StatelessWidget {
+  Patients patients;
 
+  ChronicDiseases({this.patients});
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
-        leading:  GestureDetector(
-          onTap: (){
+        leading: GestureDetector(
+          onTap: () {
             Navigator.pop(context);
           },
           child: Icon(
             Icons.arrow_back,
             color: kPrimaryColor,
-
           ),
         ),
         backgroundColor: kliteColor,
@@ -31,25 +31,26 @@ class ChronicDiseases extends StatelessWidget {
             color: kPrimaryColor,
             fontWeight: FontWeight.bold,
             fontFamily: mainFont,
-
           ),
         ),
       ),
       body: SafeArea(
-        child:SingleChildScrollView(
+        child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 12,),
+              SizedBox(
+                height: 12,
+              ),
               Container(
-                child:  ListView.builder(
-                    itemCount: 1,
+                child: ListView.builder(
+                    itemCount: patients.chronicDisease.length,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return ChronicDiseaseCard(
-                        name: 'Diabetes',
-                        description: ' is a disease in which your blood glucose,'
-                            ' or blood sugar, levels are too high.'
-                            ' Glucose comes from the foods you eat.',
+                      return Padding(
+                        padding: EdgeInsets.all(10),
+                        child: ChronicDiseaseCard(
+                          name: patients.chronicDisease[index],
+                        ),
                       );
                     }),
               ),
@@ -59,5 +60,4 @@ class ChronicDiseases extends StatelessWidget {
       ),
     );
   }
-
 }
