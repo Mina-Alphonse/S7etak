@@ -108,17 +108,17 @@ class _HomeState extends State<Home> {
           ),
           drawer: Drawer(
             child: Container(
-              // decoration: BoxDecoration(
-              //     gradient: LinearGradient(
-              //         begin: Alignment.topCenter,
-              //         end: Alignment.bottomCenter,
-              //         colors: <Color> [
-              //       kPrimaryColor,
-              //       kPrimaryColor.withOpacity(0.5),
-              //       kPrimaryColor.withOpacity(0.3),
-              //       kliteColor.withOpacity(0.3)
-              //     ],
-              //     )),
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: <Color> [
+                    kPrimaryColor,
+                    kPrimaryColor.withOpacity(0.5),
+                    kPrimaryColor.withOpacity(0.3),
+                    kliteColor.withOpacity(0.3)
+                  ],
+                  )),
               child: Column(
                 children: [
                   UserAccountsDrawerHeader(

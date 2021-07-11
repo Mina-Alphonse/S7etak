@@ -3,7 +3,6 @@ import 'package:gp/stakeholdersClases/Doctors.dart';
 import 'package:gp/stakeholdersClases/Hospitals.dart';
 import 'package:gp/stakeholdersClases/InsuranceCompany.dart';
 import 'package:gp/stakeholdersClases/Labs.dart';
-import 'package:gp/stakeholdersClases/MedicalPlaces.dart';
 import 'package:gp/stakeholdersClases/Patients.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gp/stakeholdersClases/Pharmacies.dart';
@@ -96,7 +95,7 @@ class DatabaseService {
       insuranceCompany: snapshot.data['insuranceCompany'],
       insuranceId: snapshot.data['insuranceId'],
       isInsured: snapshot.data['inInsured'],
-      // tests: snapshot.data['tests'],
+      tests: snapshot.data['tests'] ?? [],
     );
   }
 
@@ -141,21 +140,6 @@ class DatabaseService {
       );
     }).toList();
     return finalInsuranceCompany;
-  }
-
-  List<MedicalPlaces> getMedicalPlaces(dynamic docs) {
-    List<MedicalPlaces> medicalPlaces = [];
-    if (docs == null) return [];
-    // docs.forEach((document) {
-    //   // MedicalPlaces d = MedicalPlaces(
-    //   //   name: document["name"] ?? "",
-    //   //   address: document["address"] ?? "",
-    //   //   placeType: document["placeType"] ?? "",
-    //   //   phone: document["phone"] ?? "",
-    //   // );
-    //   // medicalPlaces.add(d);
-    // });
-    return medicalPlaces;
   }
 
   List<CompanyPackages> getPackages(dynamic docs) {
@@ -215,23 +199,6 @@ class DatabaseService {
     return reference;
   }
 
-  Future<List<Doctors>> doctorsListing(QuerySnapshot doctors) {
-    List<Doctors> doctorsList = [];
-    if (doctors == null) return Future.value([]);
-    doctors.documents.forEach((doctor) {
-      Doctors doctorData = Doctors(
-        doctorId: doctor.documentID ?? "",
-        name: doctor.data['name'] ?? "",
-        phone: doctor.data['phone'] ?? "",
-        dates: doctor.data['dates'] ?? "",
-        title: doctor.data['title'] ?? "",
-        specialty: doctor.data['specialty'] ?? "",
-      );
-      doctorsList.add(doctorData);
-    });
-    return Future.value(doctorsList);
-  }
-
   List<Doctors> doctorsList;
 
   Stream<List<Doctors>> get doctorsData {
@@ -272,21 +239,6 @@ class DatabaseService {
     return doctors;
   }
 
-  // ignore: missing_return
-  List<Doctors> getHospitalDoctorsList(dynamic docs) {
-    List<Doctors> allDoctors = [];
-    hospitalDoctorsData.first.then((value) {
-      allDoctors = value;
-      List<Doctors> doctorList = List<Doctors>();
-      docs.forEach((element) {
-        for (int i = 0; i < allDoctors.length; i++) {
-          if (allDoctors[i].doctorId.contains(element))
-            doctorList.add(allDoctors[i]);
-        }
-      });
-      return doctorList;
-    });
-  }
 
   List<Hospitals> getFinalHospitalObjects(
       List<Hospitals> hospitals, List<Doctors> allDoctors) {

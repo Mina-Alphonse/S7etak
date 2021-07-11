@@ -122,11 +122,10 @@ class Body extends StatelessWidget {
                           builder: (context) => AppointmentsMedicalDoctors(
                             doctors: doctorsList,
                           )));
-                  // Navigator.pushNamed(context, '/AppointmentsDoctors');
                 },
                 child: HomeContainers(
                   imgURL: 'assets/appointmnents.jpg',
-                  text1: 'Scheduled',
+                  text1: 'Schedule',
                   text2: 'Appointments',
                   color: kSecondaryColor,
                   txtColor: kliteColor,

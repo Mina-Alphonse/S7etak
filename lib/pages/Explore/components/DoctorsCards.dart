@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:gp/stakeholdersClases/Doctors.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../Size_Config.dart';
 import '../../../constraints.dart';
@@ -186,7 +187,8 @@ class _DoctorsCardsState extends State<DoctorsCards> {
                                     padding: EdgeInsets.only(top: 5,bottom: 5, right: 10,left: 10),
                                     elevation: 3,
                                     onPressed: () {
-                                      Navigator.pushNamed(context, '/cardDetails');
+                                      _makePhoneCall(widget.doctorsList[index].phone);
+                                      // Navigator.pushNamed(context, '/cardDetails');
                                     },
                                     child: Text(
                                       "Call to make an Appointment",
@@ -213,5 +215,12 @@ class _DoctorsCardsState extends State<DoctorsCards> {
         },
       ),
     );
+  }
+  Future<void> _makePhoneCall(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

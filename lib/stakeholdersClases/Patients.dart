@@ -7,7 +7,7 @@ class Patients {
   String insuranceId;
   bool isInsured;
   List<String> chronicDisease;
-  String tests;
+  List<String> tests;
   String patientId;
   String age;
   String gender;
