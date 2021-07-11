@@ -137,7 +137,7 @@ class DatabaseService {
         address: company.data['address'] ?? "",
         companyPhoneNumber: company.data['phone'] ?? "",
         places: [],
-        packages:[],
+        packages: [],
       );
     }).toList();
     return finalInsuranceCompany;
@@ -200,18 +200,24 @@ class DatabaseService {
         address: hospital.data['address'] ?? "",
         phone: hospital.data['phone'] ?? "",
         location: hospital.data['location'] ?? "",
-        doctors: hospital.data['doctors'] != null
-            ? getHospitalDoctorsList(hospital.data['doctors'])
-            : [],
+        doctorsReference: getDoctorsReference(hospital.data['doctors']),
+        doctors: [],
       );
     }).toList();
     return finalHospitals;
   }
 
+  List<String> getDoctorsReference(dynamic docs) {
+    List<String> reference = List<String>();
+    docs.forEach((value) {
+      reference.add(value);
+    });
+    return reference;
+  }
+
   Future<List<Doctors>> doctorsListing(QuerySnapshot doctors) {
     List<Doctors> doctorsList = [];
     if (doctors == null) return Future.value([]);
-
     doctors.documents.forEach((doctor) {
       Doctors doctorData = Doctors(
         doctorId: doctor.documentID ?? "",
@@ -280,6 +286,19 @@ class DatabaseService {
       });
       return doctorList;
     });
+  }
+
+  List<Hospitals> getFinalHospitalObjects(
+      List<Hospitals> hospitals, List<Doctors> allDoctors) {
+    for (int i = 0; i < hospitals.length; i++) {
+      for (int j = 0; j < allDoctors.length; j++) {
+        for (int k = 0; k < hospitals[i].doctorsReference.length; k++) {
+          if (hospitals[i].doctorsReference[k].contains(allDoctors[j].doctorId))
+            hospitals[i].doctors.add(allDoctors[j]);
+        }
+      }
+    }
+    return hospitals;
   }
 
   Future updatePatientData(Patients patient) async {

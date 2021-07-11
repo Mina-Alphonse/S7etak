@@ -23,20 +23,21 @@ class AllDBModel extends StatefulWidget {
 class _AllDBModelState extends State<AllDBModel> {
   @override
   Widget build(BuildContext context) {
+    DatabaseService db = DatabaseService(uid: widget.uid);
     return StreamProvider<Patients>.value(
-      value: DatabaseService(uid: widget.uid).patientData,
+      value: db.patientData,
       child: StreamProvider<List<InsuranceCompany>>.value(
-        value: DatabaseService().insuranceCompanyData,
+        value: db.insuranceCompanyData,
         child: StreamProvider<List<Hospitals>>.value(
-          value: DatabaseService().hospitalsData,
+          value: db.hospitalsData,
           child: StreamProvider<List<Pharmacies>>.value(
-            value: DatabaseService().pharmaciesData,
+            value: db.pharmaciesData,
             child: StreamProvider<List<Lab>>.value(
-              value: DatabaseService().labsData,
+              value: db.labsData,
               child: StreamProvider<List<Doctors>>.value(
-                value: DatabaseService().doctorsData,
+                value: db.doctorsData,
                 child: StreamProvider<List<LabResults>>.value(
-                    value: DatabaseService().labResultsData,
+                    value: db.labResultsData,
                     child: Home(
                       uid: widget.uid,
                     )),

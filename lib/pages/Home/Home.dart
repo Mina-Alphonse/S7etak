@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gp/Size_Config.dart';
+import 'package:gp/database.dart';
 import 'package:gp/pages/Home/Components/Body.dart';
 import 'package:gp/pages/LoadingPage.dart';
 import 'package:gp/stakeholdersClases/labResults.dart';
@@ -33,14 +34,14 @@ List<String> drawerOptions = [
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    List<Doctors> doctors = Provider.of<List<Doctors>>(context);
     List<Lab> labs = Provider.of<List<Lab>>(context);
     List<Pharmacies> pharmacies = Provider.of<List<Pharmacies>>(context);
     List<InsuranceCompany> companies =
         Provider.of<List<InsuranceCompany>>(context);
     Patients user = Provider.of<Patients>(context);
-    List<Hospitals> hospitals = Provider.of<List<Hospitals>>(context);
     List<LabResults> labResults = Provider.of<List<LabResults>>(context);
-    List<Doctors> doctors = Provider.of<List<Doctors>>(context);
+    List<Hospitals> hospitals = Provider.of<List<Hospitals>>(context);
     if (labs != null &&
         pharmacies != null &&
         companies != null &&
@@ -49,7 +50,9 @@ class _HomeState extends State<Home> {
       InsuranceCompany userCompany;
       List<Hospitals> userHospitals = List<Hospitals>();
 
-
+      List<Hospitals> finalHospitals =
+          DatabaseService().getFinalHospitalObjects(hospitals, doctors);
+      finalHospitals[0].doctors[0];
       companies.forEach((company) {
         if (company.name == user.insuranceCompany) {
           userCompany = company;
@@ -80,7 +83,6 @@ class _HomeState extends State<Home> {
             ),
             centerTitle: true,
             backgroundColor: kPrimaryColor,
-
             actions: [
               GestureDetector(
                 child: Icon(
@@ -179,10 +181,10 @@ class _HomeState extends State<Home> {
                 child: Body(
               insuranceCompany: userCompany,
               hospitalsList: hospitals,
-                  pharmaciesList: pharmacies,
-                  labsList: labs,
-                  doctorsList: doctors,
-                  labResultsList: labResults,
+              pharmaciesList: pharmacies,
+              labsList: labs,
+              doctorsList: doctors,
+              labResultsList: labResults,
             )),
           ));
     } else
