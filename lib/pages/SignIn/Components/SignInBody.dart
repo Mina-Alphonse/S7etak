@@ -95,11 +95,11 @@ class SignInBody extends StatelessWidget {
                   width: getProptionateScreenHeight(25.0),
 
                 ),
-                SizedBox(width: getProptionateScreenWidth(40),),
+                SizedBox(width: getProptionateScreenWidth(37),),
                 Text(
                   'Sign In with Facebook',
                   style: TextStyle(
-                    fontSize: getProptionateScreenWidth(18.0),
+                    fontSize: getProptionateScreenWidth(17.0),
                     color: Colors.white,
                   ),
                 ),
