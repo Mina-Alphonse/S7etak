@@ -77,7 +77,7 @@ class Profile extends StatelessWidget {
                 CustomTextField(
                   text: 'Appointments with medical doctors',
                   onTap: () {
-                    AppointmentsMedicalDoctors();
+                    // AppointmentsMedicalDoctors();
                     Navigator.push(
                         context,
                         MaterialPageRoute(

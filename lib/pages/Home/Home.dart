@@ -52,7 +52,7 @@ class _HomeState extends State<Home> {
 
       List<Hospitals> finalHospitals =
           DatabaseService().getFinalHospitalObjects(hospitals, doctors);
-      finalHospitals[0].doctors[0];
+      // finalHospitals[0].doctors[0];
       companies.forEach((company) {
         if (company.name == user.insuranceCompany) {
           userCompany = company;
@@ -180,7 +180,7 @@ class _HomeState extends State<Home> {
             child: SingleChildScrollView(
                 child: Body(
               insuranceCompany: userCompany,
-              hospitalsList: hospitals,
+              hospitalsList: finalHospitals,
               pharmaciesList: pharmacies,
               labsList: labs,
               doctorsList: doctors,

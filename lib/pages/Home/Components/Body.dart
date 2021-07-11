@@ -13,6 +13,8 @@ import 'package:gp/stakeholdersClases/Labs.dart';
 import 'package:gp/stakeholdersClases/Pharmacies.dart';
 import 'package:gp/stakeholdersClases/labResults.dart';
 
+import '../../profile/components/appointmentsWithMedicalLabs.dart';
+
 class Body extends StatelessWidget {
   final InsuranceCompany insuranceCompany;
   final List<Hospitals> hospitalsList;
@@ -114,7 +116,13 @@ class Body extends StatelessWidget {
             ),
             GestureDetector(
                 onTap: (){
-                  Navigator.pushNamed(context, '/AppointmentsDoctors');
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AppointmentsMedicalDoctors(
+                            doctors: doctorsList,
+                          )));
+                  // Navigator.pushNamed(context, '/AppointmentsDoctors');
                 },
                 child: HomeContainers(
                   imgURL: 'assets/appointmnents.jpg',
