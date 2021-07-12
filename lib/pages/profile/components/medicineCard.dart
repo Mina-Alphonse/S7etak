@@ -154,27 +154,27 @@ class MedicineCard extends StatelessWidget {
                 ),
 
               ),
-              FlatButton(
-
-                onPressed: (){},
-                child:Container(
-
-                  padding: EdgeInsets.symmetric(horizontal: 25,vertical: 10),
-                  decoration:BoxDecoration(
-                    color: kPrimaryColor,
-                    borderRadius: BorderRadius.circular(10),
-                  ) ,
-                  child: Text(
-                    'Purchase',
-                    style: TextStyle(
-                      color: kliteColor,
-                      fontFamily: mainFont,
-                      fontSize: getProptionateScreenHeight(25),
-                    ),
-                  ),
-                ),
-
-              ),
+              // FlatButton(
+              //
+              //   onPressed: (){},
+              //   child:Container(
+              //
+              //     padding: EdgeInsets.symmetric(horizontal: 25,vertical: 10),
+              //     decoration:BoxDecoration(
+              //       color: kPrimaryColor,
+              //       borderRadius: BorderRadius.circular(10),
+              //     ) ,
+              //     child: Text(
+              //       'Purchase',
+              //       style: TextStyle(
+              //         color: kliteColor,
+              //         fontFamily: mainFont,
+              //         fontSize: getProptionateScreenHeight(25),
+              //       ),
+              //     ),
+              //   ),
+              //
+              // ),
             ],
           ),
           SizedBox(

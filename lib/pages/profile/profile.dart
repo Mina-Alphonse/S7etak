@@ -182,7 +182,7 @@ class Profile extends StatelessWidget {
                   height: getProptionateScreenHeight(10),
                 ),
                 CustomTextField(
-                  text: 'New medicines',
+                  text: 'My medicines',
                   onTap: () {
                     Navigator.pushNamed(context, '/MedicineList');
                   },

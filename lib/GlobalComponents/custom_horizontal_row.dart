@@ -13,7 +13,7 @@ class CustomHorizontalRow extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-            flex: 2,
+            flex: 1,
             child: Divider(
               thickness: 0.5,
               color: Colors.black,
@@ -27,7 +27,7 @@ class CustomHorizontalRow extends StatelessWidget {
               fontSize: getProptionateScreenHeight(22),
             )),
         Expanded(
-            flex: 2,
+            flex: 1,
             child: Divider(
               thickness: 0.5,
               color: Colors.black,

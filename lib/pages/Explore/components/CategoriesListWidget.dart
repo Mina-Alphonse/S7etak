@@ -17,6 +17,7 @@ import 'package:gp/stakeholdersClases/Pharmacies.dart';
 
 import '../../../categorieslistdata.dart';
 
+List<Hospitals> savedHospitals;
 class CategoriesWidget extends StatefulWidget {
   final String header;
   final InsuranceCompany insuranceCompany;
@@ -42,6 +43,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
 
   @override
   Widget build(BuildContext context) {
+    savedHospitals = [];
     return DefaultTabController(
       initialIndex: 0,
       length: 4,
@@ -98,7 +100,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
           SizedBox(
             height: 5,
           ),
-          _renderWidget(widget.insuranceCompany,widget.hospitalsList,widget.labsList,widget.pharmaciesList,widget.doctorsList)
+          _renderWidget(widget.insuranceCompany, widget.hospitalsList,
+              widget.labsList, widget.pharmaciesList, widget.doctorsList)
         ],
       ),
     );
@@ -110,21 +113,27 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
       List<Lab> labsList,
       List<Pharmacies> pharmaciesList,
       List<Doctors> doctorsList) {
-      return Expanded(
-        child: TabBarView(
-          children: <Widget>[
-            AllListBuilder(
-              hospitalsList: hospitalsList,
-              labsList: labsList,
-              pharmaciesList: pharmaciesList,
-              doctorsList: doctorsList,
-            ),
-            DoctorListBuilder(hospitalsList: hospitalsList,),
-            LabsListBuilder(labsList: labsList,),
-            PharmaciesListBuilder(pharmaciesList: pharmaciesList,),
-          ],
-        ),
-      );
+    return Expanded(
+      child: TabBarView(
+        children: <Widget>[
+          AllListBuilder(
+            hospitalsList: hospitalsList,
+            labsList: labsList,
+            pharmaciesList: pharmaciesList,
+            doctorsList: doctorsList,
+          ),
+          DoctorListBuilder(
+            hospitalsList: hospitalsList,
+          ),
+          LabsListBuilder(
+            labsList: labsList,
+          ),
+          PharmaciesListBuilder(
+            pharmaciesList: pharmaciesList,
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -134,6 +143,7 @@ class AllListBuilder extends StatefulWidget {
   final List<Lab> labsList;
   final List<Pharmacies> pharmaciesList;
   final List<Doctors> doctorsList;
+
   const AllListBuilder(
       {Key key,
       this.insuranceCompany,
@@ -149,307 +159,16 @@ class AllListBuilder extends StatefulWidget {
 
 class _AllListBuilderState extends State<AllListBuilder> {
   Icon savedIcon = Icon(Icons.bookmark_border);
-
   @override
   Widget build(BuildContext context) {
+    savedHospitals =[];
     return Center(
       child: ListView.builder(
-        itemCount: widget.hospitalsList.length + widget.labsList.length + widget.pharmaciesList.length,
+        itemCount: widget.hospitalsList.length +
+            widget.labsList.length +
+            widget.pharmaciesList.length,
         itemBuilder: (context, index) {
-          if(index < widget.hospitalsList.length)
-            {
-              return Card(
-                child: Container(
-                  child: Row(
-                    children: [
-                      //image
-                      Container(
-                        height: getProptionateScreenHeight(125),
-                        width: getProptionateScreenWidth(122),
-                        decoration: BoxDecoration(
-                          color: kliteColor,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(3.0),
-                          child: FittedBox(
-                            child: Image.asset(
-                              doctorList[0].imgURL,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ),
-                      ),
-
-                      //Hospital Name
-                      Container(
-                        padding: EdgeInsets.all(4),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                //1Name
-                                Container(
-                                  width: getProptionateScreenWidth(150),
-                                  child: Text(
-                                    widget.hospitalsList[index].hospitalName,
-                                    style: TextStyle(
-                                        fontSize: getProptionateScreenWidth(15),
-                                        fontWeight: FontWeight.bold,
-                                        color: kSecondaryColor,
-                                        fontFamily: mainFont),
-                                  ),
-                                ),
-                                IconButton(
-                                    iconSize: 30,
-                                    icon: savedIcon,
-                                    onPressed: () {
-                                      if (doctorList[index].isSaved == true) {
-                                        setState(() {
-                                          savedIcon = Icon(Icons.bookmark);
-                                          doctorList[index].isSaved = false;
-                                        });
-                                      } else {
-                                        setState(() {
-                                          savedIcon = Icon(Icons.bookmark_border);
-                                          doctorList[index].isSaved = true;
-                                        });
-                                      }
-                                    })
-                              ],
-                            ),
-
-                            //Hospital address and phone Number
-                            Padding(
-                              padding:
-                              EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                              child: Container(
-                                width: getProptionateScreenWidth(200),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      widget.hospitalsList[index].address,
-                                      style: TextStyle(
-                                          fontSize: getProptionateScreenWidth(11),
-                                          color: kPrimaryColor.withOpacity(0.8),
-                                          fontFamily: mainFont),
-                                    ),
-                                    SizedBox(
-                                      height: 15,
-                                    ),
-                                    Text(
-                                      widget.hospitalsList[index].phone,
-                                      style: TextStyle(
-                                          fontSize: getProptionateScreenWidth(11),
-                                          color: kPrimaryColor.withOpacity(0.8),
-                                          fontFamily: mainFont),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 100,
-                                  child: FlutterRatingBar(
-                                    itemSize: 20,
-                                    initialRating: 3,
-                                    fillColor: Colors.amber,
-                                    borderColor: Colors.amber.withAlpha(250),
-                                    allowHalfRating: true,
-                                    onRatingUpdate: (rating) {
-                                      print(rating);
-                                    },
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Padding(
-                                    padding: EdgeInsets.only(top: 5, bottom: 5),
-                                    child: RaisedButton(
-                                      elevation: 3,
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => DoctorsCards(
-                                                doctorsList: widget
-                                                    .hospitalsList[index]
-                                                    .doctors,
-                                              )),
-                                        );
-                                      },
-                                      child: Text(
-                                        "Explore",
-                                        style: TextStyle(
-                                            color: kliteColor,
-                                            fontSize: getProptionateScreenWidth(14),
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: mainFont),
-                                      ),
-                                      color: kPrimaryColor,
-                                    )),
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            }
-          else if(index < widget.hospitalsList.length + widget.labsList.length)
-            {
-              return Card(
-                child: Container(
-                  child: Row(
-                    children: [
-                      //image
-                      Container(
-                        height: getProptionateScreenHeight(125),
-                        width: getProptionateScreenWidth(122),
-                        decoration: BoxDecoration(
-                          color: kliteColor,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(3.0),
-                          child: FittedBox(
-                            child: Image.asset(
-                              doctorList[0].imgURL,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ),
-                      ),
-
-                      //Hospital Name
-                      Container(
-                        padding: EdgeInsets.all(4),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                //1Name
-                                Container(
-                                  width: getProptionateScreenWidth(150),
-                                  child: Text(
-                                    widget.labsList[index-widget.hospitalsList.length].name,
-                                    style: TextStyle(
-                                        fontSize: getProptionateScreenWidth(15),
-                                        fontWeight: FontWeight.bold,
-                                        color: kSecondaryColor,
-                                        fontFamily: mainFont),
-                                  ),
-                                ),
-                                IconButton(
-                                    iconSize: 30,
-                                    icon: savedIcon,
-                                    onPressed: () {
-                                      if (doctorList[index-widget.hospitalsList.length].isSaved == true) {
-                                        setState(() {
-                                          savedIcon = Icon(Icons.bookmark);
-                                          doctorList[index-widget.hospitalsList.length].isSaved = false;
-                                        });
-                                      } else {
-                                        setState(() {
-                                          savedIcon = Icon(Icons.bookmark_border);
-                                          doctorList[index-widget.hospitalsList.length].isSaved = true;
-                                        });
-                                      }
-                                    })
-                              ],
-                            ),
-
-                            //Hospital address and phone Number
-                            Padding(
-                              padding:
-                              EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                              child: Container(
-                                width: getProptionateScreenWidth(200),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      widget.labsList[index-widget.hospitalsList.length].address,
-                                      style: TextStyle(
-                                          fontSize: getProptionateScreenWidth(11),
-                                          color: kPrimaryColor.withOpacity(0.8),
-                                          fontFamily: mainFont),
-                                    ),
-                                    SizedBox(
-                                      height: 15,
-                                    ),
-                                    Text(
-                                      widget.labsList[index-widget.hospitalsList.length].phone,
-                                      style: TextStyle(
-                                          fontSize: getProptionateScreenWidth(11),
-                                          color: kPrimaryColor.withOpacity(0.8),
-                                          fontFamily: mainFont),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 100,
-                                  child: FlutterRatingBar(
-                                    itemSize: 20,
-                                    initialRating: 3,
-                                    fillColor: Colors.amber,
-                                    borderColor: Colors.amber.withAlpha(250),
-                                    allowHalfRating: true,
-                                    onRatingUpdate: (rating) {
-                                      print(rating);
-                                    },
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Padding(
-                                    padding: EdgeInsets.only(top: 5, bottom: 5),
-                                    child: RaisedButton(
-                                      elevation: 3,
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => AppointmentsLabsFinal(
-                                                  labs: widget.labsList,
-                                                )));
-                                      },
-                                      child: Text(
-                                        "Book",
-                                        style: TextStyle(
-                                            color: kliteColor,
-                                            fontSize: getProptionateScreenWidth(14),
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: mainFont),
-                                      ),
-                                      color: kPrimaryColor,
-                                    )),
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            }else if(index < widget.hospitalsList.length + widget.labsList.length + widget.pharmaciesList.length)
-          {
+          if (index < widget.hospitalsList.length) {
             return Card(
               child: Container(
                 child: Row(
@@ -484,7 +203,165 @@ class _AllListBuilderState extends State<AllListBuilder> {
                               Container(
                                 width: getProptionateScreenWidth(150),
                                 child: Text(
-                                  widget.pharmaciesList[index-widget.hospitalsList.length-widget.pharmaciesList.length-1].name,
+                                  widget.hospitalsList[index].hospitalName,
+                                  style: TextStyle(
+                                      fontSize: getProptionateScreenWidth(15),
+                                      fontWeight: FontWeight.bold,
+                                      color: kSecondaryColor,
+                                      fontFamily: mainFont),
+                                ),
+                              ),
+                              IconButton(
+                                  iconSize: 30,
+                                  icon: widget.hospitalsList[index].saved
+                                      ? Icon(Icons.bookmark)
+                                      : savedIcon,
+                                  onPressed: () {
+                                    setState(() {
+                                      widget.hospitalsList[index].saved =
+                                          !widget.hospitalsList[index].saved;
+                                      bool flag = true;
+                                      for(int i =0; i<savedHospitals.length;i++)
+                                        {
+                                          if(savedHospitals[i].hospitalName.contains(widget.hospitalsList[index].hospitalName))
+                                            {
+                                              flag = false;
+                                            }
+                                        }
+                                      if(!flag && widget.hospitalsList[index].saved)
+                                        {
+                                          savedHospitals.add(widget.hospitalsList[index]);
+                                        }
+                                    });
+                                  })
+                            ],
+                          ),
+
+                          //Hospital address and phone Number
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 5),
+                            child: Container(
+                              width: getProptionateScreenWidth(200),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    widget.hospitalsList[index].address,
+                                    style: TextStyle(
+                                        fontSize: getProptionateScreenWidth(11),
+                                        color: kPrimaryColor.withOpacity(0.8),
+                                        fontFamily: mainFont),
+                                  ),
+                                  SizedBox(
+                                    height: 15,
+                                  ),
+                                  Text(
+                                    widget.hospitalsList[index].phone,
+                                    style: TextStyle(
+                                        fontSize: getProptionateScreenWidth(11),
+                                        color: kPrimaryColor.withOpacity(0.8),
+                                        fontFamily: mainFont),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 100,
+                                child: FlutterRatingBar(
+                                  itemSize: 20,
+                                  initialRating: 3,
+                                  fillColor: Colors.amber,
+                                  borderColor: Colors.amber.withAlpha(250),
+                                  allowHalfRating: true,
+                                  onRatingUpdate: (rating) {
+                                    print(rating);
+                                  },
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Padding(
+                                  padding: EdgeInsets.only(top: 5, bottom: 5),
+                                  child: RaisedButton(
+                                    elevation: 3,
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => DoctorsCards(
+                                                  doctorsList: widget
+                                                      .hospitalsList[index]
+                                                      .doctors,
+                                                )),
+                                      );
+                                    },
+                                    child: Text(
+                                      "Explore",
+                                      style: TextStyle(
+                                          color: kliteColor,
+                                          fontSize:
+                                              getProptionateScreenWidth(14),
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: mainFont),
+                                    ),
+                                    color: kPrimaryColor,
+                                  )),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          } else if (index <
+              widget.hospitalsList.length + widget.labsList.length) {
+            return Card(
+              child: Container(
+                child: Row(
+                  children: [
+                    //image
+                    Container(
+                      height: getProptionateScreenHeight(125),
+                      width: getProptionateScreenWidth(122),
+                      decoration: BoxDecoration(
+                        color: kliteColor,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(3.0),
+                        child: FittedBox(
+                          child: Image.asset(
+                            doctorList[0].imgURL,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    //Hospital Name
+                    Container(
+                      padding: EdgeInsets.all(4),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              //1Name
+                              Container(
+                                width: getProptionateScreenWidth(150),
+                                child: Text(
+                                  widget
+                                      .labsList[
+                                          index - widget.hospitalsList.length]
+                                      .name,
                                   style: TextStyle(
                                       fontSize: getProptionateScreenWidth(15),
                                       fontWeight: FontWeight.bold,
@@ -496,15 +373,22 @@ class _AllListBuilderState extends State<AllListBuilder> {
                                   iconSize: 30,
                                   icon: savedIcon,
                                   onPressed: () {
-                                    if (doctorList[index-widget.hospitalsList.length-widget.pharmaciesList.length].isSaved == true) {
+                                    if (doctorList[index -
+                                                widget.hospitalsList.length]
+                                            .isSaved ==
+                                        true) {
                                       setState(() {
                                         savedIcon = Icon(Icons.bookmark);
-                                        doctorList[index-widget.hospitalsList.length-widget.pharmaciesList.length].isSaved = false;
+                                        doctorList[index -
+                                                widget.hospitalsList.length]
+                                            .isSaved = false;
                                       });
                                     } else {
                                       setState(() {
                                         savedIcon = Icon(Icons.bookmark_border);
-                                        doctorList[index-widget.hospitalsList.length-widget.pharmaciesList.length].isSaved = true;
+                                        doctorList[index -
+                                                widget.hospitalsList.length]
+                                            .isSaved = true;
                                       });
                                     }
                                   })
@@ -513,8 +397,8 @@ class _AllListBuilderState extends State<AllListBuilder> {
 
                           //Hospital address and phone Number
                           Padding(
-                            padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 5),
                             child: Container(
                               width: getProptionateScreenWidth(200),
                               child: Column(
@@ -522,7 +406,10 @@ class _AllListBuilderState extends State<AllListBuilder> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    widget.pharmaciesList[index-widget.hospitalsList.length-widget.pharmaciesList.length-1].address,
+                                    widget
+                                        .labsList[
+                                            index - widget.hospitalsList.length]
+                                        .address,
                                     style: TextStyle(
                                         fontSize: getProptionateScreenWidth(11),
                                         color: kPrimaryColor.withOpacity(0.8),
@@ -532,7 +419,10 @@ class _AllListBuilderState extends State<AllListBuilder> {
                                     height: 15,
                                   ),
                                   Text(
-                                    widget.pharmaciesList[index-widget.hospitalsList.length-widget.pharmaciesList.length-1].phone,
+                                    widget
+                                        .labsList[
+                                            index - widget.hospitalsList.length]
+                                        .phone,
                                     style: TextStyle(
                                         fontSize: getProptionateScreenWidth(11),
                                         color: kPrimaryColor.withOpacity(0.8),
@@ -569,16 +459,167 @@ class _AllListBuilderState extends State<AllListBuilder> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => CallPharmacy(
-                                                pharmacies: widget.pharmaciesList,
-                                              )));
+                                              builder: (context) =>
+                                                  AppointmentsLabsFinal(
+                                                    labs: widget.labsList,
+                                                  )));
+                                    },
+                                    child: Text(
+                                      "Book",
+                                      style: TextStyle(
+                                          color: kliteColor,
+                                          fontSize:
+                                              getProptionateScreenWidth(14),
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: mainFont),
+                                    ),
+                                    color: kPrimaryColor,
+                                  )),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          } else if (index <
+              widget.hospitalsList.length +
+                  widget.labsList.length +
+                  widget.pharmaciesList.length) {
+            return Card(
+              child: Container(
+                child: Row(
+                  children: [
+                    //image
+                    Container(
+                      height: getProptionateScreenHeight(125),
+                      width: getProptionateScreenWidth(122),
+                      decoration: BoxDecoration(
+                        color: kliteColor,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(3.0),
+                        child: FittedBox(
+                          child: Image.asset(
+                            doctorList[0].imgURL,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    //Hospital Name
+                    Container(
+                      padding: EdgeInsets.all(4),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              //1Name
+                              Container(
+                                width: getProptionateScreenWidth(150),
+                                child: Text(
+                                  widget
+                                      .pharmaciesList[index -
+                                          widget.hospitalsList.length -
+                                          widget.labsList.length]
+                                      .name,
+                                  style: TextStyle(
+                                      fontSize: getProptionateScreenWidth(15),
+                                      fontWeight: FontWeight.bold,
+                                      color: kSecondaryColor,
+                                      fontFamily: mainFont),
+                                ),
+                              ),
+                              IconButton(
+                                  iconSize: 30,
+                                  icon: savedIcon,
+                                  onPressed: () {})
+                            ],
+                          ),
+
+                          //Hospital address and phone Number
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 5),
+                            child: Container(
+                              width: getProptionateScreenWidth(200),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    widget
+                                        .pharmaciesList[index -
+                                            widget.hospitalsList.length -
+                                            widget.labsList.length ]
+                                        .address,
+                                    style: TextStyle(
+                                        fontSize: getProptionateScreenWidth(11),
+                                        color: kPrimaryColor.withOpacity(0.8),
+                                        fontFamily: mainFont),
+                                  ),
+                                  SizedBox(
+                                    height: 15,
+                                  ),
+                                  Text(
+                                    widget
+                                        .pharmaciesList[index -
+                                            widget.hospitalsList.length -
+                                            widget.labsList.length ]
+                                        .phone,
+                                    style: TextStyle(
+                                        fontSize: getProptionateScreenWidth(11),
+                                        color: kPrimaryColor.withOpacity(0.8),
+                                        fontFamily: mainFont),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 100,
+                                child: FlutterRatingBar(
+                                  itemSize: 20,
+                                  initialRating: 3,
+                                  fillColor: Colors.amber,
+                                  borderColor: Colors.amber.withAlpha(250),
+                                  allowHalfRating: true,
+                                  onRatingUpdate: (rating) {
+                                    print(rating);
+                                  },
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Padding(
+                                  padding: EdgeInsets.only(top: 5, bottom: 5),
+                                  child: RaisedButton(
+                                    elevation: 3,
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  CallPharmacy(
+                                                    pharmacies:
+                                                        widget.pharmaciesList,
+                                                  )));
                                       // Navigator.pushNamed(context, '/AppointmentsDoctors');
                                     },
                                     child: Text(
                                       "Call",
                                       style: TextStyle(
                                           color: kliteColor,
-                                          fontSize: getProptionateScreenWidth(14),
+                                          fontSize:
+                                              getProptionateScreenWidth(14),
                                           fontWeight: FontWeight.bold,
                                           fontFamily: mainFont),
                                     ),
@@ -605,14 +646,14 @@ class DoctorListBuilder extends StatefulWidget {
   final List<Hospitals> hospitalsList;
   final List<Doctors> doctorsList;
 
-  const DoctorListBuilder({Key key,this.hospitalsList,this.doctorsList}) : super(key: key);
+  const DoctorListBuilder({Key key, this.hospitalsList, this.doctorsList})
+      : super(key: key);
 
   @override
   _DoctorListBuilderState createState() => _DoctorListBuilderState();
 }
 
 class _DoctorListBuilderState extends State<DoctorListBuilder> {
-
   Icon savedIcon = Icon(Icons.bookmark_border);
 
   @override
@@ -621,8 +662,7 @@ class _DoctorListBuilderState extends State<DoctorListBuilder> {
       child: ListView.builder(
         itemCount: widget.hospitalsList.length,
         itemBuilder: (context, index) {
-          if(index < widget.hospitalsList.length)
-          {
+          if (index < widget.hospitalsList.length) {
             return Card(
               child: Container(
                 child: Row(
@@ -686,8 +726,8 @@ class _DoctorListBuilderState extends State<DoctorListBuilder> {
 
                           //Hospital address and phone Number
                           Padding(
-                            padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 5),
                             child: Container(
                               width: getProptionateScreenWidth(200),
                               child: Column(
@@ -743,17 +783,18 @@ class _DoctorListBuilderState extends State<DoctorListBuilder> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => DoctorsCards(
-                                              doctorsList: widget
-                                                  .hospitalsList[index]
-                                                  .doctors,
-                                            )),
+                                                  doctorsList: widget
+                                                      .hospitalsList[index]
+                                                      .doctors,
+                                                )),
                                       );
                                     },
                                     child: Text(
                                       "Explore",
                                       style: TextStyle(
                                           color: kliteColor,
-                                          fontSize: getProptionateScreenWidth(14),
+                                          fontSize:
+                                              getProptionateScreenWidth(14),
                                           fontWeight: FontWeight.bold,
                                           fontFamily: mainFont),
                                     ),
@@ -779,14 +820,13 @@ class _DoctorListBuilderState extends State<DoctorListBuilder> {
 class LabsListBuilder extends StatefulWidget {
   final List<Lab> labsList;
 
-  const LabsListBuilder({Key key,this.labsList}) : super(key: key);
+  const LabsListBuilder({Key key, this.labsList}) : super(key: key);
 
   @override
   _LabsListBuilderState createState() => _LabsListBuilderState();
 }
 
 class _LabsListBuilderState extends State<LabsListBuilder> {
-
   Icon savedIcon = Icon(Icons.bookmark_border);
 
   @override
@@ -795,8 +835,7 @@ class _LabsListBuilderState extends State<LabsListBuilder> {
       child: ListView.builder(
         itemCount: widget.labsList.length,
         itemBuilder: (context, index) {
-          if(index < widget.labsList.length)
-          {
+          if (index < widget.labsList.length) {
             return Card(
               child: Container(
                 child: Row(
@@ -860,8 +899,8 @@ class _LabsListBuilderState extends State<LabsListBuilder> {
 
                           //Hospital address and phone Number
                           Padding(
-                            padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 5),
                             child: Container(
                               width: getProptionateScreenWidth(200),
                               child: Column(
@@ -916,15 +955,17 @@ class _LabsListBuilderState extends State<LabsListBuilder> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => AppointmentsLabsFinal(
-                                                labs: widget.labsList,
-                                              )));
+                                              builder: (context) =>
+                                                  AppointmentsLabsFinal(
+                                                    labs: widget.labsList,
+                                                  )));
                                     },
                                     child: Text(
                                       "Book",
                                       style: TextStyle(
                                           color: kliteColor,
-                                          fontSize: getProptionateScreenWidth(14),
+                                          fontSize:
+                                              getProptionateScreenWidth(14),
                                           fontWeight: FontWeight.bold,
                                           fontFamily: mainFont),
                                     ),
@@ -948,17 +989,15 @@ class _LabsListBuilderState extends State<LabsListBuilder> {
 }
 
 class PharmaciesListBuilder extends StatefulWidget {
-
   final List<Pharmacies> pharmaciesList;
 
-  const PharmaciesListBuilder({Key key,this.pharmaciesList}) : super(key: key);
+  const PharmaciesListBuilder({Key key, this.pharmaciesList}) : super(key: key);
 
   @override
   _PharmaciesListBuilderState createState() => _PharmaciesListBuilderState();
 }
 
 class _PharmaciesListBuilderState extends State<PharmaciesListBuilder> {
-
   Icon savedIcon = Icon(Icons.bookmark_border);
 
   @override
@@ -967,8 +1006,7 @@ class _PharmaciesListBuilderState extends State<PharmaciesListBuilder> {
       child: ListView.builder(
         itemCount: widget.pharmaciesList.length,
         itemBuilder: (context, index) {
-          if(index < widget.pharmaciesList.length)
-          {
+          if (index < widget.pharmaciesList.length) {
             return Card(
               child: Container(
                 child: Row(
@@ -1032,8 +1070,8 @@ class _PharmaciesListBuilderState extends State<PharmaciesListBuilder> {
 
                           //Hospital address and phone Number
                           Padding(
-                            padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 5),
                             child: Container(
                               width: getProptionateScreenWidth(200),
                               child: Column(
@@ -1088,16 +1126,19 @@ class _PharmaciesListBuilderState extends State<PharmaciesListBuilder> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => CallPharmacy(
-                                                pharmacies: widget.pharmaciesList,
-                                              )));
+                                              builder: (context) =>
+                                                  CallPharmacy(
+                                                    pharmacies:
+                                                        widget.pharmaciesList,
+                                                  )));
                                       // Navigator.pushNamed(context, '/AppointmentsDoctors');
                                     },
                                     child: Text(
                                       "Call",
                                       style: TextStyle(
                                           color: kliteColor,
-                                          fontSize: getProptionateScreenWidth(14),
+                                          fontSize:
+                                              getProptionateScreenWidth(14),
                                           fontWeight: FontWeight.bold,
                                           fontFamily: mainFont),
                                     ),
@@ -1119,4 +1160,3 @@ class _PharmaciesListBuilderState extends State<PharmaciesListBuilder> {
     );
   }
 }
-
